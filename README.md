@@ -2,14 +2,18 @@
 
 A smart wrapper for Lisk node APIs.
 
+## Installation
 
+```bash
+npm install liskapi
+```
 
 ## Examples
 
 ### Basic usage
 
 ```javascript
-    const lisk = require ('lisk-api')();
+    const lisk = require ('liskapi')();
 
     lisk.getSyncStatus ().call ()
     .then ((res) => {
@@ -30,7 +34,7 @@ A smart wrapper for Lisk node APIs.
         ssl: true
     };
 
-    const lisk = require ('lisk-api')(params);
+    const lisk = require ('liskapi')(params);
 ```
 
 
@@ -40,7 +44,7 @@ Call an endpoint with pagination; if `limit` is great than 101, the endpoint wil
 be called many time as required.
 
 ```javascript
-    const lisk = require ('lisk-api')();
+    const lisk = require ('liskapi')();
 
     lisk.getTransactions ()
     .pagination ({ limit: 100, offset: 0 })
@@ -58,7 +62,7 @@ be called many time as required.
 ### Sorting
 
 ```javascript
-    const lisk = require ('lisk-api')();
+    const lisk = require ('liskapi')();
 
     lisk.getTransactions ()
     .sort ({ time: 'asc' })
@@ -76,7 +80,7 @@ be called many time as required.
 ### Change host for a given call
 
 ```javascript
-    const lisk = require ('lisk-api')();
+    const lisk = require ('liskapi')();
 
     lisk.getTransactions ()
     .host ({ host: 'othernode2.com', port: 8000, ssl: true })
