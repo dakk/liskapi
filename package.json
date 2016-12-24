@@ -1,0 +1,27 @@
+{
+  "name": "liskapi",
+  "version": "0.1.0",
+  "description": "A smart wrapper for Lisk node APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dakk/liskapi.git"
+  },
+  "keywords": [
+    "lisk",
+    "api",
+    "wrapper"
+  ],
+  "author": "Davide Gessa (gessadavide@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dakk/liskapi/issues"
+  },
+  "homepage": "https://github.com/dakk/liskapi#readme",
+  "dependencies": {
+    "request": "^2.79.0"
+  }
+}
