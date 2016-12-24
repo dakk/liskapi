@@ -8,10 +8,10 @@ A smart wrapper for Lisk node APIs.
 
 ### Basic usage
 
-```
+```javascript
     const lisk = require ('lisk-api')();
 
-    list.getSyncStatus ()
+    lisk.getSyncStatus ()
     .then ((res) => {
         console.log (`Got data ${res}`);
     })
@@ -23,7 +23,7 @@ A smart wrapper for Lisk node APIs.
 
 ### Connect to a node different from local
 
-```
+```javascript
     const params = {
         host: 'othernode.com',
         port: 8000,
