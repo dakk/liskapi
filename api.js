@@ -18,7 +18,7 @@ module.exports = {
 		paginated: false
 	},
 	
-	getTransactionList: {
+	getTransactions: {
 		method: 'GET',
 		path: '/api/transactions',
 		params: {
@@ -26,6 +26,7 @@ module.exports = {
 			senderId: { type: 'string' },
 			recipientId: { type: 'string' }
 		},
-		paginated: true
+		paginated: true,
+        paginatedResult: 'transactions'
 	}		
 };

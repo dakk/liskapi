@@ -7,32 +7,78 @@ let params = {
 	port: 8000
 };
 
-let liskCallFactory = function (calld) {
-	const mreq = request.get ? calld.method == 'GET' : request.post;
-	
-	return (callparams) => {
-		/* Type checker for callparams */
-		let calldata = [];
-		for (var p in callparams) {
-			assert (p in calld.params, `Parameter ${p} not allowed`);
+class APIRequest {
+	constructor (callDesc, callParams) {
+		this.params = params;
+		this.callParams = callParams || {};
+		this.callDesc = callDesc;
+		this.sortParams = null;
+		this.pageParams = null;
+	}
+
+	host (hostParams) {
+		this.params = hostParams;
+		return this;
+	}
+
+	paginate (pageParams) {
+		if (!this.callDesc.paginated)
+			assert (false, 'Pagination not available for this call');
+
+		this.pageParams = pageParams;
+		return this;
+	}
+
+	sort (sortParams) {
+		if (!this.callDesc.paginated)
+			assert (false, 'Sorting not available for this call');
+
+		if (Object.keys (sortParams).length != 1) 
+			assert (false, 'Calls can be sorted only by one field');
+
+		this.sortParams = sortParams;
+		return this;
+	}
+
+	call () {
+		const mreq = request.get ? this.callDesc.method == 'GET' : request.post;
+
+		callParamsRaw = [];
+
+		/* Call parameters */
+		for (var p in this.callParams) {
+			assert (p in this.callDesc.params, `Parameter ${p} not allowed`);
 			assert (typeof (callparams[p]) == calld.params[p].type, `Parameter ${p} must be a ${calld.params[p].type} (got ${typeof (callparams[p])} instead)`);
-			calldata.push (`${p}=${callparams[p]}`);			
+			callParamsRaw.push (`${p}=${callparams[p]}`);			
 		}
-		
-		/* Request */
+
+		/* Pagination parameters */
+
+		/* Sorting parameters */
+		if (this.sortParams) {
+			callParamsRaw.push (`orderBy=${Object.keys (sortParams)[0]}:${this.sortParams [Object.keys (sortParams)[0]]}`);
+		}
+
+		/* Make the request */
 		return new Promise ((resolve, reject) => {
-			mreq (`${'https' ? params.secure : 'http'}://${params.host}:${params.port}${calld.path}${calldata.length ? '?' + calldata.join ('&') : ''}`, function (error, response, body) {		
+			let uri = `${'https' ? this.params.secure : 'http'}://${this.params.host}:${this.params.port}${this.callDesc.path}`;
+			uri += `${callParamsRaw.length ? '?' + callParamsRaw.join ('&') : ''}`;
+						
+			mreq (uri, function (error, response, body) {		
 				if (!error && response.statusCode == 200) {
 					var data = JSON.parse (body);
-					return resolve (data);
+
+					if (data.success)
+						return resolve (data);
+					else
+						return reject (data.error);
 				} else {
 					return reject (error);
 				}
 			});
 		});
-	};
-};
-
+	}
+}
 
 module.exports = (params) => {
 	if (params !== undefined)
@@ -41,7 +87,7 @@ module.exports = (params) => {
 	let callList = {};
 	
 	for (var x in api)
-		callList [x] = liskCallFactory (api [x]);
+		callList [x] = (callParams) => { new APIRequest (api [x], callParams); };
 	
 	return callList;
 };
