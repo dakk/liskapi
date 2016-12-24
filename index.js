@@ -1,5 +1,5 @@
-const request 	= require ('request');
-const api 		= require ('./api');
+const request = require ('request');
+const api = require ('./api');
 
 let params = {
 	ssl: false,
@@ -66,7 +66,7 @@ class APIRequest {
 		callParamsRaw = [];
 
 		/* Call parameters */
-		for (var p in this.callParams) {
+		for (let p in this.callParams) {
 			assert (p in this.callDesc.params, `Parameter ${p} not allowed`);
 			assert (typeof (callparams[p]) == calld.params[p].type, `Parameter ${p} must be a ${calld.params[p].type} (got ${typeof (callparams[p])} instead)`);
 			callParamsRaw.push (`${p}=${callparams[p]}`);			
@@ -82,7 +82,7 @@ class APIRequest {
 			if (this.pageParams.limit > 101) {
 				let promiseList = [];
 
-				for (var i = this.pageParams.offset || 0; i < this.pageParams.limit; i += 101) {
+				for (let i = this.pageParams.offset || 0; i < this.pageParams.limit; i += 101) {
 					let callParamsRaw2 = callParamsRaw;
 					callParamsRaw2.push (`offset=${i}`);
 					callParamsRaw2.push (`limit=${i + 101 ? (i+101) < this.pageParams.limit : this.pageParams.limit - i}`);
