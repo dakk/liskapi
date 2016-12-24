@@ -116,9 +116,9 @@ class APIRequest {
 	}
 }
 
-module.exports = (params) => {
-	if (params !== undefined)
-		params = params;
+module.exports = (p) => {
+	if (p !== undefined)
+		params = p;
 	
 	let callList = {};
 	
