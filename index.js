@@ -23,13 +23,11 @@ const calls = {
 	getTransactionList: {
 		method: 'GET',
 		path: '/api/transactions',
-		params: [
-			{
-				blockId: 'string',
-				senderId: 'string',
-				recipientId: 'string'
-			}
-		],
+		params: {
+			blockId: { type: 'string' },
+			senderId: { type: 'string' },
+			recipientId: { type: 'string' }
+		},
 		paginated: true
 	},
 		
@@ -50,7 +48,7 @@ let liskCallFactory = function (calld) {
 		let calldata = [];
 		for (var p in callparams) {
 			assert (p in calld.params, `Parameter ${p} not allowed`);
-			assert (typeof (callparams[p]) == calld.params[p], `Parameter ${p} must be a ${calld.params[p]} (got ${typeof (callparams[p])})`);
+			assert (typeof (callparams[p]) == calld.params[p].type, `Parameter ${p} must be a ${calld.params[p].type} (got ${typeof (callparams[p])} instead)`);
 			calldata.push (`${p}=${callparams[p]}`);			
 		}
 		
