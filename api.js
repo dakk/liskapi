@@ -28,5 +28,13 @@ module.exports = {
 		},
 		paginated: true,
         paginatedResult: 'transactions'
+	},
+	getTransaction: {
+		method: 'GET',
+		path: '/api/transactions/get',
+		params: {
+            id: { type: 'String' }
+        },
+		paginated: false
 	}		
 };
