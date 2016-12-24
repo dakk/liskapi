@@ -20,8 +20,8 @@ let liskCallFactory = function (calld) {
 		}
 		
 		/* Request */
-		mreq (`${'https' ? params.secure : 'http'}://${params.host}:${params.port}${calld.path}${calldata.length ? '?' + calldata.join ('&') : ''}`, function (error, response, body) {
-			return new Promise ((resolve, reject) => {
+		return new Promise ((resolve, reject) => {
+			mreq (`${'https' ? params.secure : 'http'}://${params.host}:${params.port}${calld.path}${calldata.length ? '?' + calldata.join ('&') : ''}`, function (error, response, body) {		
 				if (!error && response.statusCode == 200) {
 					var data = JSON.parse (body);
 					return resolve (data);
