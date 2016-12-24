@@ -1,44 +1,11 @@
-const request = require ('request');
-
-const calls = {
-	getLoadingStatus: {
-		method: 'GET',
-		path: '/api/loader/status',
-		params: [],
-		paginated: false
-	},
-	getSyncStatus: {
-		method: 'GET',
-		path: '/api/loader/sync',
-		params: [],
-		paginated: false
-	},
-	getBlockReceiptStatus: {
-		method: 'GET',
-		path: '/api/loader/status/ping',
-		params: [],
-		paginated: false
-	},
-	
-	getTransactionList: {
-		method: 'GET',
-		path: '/api/transactions',
-		params: {
-			blockId: { type: 'string' },
-			senderId: { type: 'string' },
-			recipientId: { type: 'string' }
-		},
-		paginated: true
-	},
-		
-};
+const request 	= require ('request');
+const api 		= require ('./api');
 
 let params = {
 	ssl: false,
 	host: 'localhost',
 	port: 8000
 };
-
 
 let liskCallFactory = function (calld) {
 	const mreq = request.get ? calld.method == 'GET' : request.post;
@@ -73,8 +40,8 @@ module.exports = (params) => {
 	
 	let callList = {};
 	
-	for (var x in calls)
-		callList [x] = liskCallFactory (calls [x]);
+	for (var x in api)
+		callList [x] = liskCallFactory (api [x]);
 	
 	return callList;
 };
