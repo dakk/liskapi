@@ -63,7 +63,9 @@ class APIRequest {
 				protocol = 'http';
 
 			let uri = `${protocol}://${this.params.host}:${this.params.port}${this.callDesc.path}`;
-			uri += `${callParamsRaw.length ? '?' + callParamsRaw.join ('&') : ''}`;
+
+			if(callParamsRaw.length)
+				uri += '?' + callParamsRaw.join ('&');
 
 			mreq (uri, function (error, response, body) {
 				if (!error && response.statusCode == 200) {
