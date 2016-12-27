@@ -33,7 +33,7 @@ class APIRequest {
 		if (!this.callDesc.paginated)
 			assert (false, 'Sorting not available for this call');
 
-		if (Object.keys (sortParams).length != 1) 
+		if (Object.keys (sortParams).length != 1)
 			assert (false, 'Calls can be sorted only by one field');
 
 		this.sortParams = sortParams;
@@ -42,10 +42,30 @@ class APIRequest {
 
 	_call (callParamsRaw) {
 		return new Promise ((resolve, reject) => {
-			let uri = `${'https' ? this.params.secure : 'http'}://${this.params.host}:${this.params.port}${this.callDesc.path}`;
+
+			let mreq = null;
+			switch (this.callDesc.method) {
+				case 'GET':
+					mreq = request.get;
+					break;
+				case 'POST':
+					mreq = request.post;
+					break;
+				case 'PUT':
+					mreq = request.put;
+					break;
+			}
+
+			let protocol = null;
+			if (this.params.ssl)
+				protocol = 'https';
+			else
+				protocol = 'http';
+
+			let uri = `${protocol}://${this.params.host}:${this.params.port}${this.callDesc.path}`;
 			uri += `${callParamsRaw.length ? '?' + callParamsRaw.join ('&') : ''}`;
-						
-			mreq (uri, function (error, response, body) {		
+
+			mreq (uri, function (error, response, body) {
 				if (!error && response.statusCode == 200) {
 					var data = JSON.parse (body);
 
@@ -61,15 +81,14 @@ class APIRequest {
 	}
 
 	call () {
-		const mreq = request.get ? this.callDesc.method == 'GET' : request.post;
 
-		callParamsRaw = [];
+		let callParamsRaw = [];
 
 		/* Call parameters */
 		for (let p in this.callParams) {
 			assert (p in this.callDesc.params, `Parameter ${p} not allowed`);
 			assert (typeof (callparams[p]) == calld.params[p].type, `Parameter ${p} must be a ${calld.params[p].type} (got ${typeof (callparams[p])} instead)`);
-			callParamsRaw.push (`${p}=${callparams[p]}`);			
+			callParamsRaw.push (`${p}=${callparams[p]}`);
 		}
 
 		/* Sorting parameters */
@@ -91,17 +110,17 @@ class APIRequest {
 
 				return new Promise ((resolve, reject) => {
 					Promise.all (promiseList)
-					.then (ress => {
-						let res = { success: true };
-						res[this.callDesc.paginatedResult] = [];
-						for (let row in ress) {
-							res[this.callDesc.paginatedResult] = res[this.callDesc.paginatedResult].concat (row[this.callDesc.paginatedResult]);
-						}
-						return resolve (res);
-					})
-					.catch (errs => {
-						return reject (errs);
-					});
+						.then (ress => {
+							let res = { success: true };
+							res[this.callDesc.paginatedResult] = [];
+							for (let row in ress) {
+								res[this.callDesc.paginatedResult] = res[this.callDesc.paginatedResult].concat (row[this.callDesc.paginatedResult]);
+							}
+							return resolve (res);
+						})
+						.catch (errs => {
+							return reject (errs);
+						});
 				});
 			} else {
 				if (this.pageParams.offset)
@@ -119,11 +138,11 @@ class APIRequest {
 module.exports = (p) => {
 	if (p !== undefined)
 		params = p;
-	
+
 	let callList = {};
-	
+
 	for (var x in api)
-		callList [x] = (callParams) => { new APIRequest (api [x], callParams); };
-	
+		callList [x] = (callParams) => { return (new APIRequest (api [x], callParams)); };
+
 	return callList;
 };
