@@ -26,6 +26,14 @@ module.exports = {
 		},
 		paginated: false
 	},
+	getDelegatesByAddress: {
+		method: 'GET',
+		path: '/api/accounts/delegates',
+		params: {
+			address: { type: 'string' }
+		},
+		paginated: true
+	},
 	/**
 	 * Loader
 	 */
@@ -68,5 +76,14 @@ module.exports = {
             id: { type: 'String' }
         },
 		paginated: false
-	}		
+	},
+	/**
+	 * Peers
+	 */
+	getPeersList: {
+		method: 'GET',
+		path: '/api/peers',
+		params: {},
+		paginated: true
+	},
 };

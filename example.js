@@ -22,3 +22,22 @@ lisk.getBalance ({address: '13968139166426148658L'})
     .catch ((err) => {
         console.log ('Got an error in getting balance\n', err);
     });
+
+lisk.getDelegatesByAddress ({address: '13968139166426148658L'})
+    .call ()
+    .then ((res) => {
+        console.log (`Get delegates of Max delegate\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting delegates\n', err);
+    });
+
+lisk.getPeersList ()
+    .paginate ({ limit: 10, offset: 5 })
+    .call ()
+    .then ((res) => {
+        console.log (`Get peers of Liskword\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting peers\n', err);
+    });

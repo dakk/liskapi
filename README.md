@@ -76,7 +76,7 @@ be called many time as required.
     const lisk = require ('liskapi')();
 
     lisk.getTransactions ()
-    .pagination ({ limit: 100, offset: 0 })
+    .paginate ({ limit: 100, offset: 0 })
     .call ()
     .then ((res) => {
         console.log (`Got data ${res}`);
