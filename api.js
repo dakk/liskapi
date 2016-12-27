@@ -23,7 +23,7 @@ module.exports = {
 	},
 	getSyncStatus: {
 		method: 'GET',
-		path: '/api/loader/sync',
+		path: '/api/loader/status/sync',
 		params: {},
 		paginated: false
 	},

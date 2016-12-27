@@ -13,12 +13,17 @@ class APIRequest {
 		this.callParams = callParams || {};
 		this.callDesc = callDesc;
 		this.sortParams = null;
+		this.postData = null;
 		this.pageParams = null;
 	}
 
 	host (hostParams) {
 		this.params = hostParams;
 		return this;
+	}
+
+	data (postData) {
+		this.postData = postData;
 	}
 
 	paginate (pageParams) {
@@ -67,7 +72,12 @@ class APIRequest {
 			if(callParamsRaw.length)
 				uri += '?' + callParamsRaw.join ('&');
 
-			mreq (uri, function (error, response, body) {
+			let mreq_bind = mreq.bind (null, uri);
+
+			if (this.postData !== null)
+				mreq_bind = mreq_bind.bind (null, this.postData);
+
+			mreq_bind (function (error, response, body) {
 				if (!error && response.statusCode == 200) {
 					var data = JSON.parse (body);
 
@@ -83,7 +93,6 @@ class APIRequest {
 	}
 
 	call () {
-
 		let callParamsRaw = [];
 
 		/* Call parameters */
@@ -142,9 +151,10 @@ module.exports = (p) => {
 		params = p;
 
 	let callList = {};
-
-	for (var x in api)
+	
+	Object.keys(api).forEach((x) => {
 		callList [x] = (callParams) => { return (new APIRequest (api [x], callParams)); };
+	});
 
 	return callList;
 };

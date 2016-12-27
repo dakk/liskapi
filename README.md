@@ -24,6 +24,22 @@ npm install liskapi
     });
 ```
 
+### Post usage
+
+```javascript
+    const lisk = require ('liskapi')();
+
+    lisk.enableForging ()
+    .data ({secret: '...'})
+    .call ()
+    .then ((res) => {
+        console.log (`Got data ${res}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error');
+    });
+```
+
 
 ### Connect to a node different from local
 

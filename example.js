@@ -8,7 +8,7 @@ const lisk = require ('liskapi')(params);
 
 lisk.getSyncStatus ().call ()
     .then ((res) => {
-        console.log (`Got data ${res}`);
+        console.log (`Got data ${JSON.stringify (res)}`);
     })
     .catch ((err) => {
         console.log ('Got an error', err);
