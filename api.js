@@ -26,6 +26,9 @@ module.exports = {
 		},
 		paginated: false
 	},
+	/**
+	 * Loader
+	 */
 	getLoadingStatus: {
 		method: 'GET',
 		path: '/api/loader/status',
@@ -44,7 +47,9 @@ module.exports = {
 		params: {},
 		paginated: false
 	},
-	
+	/**
+	 * Transactions
+	 */
 	getTransactions: {
 		method: 'GET',
 		path: '/api/transactions',
