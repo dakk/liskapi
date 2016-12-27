@@ -1,4 +1,7 @@
 module.exports = {
+	/**
+	 * Accounts
+	 */
 	getBalance: {
 		method: 'GET',
 		path: '/api/accounts/getBalance',
@@ -15,6 +18,25 @@ module.exports = {
 		},
 		paginated: false
 	},
+	getAccount: {
+		method: 'GET',
+		path: '/api/accounts',
+		params: {
+			address: { type: 'string' }
+		},
+		paginated: false
+	},
+	getDelegatesByAddress: {
+		method: 'GET',
+		path: '/api/accounts/delegates',
+		params: {
+			address: { type: 'string' }
+		},
+		paginated: true
+	},
+	/**
+	 * Loader
+	 */
 	getLoadingStatus: {
 		method: 'GET',
 		path: '/api/loader/status',
@@ -33,7 +55,9 @@ module.exports = {
 		params: {},
 		paginated: false
 	},
-	
+	/**
+	 * Transactions
+	 */
 	getTransactions: {
 		method: 'GET',
 		path: '/api/transactions',
@@ -52,5 +76,14 @@ module.exports = {
             id: { type: 'String' }
         },
 		paginated: false
-	}		
+	},
+	/**
+	 * Peers
+	 */
+	getPeersList: {
+		method: 'GET',
+		path: '/api/peers',
+		params: {},
+		paginated: true
+	},
 };
