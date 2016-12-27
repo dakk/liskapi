@@ -1,4 +1,7 @@
 module.exports = {
+	/**
+	 * Accounts
+	 */
 	getBalance: {
 		method: 'GET',
 		path: '/api/accounts/getBalance',
@@ -10,6 +13,14 @@ module.exports = {
 	getPublicKey: {
 		method: 'GET',
 		path: '/api/accounts/getPublicKey',
+		params: {
+			address: { type: 'string' }
+		},
+		paginated: false
+	},
+	getAccount: {
+		method: 'GET',
+		path: '/api/accounts',
 		params: {
 			address: { type: 'string' }
 		},
