@@ -24,6 +24,19 @@ npm install liskapi
     });
 ```
 
+### Get with params
+
+```javascript
+    lisk.getBalance ({address: 'address'})
+        .call ()
+        .then ((res) => {
+            console.log (`Get balance of delegate\n ${JSON.stringify (res)}`);
+        })
+        .catch ((err) => {
+            console.log ('Got an error in getting balance\n', err);
+        });
+```
+
 ### Post usage
 
 ```javascript

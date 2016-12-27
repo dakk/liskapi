@@ -1,5 +1,6 @@
 const request = require ('request');
 const api = require ('./api');
+const assert = require ('assert');
 
 let params = {
 	ssl: false,
@@ -96,10 +97,11 @@ class APIRequest {
 		let callParamsRaw = [];
 
 		/* Call parameters */
+
 		for (let p in this.callParams) {
 			assert (p in this.callDesc.params, `Parameter ${p} not allowed`);
-			assert (typeof (callparams[p]) == calld.params[p].type, `Parameter ${p} must be a ${calld.params[p].type} (got ${typeof (callparams[p])} instead)`);
-			callParamsRaw.push (`${p}=${callparams[p]}`);
+			assert (typeof (this.callParams[p]) == this.callDesc.params[p].type, `Parameter ${p} must be a ${this.callDesc.params[p].type} (got ${typeof (this.callParams[p])} instead)`);
+			callParamsRaw.push (`${p}=${this.callParams[p]}`);
 		}
 
 		/* Sorting parameters */
@@ -151,7 +153,7 @@ module.exports = (p) => {
 		params = p;
 
 	let callList = {};
-	
+
 	Object.keys(api).forEach((x) => {
 		callList [x] = (callParams) => { return (new APIRequest (api [x], callParams)); };
 	});
