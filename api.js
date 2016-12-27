@@ -1,4 +1,20 @@
 module.exports = {
+	getBalance: {
+		method: 'GET',
+		path: '/api/accounts/getBalance',
+		params: {
+			address: { type: 'string' }
+		},
+		paginated: false
+	},
+	getPublicKey: {
+		method: 'GET',
+		path: '/api/accounts/getPublicKey',
+		params: {
+			address: { type: 'string' }
+		},
+		paginated: false
+	},
 	getLoadingStatus: {
 		method: 'GET',
 		path: '/api/loader/status',
