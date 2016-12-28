@@ -94,5 +94,11 @@ module.exports = {
 			port: { type: 'string' }
 		},
 		paginated: false
+	},
+	getPeerVersion: {
+		method: 'GET',
+		path: '/api/peers/version',
+		params: {},
+		paginated: false
 	}
 };
