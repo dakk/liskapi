@@ -73,7 +73,7 @@ module.exports = {
 		method: 'GET',
 		path: '/api/transactions/get',
 		params: {
-            id: { type: 'String' }
+            id: { type: 'string' }
         },
 		paginated: false
 	},
@@ -86,4 +86,19 @@ module.exports = {
 		params: {},
 		paginated: true
 	},
+	getPeer: {
+		method: 'GET',
+		path: '/api/peers/get',
+		params: {
+			ip: { type: 'string' },
+			port: { type: 'string' }
+		},
+		paginated: false
+	},
+	getPeerVersion: {
+		method: 'GET',
+		path: '/api/peers/version',
+		params: {},
+		paginated: false
+	}
 };

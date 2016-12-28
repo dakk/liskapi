@@ -41,3 +41,21 @@ lisk.getPeersList ()
     .catch ((err) => {
         console.log ('Got an error in getting peers\n', err);
     });
+
+lisk.getPeer ({ip: '163.172.154.211', port:'8000'})
+    .call ()
+    .then ((res) => {
+        console.log (`Get peer by Liskword IP\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting peer\n', err);
+    });
+
+lisk.getPeerVersion ()
+    .call ()
+    .then ((res) => {
+        console.log (`Get peer version\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting peer version\n', err);
+    });
