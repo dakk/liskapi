@@ -86,4 +86,13 @@ module.exports = {
 		params: {},
 		paginated: true
 	},
+	getPeer: {
+		method: 'GET',
+		path: '/api/peers/get',
+		params: {
+			ip: { type: 'String' },
+			port: { type: 'String' }
+		},
+		paginated: false
+	}
 };
