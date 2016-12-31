@@ -100,5 +100,28 @@ module.exports = {
 		path: '/api/peers/version',
 		params: {},
 		paginated: false
+	},
+	/**
+	 * Blocks
+	 */
+	getBlock: {
+		method: 'GET',
+		path: '/api/blocks/get',
+		params: {
+			id: { type: 'string' }
+		},
+		paginated: false
+	},
+	getBlocks: {
+		method: 'GET',
+		path: '/api/blocks',
+		params: {
+			generatorPublicKey: { type: 'string' },
+			height: { type: 'number' },
+			previousBlock: { type: 'string' },
+			totalAmount: { type: 'number' },
+			totalFee: { type: 'number'}
+		},
+		paginated: true
 	}
 };

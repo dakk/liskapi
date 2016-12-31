@@ -59,3 +59,24 @@ lisk.getPeerVersion ()
     .catch ((err) => {
         console.log ('Got an error in getting peer version\n', err);
     });
+
+lisk.getBlock ({id:'10'})
+    .call ()
+    .then ((res) => {
+        console.log (`Get block by id\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting block by id\n', err);
+    });
+
+lisk.getBlocks ()
+    .paginate ({ limit: 100, offset: 0 })
+    .sort ({ height: 'asc' })
+    .call ()
+    .then ((res) => {
+        console.log (`Get blocks sorted and paginated\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting blocks sorted and paginated\n', err);
+    });
+
