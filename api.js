@@ -91,7 +91,7 @@ module.exports = {
 		path: '/api/peers/get',
 		params: {
 			ip: { type: 'string' },
-			port: { type: 'string' }
+			port: { type: 'number' }
 		},
 		paginated: false
 	},
@@ -100,5 +100,156 @@ module.exports = {
 		path: '/api/peers/version',
 		params: {},
 		paginated: false
+	},
+	/**
+	 * Blocks
+	 */
+	getBlock: {
+		method: 'GET',
+		path: '/api/blocks/get',
+		params: {
+			id: { type: 'string' }
+		},
+		paginated: false
+	},
+	getBlocks: {
+		method: 'GET',
+		path: '/api/blocks',
+		params: {
+			generatorPublicKey: { type: 'string' },
+			height: { type: 'number' },
+			previousBlock: { type: 'string' },
+			totalAmount: { type: 'number' },
+			totalFee: { type: 'number'}
+		},
+		paginated: true
+	},
+	getFee: {
+		method: 'GET',
+		path: '/api/blocks/getFee',
+		params: {},
+		paginated: false
+	},
+	getFees: {
+		method: 'GET',
+		path: '/api/blocks/getFees',
+		params: {},
+		paginated: false
+	},
+	getReward: {
+		method: 'GET',
+		path: '/api/blocks/getReward',
+		params: {},
+		paginated: false
+	},
+	getSupply: {
+		method: 'GET',
+		path: '/api/blocks/getSupply',
+		params: {},
+		paginated: false
+	},
+	getHeight: {
+		method: 'GET',
+		path: '/api/blocks/getHeight',
+		params: {},
+		paginated: false
+	},
+	getStatus: {
+		method: 'GET',
+		path: '/api/blocks/getStatus',
+		params: {},
+		paginated: false
+	},
+	getNethash: {
+		method: 'GET',
+		path: '/api/blocks/getNethash',
+		params: {},
+		paginated: false
+	},
+	getMilestone: {
+		method: 'GET',
+		path: '/api/blocks/getMilestone',
+		params: {},
+		paginated: false
+	},
+	/**
+	 * Signatures
+	 */
+	getSignature: {
+		method: 'GET',
+		path: '/api/signatures/get',
+		params: {
+			id: { type: 'string' }
+		},
+		paginated: false
+	},
+	/**
+	 * Delegates
+	 */
+	getDelegatesList: {
+		method: 'GET',
+		path: '/api/delegates',
+		params: {},
+		paginated: true
+	},
+	getDelegateByPublicKey: {
+		method: 'GET',
+		path: '/api/delegates/get',
+		params: {
+			publicKey: { type: 'string' }
+		},
+		paginated: false
+	},
+	getDelegateByUsername: {
+		method: 'GET',
+		path: '/api/delegates/get',
+		params: {
+			username: { type: 'string' }
+		},
+		paginated: false
+	},
+	searchForDelegates: {
+		method: 'GET',
+		path: '/api/delegates/search',
+		params: {
+			q: { type: 'string' }
+		},
+		paginated: true
+	},
+	getDelegatesCount: {
+		method: 'GET',
+		path: '/api/delegates/count',
+		params: {},
+		paginated: false
+	},
+	getVotesOfAccount: {
+		method: 'GET',
+		path: '/api/accounts/delegates',
+		params: {
+			address: { type: 'string' }
+		},
+		paginated: false
+	},
+	getVoters: {
+		method: 'GET',
+		path: '/api/delegates/voters',
+		params: {
+			publicKey: { type: 'string' }
+		},
+		paginated: false
+	},
+	getForgedByAccount: {
+		method: 'GET',
+		path: '/api/delegates/forging/getForgedByAccount',
+		params: {
+			generatorPublicKey: { type: 'string' }
+		},
+		paginated: false
+	},
+	getNextForger: {
+		method: 'GET',
+		path: '/api/delegates/getNextForgers',
+		params: {},
+		paginated: true
 	}
 };
