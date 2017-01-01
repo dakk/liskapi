@@ -175,4 +175,15 @@ module.exports = {
 	/**
 	 * Signatures
 	 */
+	getSignature: {
+		method: 'GET',
+		path: '/api/signatures/get',
+		params: {
+			id: { type: 'string' }
+		},
+		paginated: false
+	},
+	/**
+	 * Delegates
+	 */
 };
