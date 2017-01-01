@@ -123,5 +123,56 @@ module.exports = {
 			totalFee: { type: 'number'}
 		},
 		paginated: true
-	}
+	},
+	getFee: {
+		method: 'GET',
+		path: '/api/blocks/getFee',
+		params: {},
+		paginated: false
+	},
+	getFees: {
+		method: 'GET',
+		path: '/api/blocks/getFees',
+		params: {},
+		paginated: false
+	},
+	getReward: {
+		method: 'GET',
+		path: '/api/blocks/getReward',
+		params: {},
+		paginated: false
+	},
+	getSupply: {
+		method: 'GET',
+		path: '/api/blocks/getSupply',
+		params: {},
+		paginated: false
+	},
+	getHeight: {
+		method: 'GET',
+		path: '/api/blocks/getHeight',
+		params: {},
+		paginated: false
+	},
+	getStatus: {
+		method: 'GET',
+		path: '/api/blocks/getStatus',
+		params: {},
+		paginated: false
+	},
+	getNethash: {
+		method: 'GET',
+		path: '/api/blocks/getNethash',
+		params: {},
+		paginated: false
+	},
+	getMilestone: {
+		method: 'GET',
+		path: '/api/blocks/getMilestone',
+		params: {},
+		paginated: false
+	},
+	/**
+	 * Signatures
+	 */
 };

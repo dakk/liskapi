@@ -80,3 +80,74 @@ lisk.getBlocks ()
         console.log ('Got an error in getting blocks sorted and paginated\n', err);
     });
 
+lisk.getFee ()
+    .call ()
+    .then ((res) => {
+        console.log (`Get blockchain fee\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting blockchain fee\n', err);
+    });
+
+lisk.getFees ()
+    .call ()
+    .then ((res) => {
+        console.log (`Get blockchain fees schedule\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting blockchain fees schedule\n', err);
+    });
+
+lisk.getReward ()
+    .call ()
+    .then ((res) => {
+        console.log (`Get blockchain reward schedule\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting blockchain reward schedule\n', err);
+    });
+
+lisk.getSupply ()
+    .call ()
+    .then ((res) => {
+        console.log (`Get supply\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting supply\n', err);
+    });
+
+lisk.getHeight ()
+    .call ()
+    .then ((res) => {
+        console.log (`Get height\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting height\n', err);
+    });
+
+lisk.getHeight ()
+    .call ()
+    .then ((res) => {
+        console.log (`Get status\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting status\n', err);
+    });
+
+lisk.getNethash ()
+    .call ()
+    .then ((res) => {
+        console.log (`Get nethash\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting nethash\n', err);
+    });
+
+lisk.getMilestone ()
+    .call ()
+    .then ((res) => {
+        console.log (`Get milestone\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error in getting milestone\n', err);
+    });
