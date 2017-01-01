@@ -186,4 +186,70 @@ module.exports = {
 	/**
 	 * Delegates
 	 */
+	getDelegatesList: {
+		method: 'GET',
+		path: '/api/delegates',
+		params: {},
+		paginated: true
+	},
+	getDelegateByPublicKey: {
+		method: 'GET',
+		path: '/api/delegates/get',
+		params: {
+			publicKey: { type: 'string' }
+		},
+		paginated: false
+	},
+	getDelegateByUsername: {
+		method: 'GET',
+		path: '/api/delegates/get',
+		params: {
+			username: { type: 'string' }
+		},
+		paginated: false
+	},
+	searchForDelegates: {
+		method: 'GET',
+		path: '/api/delegates/search',
+		params: {
+			q: { type: 'string' }
+		},
+		paginated: true
+	},
+	getDelegatesCount: {
+		method: 'GET',
+		path: '/api/delegates/count',
+		params: {},
+		paginated: false
+	},
+	getVotesOfAccount: {
+		method: 'GET',
+		path: '/api/accounts/delegates',
+		params: {
+			address: { type: 'string' }
+		},
+		paginated: false
+	},
+	getVoters: {
+		method: 'GET',
+		path: '/api/delegates/voters',
+		params: {
+			publicKey: { type: 'string' }
+		},
+		paginated: false
+	},
+	getForgedByAccount: {
+		method: 'GET',
+		path: '/api/delegates/forging/getForgedByAccount',
+		params: {
+			generatorPublicKey: { type: 'string' }
+		},
+		paginated: false
+	},
+	getNextForger: {
+		method: 'GET',
+		path: '/api/delegates/getNextForgers',
+		params: {},
+		paginated: true
+	}
 };
