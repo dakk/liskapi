@@ -106,7 +106,7 @@ class APIRequest {
 
 		/* Sorting parameters */
 		if (this.sortParams) {
-			callParamsRaw.push (`orderBy=${Object.keys (sortParams)[0]}:${this.sortParams [Object.keys (sortParams)[0]]}`);
+			callParamsRaw.push (`orderBy=${Object.keys (this.sortParams)[0]}:${this.sortParams [Object.keys (this.sortParams)[0]]}`);
 		}
 
 		/* Pagination parameters */

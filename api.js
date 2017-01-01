@@ -91,7 +91,7 @@ module.exports = {
 		path: '/api/peers/get',
 		params: {
 			ip: { type: 'string' },
-			port: { type: 'string' }
+			port: { type: 'number' }
 		},
 		paginated: false
 	},

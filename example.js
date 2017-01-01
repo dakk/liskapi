@@ -42,7 +42,7 @@ lisk.getPeersList ()
         console.log ('Got an error in getting peers\n', err);
     });
 
-lisk.getPeer ({ip: '163.172.154.211', port:'8000'})
+lisk.getPeer ({ip: '163.172.154.211', port: 8000})
     .call ()
     .then ((res) => {
         console.log (`Get peer by Liskword IP\n ${JSON.stringify (res)}`);
@@ -60,7 +60,7 @@ lisk.getPeerVersion ()
         console.log ('Got an error in getting peer version\n', err);
     });
 
-lisk.getBlock ({id:'10'})
+lisk.getBlock ({id:'13658550407518916215'})
     .call ()
     .then ((res) => {
         console.log (`Get block by id\n ${JSON.stringify (res)}`);
@@ -70,7 +70,7 @@ lisk.getBlock ({id:'10'})
     });
 
 lisk.getBlocks ()
-    .paginate ({ limit: 100, offset: 0 })
+    .paginate ({ limit: 2, offset: 0 })
     .sort ({ height: 'asc' })
     .call ()
     .then ((res) => {
