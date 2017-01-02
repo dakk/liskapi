@@ -251,5 +251,24 @@ module.exports = {
 		path: '/api/delegates/getNextForgers',
 		params: {},
 		paginated: true
+	},
+	/**
+	 * Multi-Signature
+	 */
+	getMultiSignatureAccounts: {
+		method: 'GET',
+		path: '/api/multisignatures/accounts',
+		params: {
+			publicKey: { type: 'string' }
+		},
+		paginated: false
+	},
+	getPendingMultiSignatureTransactions: {
+		method: 'GET',
+		path: '/api/multisignatures/pending',
+		params: {
+			publicKey: { type: 'string' }
+		},
+		paginated: false
 	}
 };

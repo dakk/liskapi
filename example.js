@@ -6,6 +6,8 @@ const params = {
 
 const lisk = require ('liskapi')(params);
 
+/*
+
 lisk.getSyncStatus ().call ()
     .then ((res) => {
         console.log (`Get sync status data\n ${JSON.stringify (res)}`);
@@ -237,3 +239,5 @@ lisk.getNextForger ()
     .catch ((err) => {
         console.log ('Got an error in getting next\n', err);
     });
+
+*/
