@@ -77,6 +77,34 @@ module.exports = {
         },
 		paginated: false
 	},
+	getUnconfirmedTransaction: {
+		method: 'GET',
+		path: '/api/transactions/unconfirmed/get',
+		params: {
+			id: { type: 'string' }
+		},
+		paginated: false
+	},
+	getUnconfirmedTransactions: {
+		method: 'GET',
+		path: '/api/transactions/unconfirmed',
+		params: {},
+		paginated: false
+	},
+	getQueuedTransactions: {
+		method: 'GET',
+		path: '/api/transactions/queued',
+		params: {},
+		paginated: false
+	},
+	getQueuedTransaction: {
+		method: 'GET',
+		path: '/api/transactions/queued/get',
+		params: {
+			id: { type: 'string' }
+		},
+		paginated: false
+	},
 	/**
 	 * Peers
 	 */
