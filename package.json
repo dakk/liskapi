@@ -16,6 +16,13 @@
     "wrapper"
   ],
   "author": "Davide Gessa (gessadavide@gmail.com)",
+  "contributors": [
+    {
+      "name" : "Andrea Francesco Speziale",
+      "email" : "andreaf.speziale@gmail.com",
+      "url" : "http://andreafspeziale.github.io/me/"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dakk/liskapi/issues"
