@@ -28,6 +28,48 @@ describe('getBalance', () => {
 	});
 });
 
+describe('getPublicKey', () => {
+	it('should return valid values', (done) => {
+		lisk.getPublicKey ({address: '13968139166426148658L'}).call ()
+		.then ((res) => {
+			res.should.be.an ('object');
+			expect (res['success']).to.be.a ('boolean').to.equal (true);
+			expect (res['publicKey']).to.be.a ('string');
+			done ();
+		})
+		.catch ((err) => {
+			assert.ok (false);
+			done ();
+		});
+	});
+});
+
+
+describe('getAccount', () => {
+	it('should return valid values', (done) => {
+		lisk.getAccount ({address: '13968139166426148658L'}).call ()
+		.then ((res) => {
+			console.log(res);
+			res.should.be.an ('object');
+			expect (res['success']).to.be.a ('boolean').to.equal (true);
+			expect (res['account']).to.be.a ('object');
+			expect (res['account']['address']).to.be.a ('string').to.equal ('13968139166426148658L');
+			expect (res['account']['unconfirmedBalance']).to.be.a ('string');
+			expect (res['account']['balance']).to.be.a ('string');
+			expect (res['account']['publicKey']).to.be.a ('string');
+			expect (res['account']['unconfirmedSignature']).to.be.a ('number');
+			expect (res['account']['secondSignature']).to.be.a ('number');
+			expect (res['account']['multisignatures']).to.be.a ('array');
+			expect (res['account']['u_multisignatures']).to.be.a ('array');
+			done ();
+		})
+		.catch ((err) => {
+			assert.ok (false);
+			done ();
+		});
+	});
+});
+
 
 /* Loader */
 describe('getSyncStatus', () => {
