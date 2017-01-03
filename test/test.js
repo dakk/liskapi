@@ -48,7 +48,6 @@ describe('getAccount', () => {
 	it('should return valid values', (done) => {
 		lisk.getAccount ({address: '13968139166426148658L'}).call ()
 		.then ((res) => {
-			console.log(res);
 			res.should.be.an ('object');
 			expect (res['success']).to.be.a ('boolean').to.equal (true);
 			expect (res['account']).to.be.a ('object');
