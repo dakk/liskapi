@@ -25,6 +25,7 @@ class APIRequest {
 
 	data (postData) {
 		this.postData = postData;
+		return this;
 	}
 
 	paginate (pageParams) {

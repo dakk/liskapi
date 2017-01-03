@@ -2,6 +2,13 @@ module.exports = {
 	/**
 	 * Accounts
 	 */
+	openAccount: {
+		method: 'POST',
+		path: '/api/accounts/open',
+		postParams: {
+			secret: { type: 'string' , required: true}
+		}
+	},
 	getBalance: {
 		method: 'GET',
 		path: '/api/accounts/getBalance',
@@ -63,7 +70,7 @@ module.exports = {
 		path: '/api/transactions',
 		params: {
 			blockId: { type: 'string' },
-			senderId: { type: 'string' },
+				senderId: { type: 'string' },
 			recipientId: { type: 'string' }
 		},
 		paginated: true,
