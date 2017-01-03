@@ -25,6 +25,13 @@ module.exports = {
 		},
 		paginated: false
 	},
+	generatePublicKey: {
+		method: 'POST',
+		path: '/api/accounts/generatePublicKey',
+		postParams: {
+			secret: { type: 'string' , required: true}
+		}
+	},
 	getAccount: {
 		method: 'GET',
 		path: '/api/accounts',
