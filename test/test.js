@@ -44,7 +44,6 @@ describe('getPublicKey', () => {
 	});
 });
 
-
 describe('getAccount', () => {
 	it('should return valid values', (done) => {
 		lisk.getAccount ({address: '13968139166426148658L'}).call ()
