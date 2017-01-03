@@ -1,11 +1,13 @@
 const params = {
-    host: 'liskworld.info',
-    port: 8000,
+    host: '194.116.72.33',
+    port: 7000,
     ssl: false
 };
 
 const lisk = require ('liskapi')(params);
+const Mnemonic = require('bitcore-mnemonic');
 
+/*
 lisk.getSyncStatus ().call ()
     .then ((res) => {
         console.log (`Get sync status data\n ${JSON.stringify (res)}`);
@@ -228,6 +230,7 @@ lisk.getForgedByAccount ({ generatorPublicKey: '2d59fbcce531fb9661cdfa8371c49b68
         console.log ('Got an error in getting forged by account\n', err);
     });
 
+
 lisk.getNextForger ()
     .paginate ({ limit: 2})
     .call ()
@@ -237,3 +240,18 @@ lisk.getNextForger ()
     .catch ((err) => {
         console.log ('Got an error in getting next\n', err);
     });
+ */
+
+let code = new Mnemonic(Mnemonic.Words.ENGLISH);
+
+lisk.getNextForger ()
+    .data ({ secret: code.toString()})
+    .call ()
+    .then ((res) => {
+        console.log (`Post for opening an account\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error opening an account\n', err);
+    });
+
+

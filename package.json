@@ -22,8 +22,11 @@
   },
   "homepage": "https://github.com/dakk/liskapi#readme",
   "dependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
     "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "bitcore-mnemonic": "^1.1.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
   }
 }

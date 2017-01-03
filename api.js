@@ -2,6 +2,13 @@ module.exports = {
 	/**
 	 * Accounts
 	 */
+	openAccount: {
+		method: 'POST',
+		path: '/api/accounts/open',
+		postParams: {
+			secret: { type: 'string' , required: true}
+		}
+	},
 	getBalance: {
 		method: 'GET',
 		path: '/api/accounts/getBalance',
@@ -63,7 +70,7 @@ module.exports = {
 		path: '/api/transactions',
 		params: {
 			blockId: { type: 'string' },
-			senderId: { type: 'string' },
+				senderId: { type: 'string' },
 			recipientId: { type: 'string' }
 		},
 		paginated: true,
@@ -75,6 +82,34 @@ module.exports = {
 		params: {
             id: { type: 'string' }
         },
+		paginated: false
+	},
+	getUnconfirmedTransaction: {
+		method: 'GET',
+		path: '/api/transactions/unconfirmed/get',
+		params: {
+			id: { type: 'string' }
+		},
+		paginated: false
+	},
+	getUnconfirmedTransactions: {
+		method: 'GET',
+		path: '/api/transactions/unconfirmed',
+		params: {},
+		paginated: false
+	},
+	getQueuedTransactions: {
+		method: 'GET',
+		path: '/api/transactions/queued',
+		params: {},
+		paginated: false
+	},
+	getQueuedTransaction: {
+		method: 'GET',
+		path: '/api/transactions/queued/get',
+		params: {
+			id: { type: 'string' }
+		},
 		paginated: false
 	},
 	/**
@@ -251,5 +286,24 @@ module.exports = {
 		path: '/api/delegates/getNextForgers',
 		params: {},
 		paginated: true
+	},
+	/**
+	 * Multi-Signature
+	 */
+	getMultiSignatureAccounts: {
+		method: 'GET',
+		path: '/api/multisignatures/accounts',
+		params: {
+			publicKey: { type: 'string' }
+		},
+		paginated: false
+	},
+	getPendingMultiSignatureTransactions: {
+		method: 'GET',
+		path: '/api/multisignatures/pending',
+		params: {
+			publicKey: { type: 'string' }
+		},
+		paginated: false
 	}
 };
