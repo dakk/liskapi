@@ -1,5 +1,5 @@
 # Lisk API
-
+###With love by dakk (2324852447570841050L) and liskit delegates (10310263204519541551L) 
 A smart wrapper for Lisk node APIs.
 
 ## Installation
