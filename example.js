@@ -244,7 +244,7 @@ lisk.getNextForger ()
 
 let code = new Mnemonic(Mnemonic.Words.ENGLISH);
 
-lisk.getNextForger ()
+lisk.openAccount ()
     .data ({ secret: code.toString()})
     .call ()
     .then ((res) => {
@@ -253,5 +253,17 @@ lisk.getNextForger ()
     .catch ((err) => {
         console.log ('Got an error opening an account\n', err);
     });
+
+lisk.generatePublicKey ()
+    .data ({ secret: code.toString()})
+    .call ()
+    .then ((res) => {
+        console.log (`Post for generating a publicKey\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error generating a publicKey\n', err);
+    });
+
+
 
 

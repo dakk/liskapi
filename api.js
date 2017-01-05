@@ -25,6 +25,13 @@ module.exports = {
 		},
 		paginated: false
 	},
+	generatePublicKey: {
+		method: 'POST',
+		path: '/api/accounts/generatePublicKey',
+		postParams: {
+			secret: { type: 'string' , required: true}
+		}
+	},
 	getAccount: {
 		method: 'GET',
 		path: '/api/accounts',
@@ -70,18 +77,18 @@ module.exports = {
 		path: '/api/transactions',
 		params: {
 			blockId: { type: 'string' },
-				senderId: { type: 'string' },
+			senderId: { type: 'string' },
 			recipientId: { type: 'string' }
 		},
 		paginated: true,
-        paginatedResult: 'transactions'
+		paginatedResult: 'transactions'
 	},
 	getTransaction: {
 		method: 'GET',
 		path: '/api/transactions/get',
 		params: {
-            id: { type: 'string' }
-        },
+			id: { type: 'string' }
+		},
 		paginated: false
 	},
 	getUnconfirmedTransaction: {
