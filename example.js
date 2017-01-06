@@ -6,6 +6,7 @@ const params = {
 
 const lisk = require ('liskapi')(params);
 const Mnemonic = require('bitcore-mnemonic');
+const delegates = ["+473c354cdf627b82e9113e02a337486dd3afc5615eb71ffd311c5a0beda37b8c", "+eaa049295d96618c51eb30deffe7fc2cc8bfc13190cb97f3b513dd060b000a46", "+848b16a387bc6e20fea768d3c3c0cda643f4b113a6d2bf70a53e19120c93fa64"];
 
 /*
 lisk.getSyncStatus ().call ()
@@ -243,8 +244,9 @@ lisk.getNextForger ()
  */
 
 let code = new Mnemonic(Mnemonic.Words.ENGLISH);
+console.log('secret generated: ' + code.toString());
 
-lisk.openAccount ()
+/*lisk.openAccount ()
     .data ({ secret: code.toString()})
     .call ()
     .then ((res) => {
@@ -259,10 +261,25 @@ lisk.generatePublicKey ()
     .call ()
     .then ((res) => {
         console.log (`Post for generating a publicKey\n ${JSON.stringify (res)}`);
+
     })
     .catch ((err) => {
         console.log ('Got an error generating a publicKey\n', err);
+    });*/
+
+lisk.voteDelegates ()
+    .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty', publicKey: '532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09', delegates: delegates })
+    .call ()
+    .then ((res) => {
+        console.log (`Put for voting delegates\n ${JSON.stringify (res)}`);
+
+    })
+    .catch ((err) => {
+        console.log ('Got an error voting delegates\n', err);
     });
+
+
+
 
 
 
