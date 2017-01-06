@@ -6,7 +6,7 @@ module.exports = {
 		method: 'POST',
 		path: '/api/accounts/open',
 		postParams: {
-			secret: { type: 'string' , required: true}
+			secret: { type: 'string' , required: true }
 		}
 	},
 	getBalance: {
@@ -29,7 +29,7 @@ module.exports = {
 		method: 'POST',
 		path: '/api/accounts/generatePublicKey',
 		postParams: {
-			secret: { type: 'string' , required: true}
+			secret: { type: 'string' , required: true }
 		}
 	},
 	getAccount: {
@@ -47,6 +47,16 @@ module.exports = {
 			address: { type: 'string' }
 		},
 		paginated: true
+	},
+	voteDelegates: {
+		method: 'PUT',
+		path: '/api/accounts/delegates',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			publicKey: { type: 'string' , required: true },
+			secondSecret: { type: 'string' },
+			delegates: { type: 'object' , required: true }
+		}
 	},
 	/**
 	 * Loader
