@@ -88,11 +88,19 @@ class APIRequest {
 			assert (typeof (this.callParams[p]) == this.callDesc.params[p].type, `Parameter ${p} must be a ${this.callDesc.params[p].type} (got ${typeof (this.callParams[p])} instead)`);
 			callParamsRaw.push (`${p}=${this.callParams[p]}`);
 		}
+		for (let p in this.callDesc.params) {
+			if ('required' in this.callDesc.params[p] && this.callDesc.params[p]) 
+				assert (p in this.callParams, `Parameter ${p} is required`);
+		}
 
 		/* Post parameters check */
 		for (let p in this.postData) {
 			assert (p in this.callDesc.postParams, `Post parameter ${p} not allowed`);
 			assert (typeof (this.postData[p]) == this.callDesc.postParams[p].type, `Post parameter ${p} must be a ${this.callDesc.postParams[p].type} (got ${typeof (this.postData[p])} instead)`);
+		}
+		for (let p in this.callDesc.postParams) {
+			if ('required' in this.callDesc.postParams[p] && this.callDesc.postParams[p]) 
+				assert (p in this.postData, `Post parameter ${p} is required`);
 		}
 
 		/* Sorting parameters */
