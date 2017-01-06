@@ -49,21 +49,8 @@ class APIRequest {
 
 	_call (callParamsRaw) {
 		return new Promise ((resolve, reject) => {
-
-			let mreq = null;
-			switch (this.callDesc.method) {
-				case 'GET':
-					mreq = request.get;
-					break;
-				case 'POST':
-					mreq = request.post;
-					break;
-				case 'PUT':
-					mreq = request.put;
-					break;
-			}
-
 			let protocol = null;
+
 			if (this.params.ssl)
 				protocol = 'https';
 			else
@@ -74,15 +61,13 @@ class APIRequest {
 			if(callParamsRaw.length)
 				uri += '?' + callParamsRaw.join ('&');
 
-			let mreq_bind = mreq.bind (null, uri);
-
-			if (this.postData !== null)
-				mreq_bind = mreq_bind.bind (null, this.postData);
-
-			mreq_bind (function (error, response, body) {
+			request ({
+				method: this.callDesc.method,
+				body: this.postData,
+				uri: uri,
+				json: true
+			}, (error, response, data) => {
 				if (!error && response.statusCode == 200) {
-					var data = JSON.parse (body);
-
 					if (data.success)
 						return resolve (data);
 					else
@@ -97,12 +82,17 @@ class APIRequest {
 	call () {
 		let callParamsRaw = [];
 
-		/* Call parameters */
-
+		/* Call parameters check */
 		for (let p in this.callParams) {
 			assert (p in this.callDesc.params, `Parameter ${p} not allowed`);
 			assert (typeof (this.callParams[p]) == this.callDesc.params[p].type, `Parameter ${p} must be a ${this.callDesc.params[p].type} (got ${typeof (this.callParams[p])} instead)`);
 			callParamsRaw.push (`${p}=${this.callParams[p]}`);
+		}
+
+		/* Post parameters check */
+		for (let p in this.postData) {
+			assert (p in this.callDesc.postParams, `Post parameter ${p} not allowed`);
+			assert (typeof (this.postData[p]) == this.callDesc.postParams[p].type, `Post parameter ${p} must be a ${this.callDesc.postParams[p].type} (got ${typeof (this.postData[p])} instead)`);
 		}
 
 		/* Sorting parameters */
