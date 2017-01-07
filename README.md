@@ -9,6 +9,7 @@ npm install liskapi
 ```
 
 ## Examples
+A lot of basic examples can be found in the example.js file.
 
 ### Basic usage
 

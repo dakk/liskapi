@@ -93,6 +93,17 @@ module.exports = {
 		paginated: true,
 		paginatedResult: 'transactions'
 	},
+	sendTransaction: {
+		method: 'PUT',
+		path: '/api/transactions',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			amount: { type: 'number' , required: true },
+			recipientId: { type: 'string' , required: true },
+			publicKey: { type: 'string' , required: true },
+			secondSecret: { type: 'string' }
+		}
+	},
 	getTransaction: {
 		method: 'GET',
 		path: '/api/transactions/get',
@@ -235,9 +246,27 @@ module.exports = {
 		},
 		paginated: false
 	},
+	addSecondSignature: {
+		method: 'PUT',
+		path: '/api/signatures',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			secondSecret: { type: 'string', required: true },
+			publicKey: { type: 'string' }
+		}
+	},
 	/**
 	 * Delegates
 	 */
+	createDelegate: {
+		method: 'PUT',
+		path: '/api/delegates',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			secondSecret: { type: 'string' },
+			username: { type: 'string', required: true }
+		}
+	},
 	getDelegatesList: {
 		method: 'GET',
 		path: '/api/delegates',
@@ -290,6 +319,20 @@ module.exports = {
 		},
 		paginated: false
 	},
+	enableForging: {
+		method: 'POST',
+		path: '/api/delegates/forging/enable',
+		postParams: {
+			secret: { type: 'string' , required: true }
+		}
+	},
+	disableForging: {
+		method: 'POST',
+		path: '/api/delegates/forging/disable',
+		postParams: {
+			secret: { type: 'string' , required: true }
+		}
+	},
 	getForgedByAccount: {
 		method: 'GET',
 		path: '/api/delegates/forging/getForgedByAccount',
@@ -307,6 +350,16 @@ module.exports = {
 	/**
 	 * Multi-Signature
 	 */
+	createMultiSignatureAccount: {
+		method: 'PUT',
+		path: '/api/multisignatures',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			lifetime: { type: 'number' , required: true },
+			min: { type: 'number' , required: true },
+			keysgroup: { type: 'object' , required: true }
+		}
+	},
 	getMultiSignatureAccounts: {
 		method: 'GET',
 		path: '/api/multisignatures/accounts',
@@ -314,6 +367,15 @@ module.exports = {
 			publicKey: { type: 'string' }
 		},
 		paginated: false
+	},
+	signTransaction: {
+		method: 'POST',
+		path: '/api/multisignatures/sign',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			publicKey: { type: 'string' },
+			transactionId: { type: 'string' , required: true }
+		}
 	},
 	getPendingMultiSignatureTransactions: {
 		method: 'GET',
