@@ -286,7 +286,7 @@ lisk.sendTransaction ()
     })
     .call ()
     .then ((res) => {
-        console.log (`Put for sendig LSK\n ${JSON.stringify (res)}`);
+        console.log (`Put for sending LSK\n ${JSON.stringify (res)}`);
 
     })
     .catch ((err) => {
