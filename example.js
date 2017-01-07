@@ -261,7 +261,6 @@ lisk.generatePublicKey ()
     .call ()
     .then ((res) => {
         console.log (`Post for generating a publicKey\n ${JSON.stringify (res)}`);
-
     })
     .catch ((err) => {
         console.log ('Got an error generating a publicKey\n', err);
@@ -272,11 +271,10 @@ lisk.voteDelegates ()
     .call ()
     .then ((res) => {
         console.log (`Put for voting delegates\n ${JSON.stringify (res)}`);
-
     })
     .catch ((err) => {
         console.log ('Got an error voting delegates\n', err);
-    });*/
+    });
 
 lisk.sendTransaction ()
     .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty',
@@ -287,10 +285,19 @@ lisk.sendTransaction ()
     .call ()
     .then ((res) => {
         console.log (`Put for sending LSK\n ${JSON.stringify (res)}`);
-
     })
     .catch ((err) => {
         console.log ('Got an error sending LSK\n', err);
+    });*/
+
+lisk.addSecondSignature ()
+    .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty' })
+    .call ()
+    .then ((res) => {
+        console.log (`Put for adding second signature\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error adding second signature\n', err);
     });
 
 

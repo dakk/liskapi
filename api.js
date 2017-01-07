@@ -95,13 +95,13 @@ module.exports = {
 	},
 	sendTransaction: {
 		method: 'PUT',
-			path: '/api/transactions',
-			postParams: {
-				secret: { type: 'string' , required: true },
-				amount: { type: 'number' , required: true },
-				recipientId: { type: 'string' , required: true },
-				publicKey: { type: 'string' , required: true },
-				secondSecret: { type: 'string' }
+		path: '/api/transactions',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			amount: { type: 'number' , required: true },
+			recipientId: { type: 'string' , required: true },
+			publicKey: { type: 'string' , required: true },
+			secondSecret: { type: 'string' }
 		}
 	},
 	getTransaction: {
@@ -245,6 +245,15 @@ module.exports = {
 			id: { type: 'string' }
 		},
 		paginated: false
+	},
+	addSecondSignature: {
+		method: 'PUT',
+		path: '/api/transactions',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			secondSecret: { type: 'string' },
+			publicKey: { type: 'string' }
+		}
 	},
 	/**
 	 * Delegates
