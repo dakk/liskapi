@@ -350,6 +350,16 @@ module.exports = {
 	/**
 	 * Multi-Signature
 	 */
+	createMultiSignatureAccount: {
+		method: 'PUT',
+		path: '/api/multisignatures',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			lifetime: { type: 'number' , required: true },
+			min: { type: 'number' , required: true },
+			keysgroup: { type: 'object' , required: true }
+		}
+	},
 	getMultiSignatureAccounts: {
 		method: 'GET',
 		path: '/api/multisignatures/accounts',
