@@ -374,7 +374,7 @@ module.exports = {
 		postParams: {
 			secret: { type: 'string' , required: true },
 			publicKey: { type: 'string' },
-			transactionId: { type: 'number' , required: true }
+			transactionId: { type: 'string' , required: true }
 		}
 	},
 	getPendingMultiSignatureTransactions: {
