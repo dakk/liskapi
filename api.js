@@ -248,7 +248,7 @@ module.exports = {
 	},
 	addSecondSignature: {
 		method: 'PUT',
-		path: '/api/transactions',
+		path: '/api/signatures',
 		postParams: {
 			secret: { type: 'string' , required: true },
 			secondSecret: { type: 'string' },
