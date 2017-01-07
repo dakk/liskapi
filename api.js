@@ -258,6 +258,15 @@ module.exports = {
 	/**
 	 * Delegates
 	 */
+	createDelegate: {
+		method: 'PUT',
+		path: '/api/delegates',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			secondSecret: { type: 'string' },
+			username: { type: 'string', required: true }
+		}
+	},
 	getDelegatesList: {
 		method: 'GET',
 		path: '/api/delegates',

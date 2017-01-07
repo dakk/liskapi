@@ -288,16 +288,30 @@ lisk.sendTransaction ()
     })
     .catch ((err) => {
         console.log ('Got an error sending LSK\n', err);
-    });*/
+    });
 
 lisk.addSecondSignature ()
-    .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty' })
+    .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty',
+        secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve'
+    })
     .call ()
     .then ((res) => {
         console.log (`Put for adding second signature\n ${JSON.stringify (res)}`);
     })
     .catch ((err) => {
         console.log ('Got an error adding second signature\n', err);
+    });*/
+
+lisk.createDelegate ()
+    .data ({ secret: 'lesson shadow divorce vanish purpose burger visa leave usage weasel wrong hollow',
+        username: 'liskapitester'
+    })
+    .call ()
+    .then ((res) => {
+        console.log (`Put for registering a delegate\n ${JSON.stringify (res)}`);
+    })
+    .catch ((err) => {
+        console.log ('Got an error registering a delegate\n', err);
     });
 
 
