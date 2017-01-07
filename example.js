@@ -318,20 +318,20 @@ lisk.enableForging ()
     .data ({ secret: 'lesson shadow divorce vanish purpose burger visa leave usage weasel wrong hollow' })
     .call ()
     .then ((res) => {
-        console.log (`Post for enabling forging\n ${JSON.stringify (res)}`);
+        console.log (`Post for enable forging\n ${JSON.stringify (res)}`);
     })
     .catch ((err) => {
-        console.log ('Got an error enabling forging\n', err);
+        console.log ('Got an error disable forging\n', err);
     });*/
 
 lisk.disableForging ()
     .data ({ secret: 'lesson shadow divorce vanish purpose burger visa leave usage weasel wrong hollow' })
     .call ()
     .then ((res) => {
-        console.log (`Post for enabling forging\n ${JSON.stringify (res)}`);
+        console.log (`Post for disable forging\n ${JSON.stringify (res)}`);
     })
     .catch ((err) => {
-        console.log ('Got an error enabling forging\n', err);
+        console.log ('Got an error disable forging\n', err);
     });
 
 
