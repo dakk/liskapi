@@ -368,6 +368,15 @@ module.exports = {
 		},
 		paginated: false
 	},
+	signTransaction: {
+		method: 'POST',
+		path: '/api/multisignatures/sign',
+		postParams: {
+			secret: { type: 'string' , required: true },
+			publicKey: { type: 'string' },
+			transactionId: { type: 'number' , required: true }
+		}
+	},
 	getPendingMultiSignatureTransactions: {
 		method: 'GET',
 		path: '/api/multisignatures/pending',
