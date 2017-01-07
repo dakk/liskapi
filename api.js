@@ -319,6 +319,20 @@ module.exports = {
 		},
 		paginated: false
 	},
+	enableForging: {
+		method: 'POST',
+		path: '/api/delegates/forging/enable',
+		postParams: {
+			secret: { type: 'string' , required: true }
+		}
+	},
+	disableForging: {
+		method: 'POST',
+		path: '/api/delegates/forging/disable',
+		postParams: {
+			secret: { type: 'string' , required: true }
+		}
+	},
 	getForgedByAccount: {
 		method: 'GET',
 		path: '/api/delegates/forging/getForgedByAccount',
