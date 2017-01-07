@@ -265,7 +265,7 @@ lisk.generatePublicKey ()
     })
     .catch ((err) => {
         console.log ('Got an error generating a publicKey\n', err);
-    });*/
+    });
 
 lisk.voteDelegates ()
     .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty', publicKey: '532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09', delegates: delegates })
@@ -276,8 +276,22 @@ lisk.voteDelegates ()
     })
     .catch ((err) => {
         console.log ('Got an error voting delegates\n', err);
-    });
+    });*/
 
+lisk.sendTransaction ()
+    .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty',
+        amount: 1,
+        recipientId: 'liskit',
+        publicKey: '532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09',
+    })
+    .call ()
+    .then ((res) => {
+        console.log (`Put for sendig LSK\n ${JSON.stringify (res)}`);
+
+    })
+    .catch ((err) => {
+        console.log ('Got an error sending LSK\n', err);
+    });
 
 
 

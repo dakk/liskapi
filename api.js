@@ -93,6 +93,17 @@ module.exports = {
 		paginated: true,
 		paginatedResult: 'transactions'
 	},
+	sendTransaction: {
+		method: 'PUT',
+			path: '/api/transactions',
+			postParams: {
+				secret: { type: 'string' , required: true },
+				amount: { type: 'number' , required: true },
+				recipientId: { type: 'string' , required: true },
+				publicKey: { type: 'string' , required: true },
+				secondSecret: { type: 'string' }
+		}
+	},
 	getTransaction: {
 		method: 'GET',
 		path: '/api/transactions/get',
