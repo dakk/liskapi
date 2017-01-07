@@ -244,7 +244,7 @@ lisk.getNextForger ()
  */
 
 let code = new Mnemonic(Mnemonic.Words.ENGLISH);
-console.log('secret generated: ' + code.toString());
+console.log('Secret random generated: ' + code.toString() +'\n');
 
 /*lisk.openAccount ()
     .data ({ secret: code.toString()})
@@ -281,7 +281,7 @@ lisk.voteDelegates ()
 lisk.sendTransaction ()
     .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty',
         amount: 1,
-        recipientId: 'liskit',
+        recipientId: '14621643025887137539L',
         publicKey: '532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09',
     })
     .call ()
