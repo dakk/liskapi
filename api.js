@@ -251,7 +251,7 @@ module.exports = {
 		path: '/api/signatures',
 		postParams: {
 			secret: { type: 'string' , required: true },
-			secondSecret: { type: 'string' },
+			secondSecret: { type: 'string', required: true },
 			publicKey: { type: 'string' }
 		}
 	},
