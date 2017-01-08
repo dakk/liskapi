@@ -61,12 +61,23 @@ class APIRequest {
 			if(callParamsRaw.length)
 				uri += '?' + callParamsRaw.join ('&');
 
-			request ({
-				method: this.callDesc.method,
-				body: this.postData,
-				uri: uri,
-				json: true
-			}, (error, response, data) => {
+			let requestOption
+			if(this.postData)
+				requestOption = {
+					method: this.callDesc.method,
+					body: this.postData,
+					uri: uri,
+					json: true
+				}
+			else
+				requestOption = {
+					method: this.callDesc.method,
+					uri: uri,
+					json: true
+				}
+
+
+			request (requestOption, (error, response, data) => {
 				if (!error && response.statusCode == 200) {
 					if (data.success)
 						return resolve (data);
