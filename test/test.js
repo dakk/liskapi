@@ -10,7 +10,10 @@ const params = {
 const lisk = require ('../index')(params);
 
 
-/* Account */
+/**
+ * Accounts
+ */
+
 describe('getBalance', () => {
 	it('should return valid values', (done) => {
 		lisk.getBalance ({address: '13968139166426148658L'}).call ()
@@ -68,8 +71,27 @@ describe('getAccount', () => {
 	});
 });
 
+describe('getDelegatesByAddress', () => {
+	it('should return valid values', (done) => {
+		lisk.getDelegatesByAddress ({address: '13968139166426148658L'}).call ()
+			.then ((res) => {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['delegates']).to.be.instanceof(Array);
+				done ();
+			})
+			.catch ((err) => {
+				assert.ok (false);
+				done ();
+			});
+	})
+});
 
-/* Loader */
+
+/**
+ * Loader
+ */
+
 describe('getSyncStatus', () => {
 	it('should return valid values', (done) => {
 		lisk.getSyncStatus ().call ()
