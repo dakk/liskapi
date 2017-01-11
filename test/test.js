@@ -166,3 +166,33 @@ describe('getTransactions', () => {
 			});
 	});
 });
+
+describe('getTransaction', () => {
+	it('should return valid values', (done) => {
+		lisk.getTransaction ({ id: '2432251829872771078' }).call ()
+			.then ((res) => {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['transaction']).to.be.an ('object');
+				expect (res['transaction']['id']).to.be.a ('string');
+				expect (res['transaction']['height']).to.be.a ('number');
+				expect (res['transaction']['blockId']).to.be.a ('string');
+				expect (res['transaction']['type']).to.be.a ('number');
+				expect (res['transaction']['timestamp']).to.be.a ('number');
+				expect (res['transaction']['senderPublicKey']).to.be.a ('string');
+				expect (res['transaction']['senderId']).to.be.a ('string');
+				expect (res['transaction']['recipientId']).to.be.a ('string');
+				expect (res['transaction']['amount']).to.be.a ('number');
+				expect (res['transaction']['fee']).to.be.a ('number');
+				expect (res['transaction']['signature']).to.be.a ('string');
+				expect (res['transaction']['signatures']).to.be.instanceof(Array);
+				expect (res['transaction']['confirmations']).to.be.a ('number');
+				expect (res['transaction']['asset']).to.be.a ('object');
+				done ();
+			})
+			.catch ((err) => {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
