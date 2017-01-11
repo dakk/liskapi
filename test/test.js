@@ -133,15 +133,36 @@ describe('getLoadingStatus', () => {
 describe('getBlockReceiptStatus', () => {
 	it('should return valid values', (done) => {
 		lisk.getBlockReceiptStatus ().call ()
-		.then ((res) => {
-			res.should.be.an ('object');
-			expect (res['success']).to.be.a ('boolean').to.equal (true);
-			done ();
-		})
-		.catch ((err) => {
-			assert.ok (false);
-			done ();
-		});
+			.then ((res) => {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				done ();
+			})
+			.catch ((err) => {
+				assert.ok (false);
+				done ();
+			});
 	});
 });
 
+
+
+/**
+ * Transactions
+ */
+
+describe('getTransactions', () => {
+	it('should return valid values', (done) => {
+		lisk.getTransactions ({ blockId: '15562644891650689463' }).call ()
+			.then ((res) => {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['transactions']).to.be.instanceof(Array);
+				done ();
+			})
+			.catch ((err) => {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
