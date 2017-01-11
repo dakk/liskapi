@@ -174,7 +174,7 @@ describe('getTransaction', () => {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
 				expect (res['transaction']).to.be.an ('object');
-				expect (res['transaction']['id']).to.be.a ('string');
+				expect (res['transaction']['id']).to.be.a ('string').to.equal ('2432251829872771078');
 				expect (res['transaction']['height']).to.be.a ('number');
 				expect (res['transaction']['blockId']).to.be.a ('string');
 				expect (res['transaction']['type']).to.be.a ('number');
