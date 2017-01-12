@@ -215,10 +215,10 @@ describe('getUnconfirmedTransactions', function() {
 									console.log(res);
 									res.should.be.an ('object');
 									expect (res['success']).to.be.a ('boolean').to.equal (true);
+									expect (res['transaction']).to.be.an ('object');
 									done ();
 								})
 								.catch (function(err) {
-									console.log(err);
 									assert.ok (false);
 									done ();
 								});
