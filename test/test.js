@@ -304,3 +304,26 @@ describe('.getPeersList', function() {
 			});
 	});
 });
+
+describe('.getPeer', function() {
+	it('should return valid values', function(done) {
+		lisk.getPeer ({ip: '163.172.154.211', port: 8000}).call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['peer']).to.be.an ('object');
+				expect (res['peer']['ip']).to.be.a ('string');
+				expect (res['peer']['port']).to.be.a ('number');
+				expect (res['peer']['state']).to.be.a ('number');
+				expect (res['peer']['os']).to.be.a ('string');
+				expect (res['peer']['version']).to.be.a ('string');
+				expect (res['peer']['broadhash']).to.be.a ('string');
+				expect (res['peer']['height']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
