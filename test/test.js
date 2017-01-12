@@ -1,20 +1,21 @@
-const assert = require ('assert');
-const should = require('chai').should ()
-const expect = require('chai').expect
+var assert = require ('assert');
+var should = require('chai').should ()
+var expect = require('chai').expect
 
-const params = {
+var params = {
 	host: 'liskworld.info',
 	port: 8000,
 	ssl: false
 };
-const lisk = require ('../index')(params);
+var lisk = require ('../index')(params);
+var tx_counter = 1;
 
 
 /**
  * Accounts
  */
 
-describe('getBalance', () => {
+describe('getBalance', function() {
 	it('should return valid values', (done) => {
 		lisk.getBalance ({address: '13968139166426148658L'}).call ()
 		.then ((res) => {
@@ -24,15 +25,15 @@ describe('getBalance', () => {
 			expect (res['unconfirmedBalance']).to.be.a ('string');
 			done ();
 		})
-		.catch ((err) => {
+		.catch ( function(err) {
 			assert.ok (false);
 			done ();
 		});
 	});
 });
 
-describe('getPublicKey', () => {
-	it('should return valid values', (done) => {
+describe('getPublicKey', function() {
+	it('should return valid values', function(done) {
 		lisk.getPublicKey ({address: '13968139166426148658L'}).call ()
 		.then ((res) => {
 			res.should.be.an ('object');
@@ -40,17 +41,17 @@ describe('getPublicKey', () => {
 			expect (res['publicKey']).to.be.a ('string');
 			done ();
 		})
-		.catch ((err) => {
+		.catch (function(err) {
 			assert.ok (false);
 			done ();
 		});
 	});
 });
 
-describe('getAccount', () => {
-	it('should return valid values', (done) => {
+describe('getAccount', function() {
+	it('should return valid values', function(done) {
 		lisk.getAccount ({address: '13968139166426148658L'}).call ()
-		.then ((res) => {
+		.then (function(res) {
 			res.should.be.an ('object');
 			expect (res['success']).to.be.a ('boolean').to.equal (true);
 			expect (res['account']).to.be.a ('object');
@@ -64,23 +65,23 @@ describe('getAccount', () => {
 			expect (res['account']['u_multisignatures']).to.be.a ('array');
 			done ();
 		})
-		.catch ((err) => {
+		.catch (function(err) {
 			assert.ok (false);
 			done ();
 		});
 	});
 });
 
-describe('getDelegatesByAddress', () => {
-	it('should return valid values', (done) => {
+describe('getDelegatesByAddress', function() {
+	it('should return valid values', function(done) {
 		lisk.getDelegatesByAddress ({address: '13968139166426148658L'}).call ()
-			.then ((res) => {
+			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
 				expect (res['delegates']).to.be.instanceof(Array);
 				done ();
 			})
-			.catch ((err) => {
+			.catch (function(err) {
 				assert.ok (false);
 				done ();
 			});
@@ -92,10 +93,10 @@ describe('getDelegatesByAddress', () => {
  * Loader
  */
 
-describe('getSyncStatus', () => {
-	it('should return valid values', (done) => {
+describe('getSyncStatus', function() {
+	it('should return valid values', function(done) {
 		lisk.getSyncStatus ().call ()
-		.then ((res) => {
+		.then (function(res) {
 			res.should.be.an ('object');
 			expect (res['success']).to.be.a ('boolean').to.equal (true);
 			expect (res['syncing']).to.be.a ('boolean');
@@ -105,17 +106,17 @@ describe('getSyncStatus', () => {
 			expect (res['consensus']).to.be.a ('number');
 			done ();
 		})
-		.catch ((err) => {
+		.catch (function(err) {
 			assert.ok (false);
 			done ();
 		});
 	});
 });
 
-describe('getLoadingStatus', () => {
-	it('should return valid values', (done) => {
+describe('getLoadingStatus', function() {
+	it('should return valid values', function(done) {
 		lisk.getLoadingStatus ().call ()
-		.then ((res) => {
+		.then (function(res) {
 			res.should.be.an ('object');
 			expect (res['success']).to.be.a ('boolean').to.equal (true);
 			expect (res['loaded']).to.be.a ('boolean');
@@ -123,22 +124,22 @@ describe('getLoadingStatus', () => {
 			expect (res['blocksCount']).to.be.a ('number');
 			done ();
 		})
-		.catch ((err) => {
+		.catch (function(err) {
 			assert.ok (false);
 			done ();
 		});
 	});
 });
 
-describe('getBlockReceiptStatus', () => {
-	it('should return valid values', (done) => {
+describe('getBlockReceiptStatus', function() {
+	it('should return valid values', function(done) {
 		lisk.getBlockReceiptStatus ().call ()
-			.then ((res) => {
+			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
 				done ();
 			})
-			.catch ((err) => {
+			.catch (function(err) {
 				assert.ok (false);
 				done ();
 			});
@@ -151,26 +152,26 @@ describe('getBlockReceiptStatus', () => {
  * Transactions
  */
 
-describe('getTransactions', () => {
-	it('should return valid values', (done) => {
+describe('getTransactions', function() {
+	it('should return valid values', function(done) {
 		lisk.getTransactions ({ blockId: '15562644891650689463' }).call ()
-			.then ((res) => {
+			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
 				expect (res['transactions']).to.be.instanceof(Array);
 				done ();
 			})
-			.catch ((err) => {
+			.catch (function(err) {
 				assert.ok (false);
 				done ();
 			});
 	});
 });
 
-describe('getTransaction', () => {
-	it('should return valid values', (done) => {
+describe('getTransaction', function() {
+	it('should return valid values', function(done) {
 		lisk.getTransaction ({ id: '2432251829872771078' }).call ()
-			.then ((res) => {
+			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
 				expect (res['transaction']).to.be.an ('object');
@@ -190,7 +191,44 @@ describe('getTransaction', () => {
 				expect (res['transaction']['asset']).to.be.a ('object');
 				done ();
 			})
-			.catch ((err) => {
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('getUnconfirmedTransactions', function() {
+	it('should return valid values', function(done) {
+		lisk.getUnconfirmedTransactions ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['transactions']).to.be.instanceof(Array);
+				// if unconfirmedTransactions exists test getUnconfirmedTransaction
+				if(res.transactions.length) {
+					var unConfirmedTx = res.transactions[0].id;
+					describe('getUnconfirmedTransaction', function() {
+						it('should return valid values', function(done) {
+							lisk.getUnconfirmedTransaction ({ id: unConfirmedTx }).call ()
+								.then (function(res) {
+									console.log(res);
+									res.should.be.an ('object');
+									expect (res['success']).to.be.a ('boolean').to.equal (true);
+									done ();
+								})
+								.catch (function(err) {
+									console.log(err);
+									assert.ok (false);
+									done ();
+								});
+						});
+					});
+				} else {
+					done ();
+				}
+			})
+			.catch (function(err) {
 				assert.ok (false);
 				done ();
 			});
