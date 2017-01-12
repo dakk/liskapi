@@ -344,3 +344,93 @@ describe('.getPeerVersion', function() {
 			});
 	});
 });
+
+/**
+ * Blocks
+ */
+
+describe('.getBlock', function() {
+	it('should return valid values', function(done) {
+		lisk.getBlock ({id:'10278032324520856952'}).call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['block']).to.be.an ('object');
+				expect (res['block']['id']).to.be.a ('string').to.be.equal ('10278032324520856952');
+				expect (res['block']['version']).to.be.a ('number');
+				expect (res['block']['timestamp']).to.be.a ('number');
+				expect (res['block']['height']).to.be.a ('number');
+				expect (res['block']['previousBlock']).to.be.a ('string');
+				expect (res['block']['numberOfTransactions']).to.be.a ('number');
+				expect (res['block']['totalAmount']).to.be.a ('number');
+				expect (res['block']['totalFee']).to.be.a ('number');
+				expect (res['block']['reward']).to.be.a ('number');
+				expect (res['block']['payloadLength']).to.be.a ('number');
+				expect (res['block']['payloadHash']).to.be.a ('string');
+				expect (res['block']['generatorPublicKey']).to.be.a ('string');
+				expect (res['block']['generatorId']).to.be.a ('string');
+				expect (res['block']['blockSignature']).to.be.a ('string');
+				expect (res['block']['confirmations']).to.be.a ('number');
+				expect (res['block']['totalForged']).to.be.a ('string');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getBlocks', function() {
+	it('should return valid values', function(done) {
+		lisk.getBlocks ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['blocks']).to.be.instanceof(Array);
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getFee', function() {
+	it('should return valid values', function(done) {
+		lisk.getFee ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['fee']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getFees', function() {
+	it('should return valid values', function(done) {
+		lisk.getFees ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['fees']).to.be.an ('object');
+				expect (res['fees']['send']).to.be.a ('number');
+				expect (res['fees']['vote']).to.be.a ('number');
+				expect (res['fees']['secondsignature']).to.be.a ('number');
+				expect (res['fees']['delegate']).to.be.a ('number');
+				expect (res['fees']['multisignature']).to.be.a ('number');
+				expect (res['fees']['dapp']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
