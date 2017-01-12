@@ -66,7 +66,7 @@ let code = new Mnemonic(Mnemonic.Words.ENGLISH);
         console.log ('Got an error in getting peer version\n', err);
     });*/
 
-/*lisk.getBlock ({id:'13658550407518916215'})
+/*lisk.getBlock ({id:'10278032324520856952'})
     .call ()
     .then ((res) => {
         console.log (`Get block by id\n ${JSON.stringify (res)}`);
