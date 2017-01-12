@@ -15,7 +15,7 @@ var tx_counter = 1;
  * Accounts
  */
 
-describe('getBalance', function() {
+describe('.getBalance', function() {
 	it('should return valid values', (done) => {
 		lisk.getBalance ({address: '13968139166426148658L'}).call ()
 		.then ((res) => {
@@ -32,7 +32,7 @@ describe('getBalance', function() {
 	});
 });
 
-describe('getPublicKey', function() {
+describe('.getPublicKey', function() {
 	it('should return valid values', function(done) {
 		lisk.getPublicKey ({address: '13968139166426148658L'}).call ()
 		.then ((res) => {
@@ -48,7 +48,7 @@ describe('getPublicKey', function() {
 	});
 });
 
-describe('getAccount', function() {
+describe('.getAccount', function() {
 	it('should return valid values', function(done) {
 		lisk.getAccount ({address: '13968139166426148658L'}).call ()
 		.then (function(res) {
@@ -72,7 +72,7 @@ describe('getAccount', function() {
 	});
 });
 
-describe('getDelegatesByAddress', function() {
+describe('.getDelegatesByAddress', function() {
 	it('should return valid values', function(done) {
 		lisk.getDelegatesByAddress ({address: '13968139166426148658L'}).call ()
 			.then (function(res) {
@@ -93,7 +93,7 @@ describe('getDelegatesByAddress', function() {
  * Loader
  */
 
-describe('getSyncStatus', function() {
+describe('.getSyncStatus', function() {
 	it('should return valid values', function(done) {
 		lisk.getSyncStatus ().call ()
 		.then (function(res) {
@@ -113,7 +113,7 @@ describe('getSyncStatus', function() {
 	});
 });
 
-describe('getLoadingStatus', function() {
+describe('.getLoadingStatus', function() {
 	it('should return valid values', function(done) {
 		lisk.getLoadingStatus ().call ()
 		.then (function(res) {
@@ -131,7 +131,7 @@ describe('getLoadingStatus', function() {
 	});
 });
 
-describe('getBlockReceiptStatus', function() {
+describe('.getBlockReceiptStatus', function() {
 	it('should return valid values', function(done) {
 		lisk.getBlockReceiptStatus ().call ()
 			.then (function(res) {
@@ -152,7 +152,7 @@ describe('getBlockReceiptStatus', function() {
  * Transactions
  */
 
-describe('getTransactions', function() {
+describe('.getTransactions', function() {
 	it('should return valid values', function(done) {
 		lisk.getTransactions ({ blockId: '15562644891650689463' }).call ()
 			.then (function(res) {
@@ -168,7 +168,7 @@ describe('getTransactions', function() {
 	});
 });
 
-describe('getTransaction', function() {
+describe('.getTransaction', function() {
 	it('should return valid values', function(done) {
 		lisk.getTransaction ({ id: '2432251829872771078' }).call ()
 			.then (function(res) {
@@ -198,7 +198,7 @@ describe('getTransaction', function() {
 	});
 });
 
-describe('getUnconfirmedTransactions', function() {
+describe('.getUnconfirmedTransactions', function() {
 	it('should return valid values', function(done) {
 		lisk.getUnconfirmedTransactions ().call ()
 			.then (function(res) {
@@ -212,7 +212,56 @@ describe('getUnconfirmedTransactions', function() {
 						it('should return valid values', function(done) {
 							lisk.getUnconfirmedTransaction ({ id: unConfirmedTx }).call ()
 								.then (function(res) {
-									console.log(res);
+									//console.log('The unconfirmed tx' + res);
+									res.should.be.an ('object');
+									expect (res['success']).to.be.a ('boolean').to.equal (true);
+									expect (res['transaction']).to.be.an ('object');
+									expect (res['transaction']['type']).to.be.a ('number');
+									expect (res['transaction']['amount']).to.be.a ('number');
+									expect (res['transaction']['senderPublicKey']).to.be.a ('string');
+									expect (res['transaction']['timestamp']).to.be.a ('number');
+									expect (res['transaction']['asset']).to.be.an ('object');
+									expect (res['transaction']['recipientId']).to.be.a ('string');
+									expect (res['transaction']['signature']).to.be.a ('string');
+									expect (res['transaction']['id']).to.be.a ('string').to.equal (unConfirmedTx);
+									expect (res['transaction']['fee']).to.be.a ('number');
+									expect (res['transaction']['senderId']).to.be.a ('string');
+									expect (res['transaction']['relays']).to.be.a ('number');
+									expect (res['transaction']['receivedAt']).to.be.a ('string');
+									done ();
+								})
+								.catch (function(err) {
+									assert.ok (false);
+									done ();
+								});
+						});
+					});
+					done();
+				} else {
+					done ();
+				}
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getQueuedTransactions', function() {
+	it('should return valid values', function(done) {
+		lisk.getQueuedTransactions ().call ()
+			.then (function(res) {
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['transactions']).to.be.instanceof(Array);
+				expect (res['count']).to.be.a ('number');
+				// if queued tx exists get the first one and test getQueuedTransaction
+				if(res.transactions.length) {
+					var unConfirmedQueuedTx = res.transactions[0].id;
+					describe('getQueuedTransaction', function() {
+						it('should return valid values', function(done) {
+							lisk.getQueuedTransaction ({ id: unConfirmedQueuedTx }).call ()
+								.then (function(res) {
 									res.should.be.an ('object');
 									expect (res['success']).to.be.a ('boolean').to.equal (true);
 									expect (res['transaction']).to.be.an ('object');
@@ -224,9 +273,30 @@ describe('getUnconfirmedTransactions', function() {
 								});
 						});
 					});
+					done ();
 				} else {
 					done ();
 				}
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+/**
+ * Peers
+ */
+
+describe('.getPeersList', function() {
+	it('should return valid values', function(done) {
+		lisk.getPeersList ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['peers']).to.be.instanceof(Array);
+				done ();
 			})
 			.catch (function(err) {
 				assert.ok (false);
