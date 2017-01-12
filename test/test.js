@@ -327,3 +327,20 @@ describe('.getPeer', function() {
 			});
 	});
 });
+
+describe('.getPeerVersion', function() {
+	it('should return valid values', function(done) {
+		lisk.getPeerVersion ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['version']).to.be.a ('string');
+				expect (res['build']).to.be.a ('string');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
