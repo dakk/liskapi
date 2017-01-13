@@ -7,8 +7,8 @@ var params = {
 	port: 8000,
 	ssl: false
 };
+
 var lisk = require ('../index')(params);
-var tx_counter = 1;
 
 
 /**
@@ -426,6 +426,106 @@ describe('.getFees', function() {
 				expect (res['fees']['delegate']).to.be.a ('number');
 				expect (res['fees']['multisignature']).to.be.a ('number');
 				expect (res['fees']['dapp']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getReward', function() {
+	it('should return valid values', function(done) {
+		lisk.getReward ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['reward']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getSupply', function() {
+	it('should return valid values', function(done) {
+		lisk.getSupply ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['supply']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getHeight', function() {
+	it('should return valid values', function(done) {
+		lisk.getHeight ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['height']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getStatus', function() {
+	it('should return valid values', function(done) {
+		lisk.getStatus ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['height']).to.be.a ('number');
+				expect (res['fee']).to.be.a ('number');
+				expect (res['milestone']).to.be.a ('number');
+				expect (res['reward']).to.be.a ('number');
+				expect (res['supply']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getNethash', function() {
+	it('should return valid values', function(done) {
+		lisk.getNethash ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['nethash']).to.be.a ('string');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getMilestone', function() {
+	it('should return valid values', function(done) {
+		lisk.getMilestone ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['milestone']).to.be.a ('number');
 				done ();
 			})
 			.catch (function(err) {
