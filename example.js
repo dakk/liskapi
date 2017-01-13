@@ -291,7 +291,7 @@ lisk.openAccount ()
     });*/
 
 lisk.addSecondSignature ()
-    .data ({ secret: 'ten month oxygen antenna few universe happy dose lizard silver depart fit',
+    .data ({ secret: 'novel clinic describe crane tissue glory very cage ranch nasty erosion subject',
         secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve'
     })
     .call ()

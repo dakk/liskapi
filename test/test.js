@@ -539,20 +539,13 @@ describe('.getMilestone', function() {
  * Signatures
  */
 
-/*describe('.getSignature', function() {
+describe('.getSignatureFee', function() {
 	it('should return valid values', function(done) {
-		lisk.getSignature ( { id:'11357519863641553525' } ).call ()
+		lisk.getSignatureFee ().call ()
 			.then (function(res) {
-				console.log(res);
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
-				expect (res['signature']).to.be.a ('object');
-				expect (res['signature']['id']).to.be.a ('string');
-				expect (res['signature']['timestamp']).to.be.a ('number');
-				expect (res['signature']['publicKey']).to.be.a ('string');
-				expect (res['signature']['generatorPublicKey']).to.be.a ('string');
-				expect (res['signature']['signature']).to.be.instanceof(Array);
-				expect (res['signature']['generationSignature']).to.be.a ('string');
+				expect (res['fee']).to.be.a ('number');
 				done ();
 			})
 			.catch (function(err) {
@@ -561,7 +554,7 @@ describe('.getMilestone', function() {
 				done ();
 			});
 	});
-});*/
+});
 
 /**
  * Delegates
