@@ -541,8 +541,9 @@ describe('.getMilestone', function() {
 
 /*describe('.getSignature', function() {
 	it('should return valid values', function(done) {
-		lisk.getSignature ( { id:'something' } ).call ()
+		lisk.getSignature ( { id:'11357519863641553525' } ).call ()
 			.then (function(res) {
+				console.log(res);
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
 				expect (res['signature']).to.be.a ('object');
@@ -555,6 +556,7 @@ describe('.getMilestone', function() {
 				done ();
 			})
 			.catch (function(err) {
+				console.log(err);
 				assert.ok (false);
 				done ();
 			});

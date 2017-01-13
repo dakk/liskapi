@@ -10,6 +10,7 @@ const delegates = ["+473c354cdf627b82e9113e02a337486dd3afc5615eb71ffd311c5a0beda
 const multiDelegates = ["+dc63877fbdfb538ff1d0ddecb979887f826998ab6907dca0a91e05c98d1602cd", "+532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09"];
 
 let code = new Mnemonic(Mnemonic.Words.ENGLISH);
+console.log(code);
 
 
 /*lisk.getSyncStatus ().call ()
@@ -245,7 +246,7 @@ let code = new Mnemonic(Mnemonic.Words.ENGLISH);
         console.log ('Got an error in getting next\n', err);
     });*/
 
-/*lisk.openAccount ()
+lisk.openAccount ()
     .data ({ secret: code.toString() })
     .call ()
     .then ((res) => {
@@ -253,7 +254,7 @@ let code = new Mnemonic(Mnemonic.Words.ENGLISH);
     })
     .catch ((err) => {
         console.log ('Got an error opening an account\n', err);
-    });*/
+    });
 
 /*lisk.generatePublicKey ()
     .data ({ secret: code.toString() })
@@ -289,8 +290,8 @@ let code = new Mnemonic(Mnemonic.Words.ENGLISH);
         console.log ('Got an error sending LSK\n', err);
     });*/
 
-/*lisk.addSecondSignature ()
-    .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty',
+lisk.addSecondSignature ()
+    .data ({ secret: 'ten month oxygen antenna few universe happy dose lizard silver depart fit',
         secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve'
     })
     .call ()
@@ -299,7 +300,7 @@ let code = new Mnemonic(Mnemonic.Words.ENGLISH);
     })
     .catch ((err) => {
         console.log ('Got an error adding second signature\n', err);
-    });*/
+    });
 
 /*lisk.createDelegate ()
     .data ({ secret: 'lesson shadow divorce vanish purpose burger visa leave usage weasel wrong hollow',
