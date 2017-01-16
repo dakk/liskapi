@@ -238,12 +238,10 @@ module.exports = {
 	/**
 	 * Signatures
 	 */
-	getSignature: {
+	getSignatureFee: {
 		method: 'GET',
-		path: '/api/signatures/get',
-		params: {
-			id: { type: 'string' }
-		},
+		path: '/api/signatures/fee',
+		params: {},
 		paginated: false
 	},
 	addSecondSignature: {

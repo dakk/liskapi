@@ -3,8 +3,8 @@ var should = require('chai').should ()
 var expect = require('chai').expect
 
 var params = {
-	host: 'liskworld.info',
-	port: 8000,
+	host: '194.116.72.33',
+	port: 7000,
 	ssl: false
 };
 
@@ -34,7 +34,7 @@ describe('.getBalance', function() {
 
 describe('.getPublicKey', function() {
 	it('should return valid values', function(done) {
-		lisk.getPublicKey ({address: '13968139166426148658L'}).call ()
+		lisk.getPublicKey ({address: '14621643025887137539L'}).call ()
 		.then ((res) => {
 			res.should.be.an ('object');
 			expect (res['success']).to.be.a ('boolean').to.equal (true);
@@ -50,12 +50,12 @@ describe('.getPublicKey', function() {
 
 describe('.getAccount', function() {
 	it('should return valid values', function(done) {
-		lisk.getAccount ({address: '13968139166426148658L'}).call ()
+		lisk.getAccount ({address: '305922413481072012L'}).call ()
 		.then (function(res) {
 			res.should.be.an ('object');
 			expect (res['success']).to.be.a ('boolean').to.equal (true);
 			expect (res['account']).to.be.a ('object');
-			expect (res['account']['address']).to.be.a ('string').to.equal ('13968139166426148658L');
+			expect (res['account']['address']).to.be.a ('string').to.equal ('305922413481072012L');
 			expect (res['account']['unconfirmedBalance']).to.be.a ('string');
 			expect (res['account']['balance']).to.be.a ('string');
 			expect (res['account']['publicKey']).to.be.a ('string');
@@ -74,7 +74,7 @@ describe('.getAccount', function() {
 
 describe('.getDelegatesByAddress', function() {
 	it('should return valid values', function(done) {
-		lisk.getDelegatesByAddress ({address: '13968139166426148658L'}).call ()
+		lisk.getDelegatesByAddress ({address: '14621643025887137539L'}).call ()
 			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
@@ -154,7 +154,7 @@ describe('.getBlockReceiptStatus', function() {
 
 describe('.getTransactions', function() {
 	it('should return valid values', function(done) {
-		lisk.getTransactions ({ blockId: '15562644891650689463' }).call ()
+		lisk.getTransactions ({ blockId: '10259851430111190459' }).call ()
 			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
@@ -170,12 +170,12 @@ describe('.getTransactions', function() {
 
 describe('.getTransaction', function() {
 	it('should return valid values', function(done) {
-		lisk.getTransaction ({ id: '2432251829872771078' }).call ()
+		lisk.getTransaction ({ id: '7939763078333239343' }).call ()
 			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
 				expect (res['transaction']).to.be.an ('object');
-				expect (res['transaction']['id']).to.be.a ('string').to.equal ('2432251829872771078');
+				expect (res['transaction']['id']).to.be.a ('string').to.equal ('7939763078333239343');
 				expect (res['transaction']['height']).to.be.a ('number');
 				expect (res['transaction']['blockId']).to.be.a ('string');
 				expect (res['transaction']['type']).to.be.a ('number');
@@ -307,7 +307,7 @@ describe('.getPeersList', function() {
 
 describe('.getPeer', function() {
 	it('should return valid values', function(done) {
-		lisk.getPeer ({ip: '163.172.154.211', port: 8000}).call ()
+		lisk.getPeer ({ip: '108.61.199.243', port: 7000}).call ()
 			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
@@ -351,12 +351,12 @@ describe('.getPeerVersion', function() {
 
 describe('.getBlock', function() {
 	it('should return valid values', function(done) {
-		lisk.getBlock ({id:'10278032324520856952'}).call ()
+		lisk.getBlock ({id:'10697554281480269595'}).call ()
 			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
 				expect (res['block']).to.be.an ('object');
-				expect (res['block']['id']).to.be.a ('string').to.be.equal ('10278032324520856952');
+				expect (res['block']['id']).to.be.a ('string').to.be.equal ('10697554281480269595');
 				expect (res['block']['version']).to.be.a ('number');
 				expect (res['block']['timestamp']).to.be.a ('number');
 				expect (res['block']['height']).to.be.a ('number');
@@ -526,6 +526,199 @@ describe('.getMilestone', function() {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
 				expect (res['milestone']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+/**
+ * Signatures
+ */
+
+describe('.getSignatureFee', function() {
+	it('should return valid values', function(done) {
+		lisk.getSignatureFee ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['fee']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				console.log(err);
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+/**
+ * Delegates
+ */
+
+describe('.getDelegatesList', function() {
+	it('should return valid values', function(done) {
+		lisk.getDelegatesList ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['delegates']).to.be.instanceof(Array);
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+
+describe('.getDelegateByPublicKey', function() {
+	it('should return valid values', function(done) {
+		lisk.getDelegateByPublicKey ({ publicKey: 'e08baa4ae3c70a652903ae879606247d2ed0163cd9c16c95b537df3f7556c132' }).call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['delegate']).to.be.a ('object');
+				expect (res['delegate']['username']).to.be.a ('string');
+				expect (res['delegate']['address']).to.be.a ('string');
+				expect (res['delegate']['publicKey']).to.be.a ('string');
+				expect (res['delegate']['vote']).to.be.a ('string');
+				expect (res['delegate']['producedblocks']).to.be.a ('number');
+				expect (res['delegate']['missedblocks']).to.be.a ('number');
+				expect (res['delegate']['rate']).to.be.a ('number');
+				expect (res['delegate']['approval']).to.be.a ('number');
+				expect (res['delegate']['productivity']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getDelegateByUsername', function() {
+	it('should return valid values', function(done) {
+		lisk.getDelegateByUsername ({ username: 'liskit' }).call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['delegate']).to.be.a ('object');
+				expect (res['delegate']['username']).to.be.a ('string');
+				expect (res['delegate']['address']).to.be.a ('string');
+				expect (res['delegate']['publicKey']).to.be.a ('string');
+				expect (res['delegate']['vote']).to.be.a ('string');
+				expect (res['delegate']['producedblocks']).to.be.a ('number');
+				expect (res['delegate']['missedblocks']).to.be.a ('number');
+				expect (res['delegate']['rate']).to.be.a ('number');
+				expect (res['delegate']['approval']).to.be.a ('number');
+				expect (res['delegate']['productivity']).to.be.a ('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.searchForDelegates', function() {
+	it('should return valid values', function(done) {
+		lisk.searchForDelegates ({ q: 'liskit' }).call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['delegates']).to.be.instanceof(Array);
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getDelegatesCount', function() {
+	it('should return valid values', function(done) {
+		lisk.getDelegatesCount ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['count']).to.be.a('number');
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getVotesOfAccount', function() {
+	it('should return valid values', function(done) {
+		lisk.getVotesOfAccount ( {address:'14621643025887137539L'} ).call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['delegates']).to.be.instanceof(Array);
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getVoters', function() {
+	it('should return valid values', function(done) {
+		lisk.getVoters ( {publicKey:'e08baa4ae3c70a652903ae879606247d2ed0163cd9c16c95b537df3f7556c132'} ).call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['accounts']).to.be.instanceof(Array);
+				done ();
+			})
+			.catch (function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getForgedByAccount', function() {
+	it('should return valid values', function(done) {
+		lisk.getForgedByAccount ( {generatorPublicKey:'e08baa4ae3c70a652903ae879606247d2ed0163cd9c16c95b537df3f7556c132'} ).call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['fees']).to.be.a('string');
+				expect (res['rewards']).to.be.a('string');
+				expect (res['forged']).to.be.a('string');
+				done ();
+			})
+			.catch (function(err) {
+				console.log(err)
+				assert.ok (false);
+				done ();
+			});
+	});
+});
+
+describe('.getNextForger', function() {
+	it('should return valid values', function(done) {
+		lisk.getNextForger ().call ()
+			.then (function(res) {
+				res.should.be.an ('object');
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['currentBlock']).to.be.a('number');
+				expect (res['currentSlot']).to.be.a('number');
+				expect (res['delegates']).to.be.instanceof(Array);
 				done ();
 			})
 			.catch (function(err) {

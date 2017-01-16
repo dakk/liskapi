@@ -10,6 +10,7 @@ const delegates = ["+473c354cdf627b82e9113e02a337486dd3afc5615eb71ffd311c5a0beda
 const multiDelegates = ["+dc63877fbdfb538ff1d0ddecb979887f826998ab6907dca0a91e05c98d1602cd", "+532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09"];
 
 let code = new Mnemonic(Mnemonic.Words.ENGLISH);
+console.log("New pass: " + code.toString());
 
 
 /*lisk.getSyncStatus ().call ()
@@ -290,7 +291,7 @@ let code = new Mnemonic(Mnemonic.Words.ENGLISH);
     });*/
 
 /*lisk.addSecondSignature ()
-    .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty',
+    .data ({ secret: 'novel clinic describe crane tissue glory very cage ranch nasty erosion subject',
         secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve'
     })
     .call ()
