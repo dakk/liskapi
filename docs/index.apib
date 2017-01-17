@@ -4,12 +4,14 @@ FORMAT: 0.1.0
 ## Group Introduction
 This library aims to make **[LISK APIs](https://lisk.io/documentation?i=lisk-docs/APIReference)** easy/smart to use.
 
-Note: **[Lisk]("https://lisk.io/")** is a blockchain application platform and crypto-currency, which offers an all round solution for Node.js and JavaScript developers to deploy their own blockchain applications.
+Note: **[Lisk](https://lisk.io/)** is a blockchain application platform and crypto-currency, which offers an all round solution for Node.js and JavaScript developers to deploy their own blockchain applications.
 
-The library smart handle all the **Lisk APIs call** except the dApps ones. 
+The library smart handle all the **Lisk APIs call** with options like sorting and pagination. The dApps ones are not included at the moment. 
 
 # Installation
-The library is available through the **npm package manager**
+The library is available through the 
+
++ npm package manager
     
         $ npm install liskapi
     
@@ -28,22 +30,22 @@ To performs the requests the library can use a local or remote Lisk node:
                 ssl: true
             };
         
-            const lisk = require ('liskapi')(params);
+        const lisk = require ('liskapi')(params);
 
 ## Group Accounts
 
 API calls related to Account functionality.
 
-## .openAccount
+## openAccount
  
 + Parameters
 
-    + secret: "some secret sentence" (required, string) - Password of the account you want to create
+    + secret: "some secret sentence" (required, string) - Password of the account you want to create.
     
 + Usage
 
         lisk.openAccount ()
-            .data ({ secret: "some secret sentence" })
+            .data ({ secret: 'some secret sentence' })
             .call ()
             .then ((res) => {
                 console.log (`Post for opening an account\n ${JSON.stringify (res)}`);
@@ -68,18 +70,18 @@ API calls related to Account functionality.
           }
         }
 
-## .getBalance
+## getBalance
 
 + Parameters
 
-    + address: "some address" (string) - Request the balance of an account by address
+    + address: "some address" (string) - Request the balance of an account by address.
     
 + Usage
 
-        lisk.getBalance ({address: 'address'})
+        lisk.getBalance ({ address: 'address' })
             .call ()
             .then ((res) => {
-                console.log (`Get balance of Max delegate\n ${JSON.stringify (res)}`);
+                console.log (`Get balance\n ${JSON.stringify (res)}`);
             })
             .catch ((err) => {
                 console.log ('Got an error in getting balance\n', err);
@@ -93,9 +95,89 @@ API calls related to Account functionality.
           "unconfirmedBalance": "Unconfirmed balance of account"
         }
 
-<!--## .getPublicKey
+## getPublicKey
 
-## .generatePublicKey
++ Parameters
+
+    + address: "some address" (string) - Get the public key of an account.
+    
++ Usage
+
+        lisk.getPublicKey ({ address: 'address' })
+            .call ()
+            .then ((res) => {
+                console.log (`Get public key\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting public key\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "publicKey": "Public key of account. Hex"
+        }
+        
+## generatePublicKey
+
++ Parameters
+
+    + secret: "some secret sentence" (required, string) - Returns the public key of the provided secret key.
+    
++ Usage
+
+        lisk.generatePublicKey ()
+            .data ({ secret: 'some secret sentence' })
+            .call ()
+            .then ((res) => {
+                console.log (`Post for generating a publicKey\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error generating a publicKey\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "publicKey": "Public key of account. Hex"
+        }
+        
+## getAccount
+
++ Parameters
+
+    + address: "some address" (string) - Returns account information of an address.
+    
++ Usage
+
+        lisk.getAccount ({ address: 'address' })
+            .call ()
+            .then ((res) => {
+                console.log (`Getting an account\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error getting an account\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "account": {
+            "address": "Address of account. String",
+            "unconfirmedBalance": "Unconfirmed balance of account. Integer",
+            "balance": "Balance of account. Integer",
+            "publicKey": "Public key of account. Hex",
+            "unconfirmedSignature": "If account enabled second signature, but it's still not confirmed. Boolean: true or false",
+            "secondSignature": "If account enabled second signature. Boolean: true or false",
+            "multisignatures": "Array"
+            "u_multisignatures": "Array"
+          }
+        }
+
+<!--
 
 ## .getAccount
 
