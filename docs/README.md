@@ -6,6 +6,7 @@ For the documentation we've used [API BLUEPRINT](https://apiblueprint.org/ "Api 
 
 Render the documentation locally 
 
+    $ npm install -g aglio 
     $ aglio --theme-variables slate -i index.apib -s 
     
 and visit http://127.0.0.1:3000/
