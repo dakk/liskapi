@@ -423,7 +423,7 @@ Get transaction that matches the provided id.
           "success": true,
           "transaction": {
             "id": "Id of transaction. String",
-            "height": "Tx blockchain height. Number",
+            "height": "Tx blockchain height. Integer",
             "blockId" "Tx blockId. String",
             "type": "Type of transaction. Integer",
             "timestamp": "Timestamp of transaction. Integer",
@@ -477,9 +477,184 @@ Get unconfirmed transaction that matches the provided id.
             "receivedAt": "Timestamp. String"
           }
         }
+        
+## getUnconfirmedTransactions
+
+Gets a list of unconfirmed transactions.
+
++ Usage
+
+        lisk.getUnconfirmedTransactions ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get unConfirmedTxS data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting unConfirmedTxS data\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+            "success" : true,
+            "transactions" : [list of transaction objects]
+        }
+        
+## getQueuedTransactions
+
+Gets a list of queued transactions.
+
++ Usage
+
+        lisk.getQueuedTransactions ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get queuedTxS data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting queuedTxS data\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+            "success" : true,
+            "transactions" : [list of transaction objects]
+        }
+        
+## getQueuedTransaction
+
+Get queued transaction that matches the provided id.
+
++ Parameters
+  
+      + id: "queuedTx id" (string)
+
++ Usage
+
+        lisk.getQueuedTransaction ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get queuedTx data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting queuedTx data\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "transaction": {
+            "id": "Id of transaction. String",
+            "type": "Type of transaction. Integer",
+            "subtype": "Subtype of transaction. Integer",
+            "timestamp": "Timestamp of transaction. Integer",
+            "senderPublicKey": "Sender public key of transaction. Hex",
+            "senderId": "Address of transaction sender. String",
+            "recipientId": "Recipient id of transaction. String",
+            "amount": "Amount. Integer",
+            "fee": "Fee. Integer",
+            "signature": "Signature. Hex",
+            "signSignature": "Second signature. Hex",
+            "confirmations": "Number of confirmations. Integer"
+          }
+        }
+        
+## Group Peers
+
+Peers API.
+
+## getPeersList
+
+Gets list of peers from provided filter parameters.
+
++ Options
+
+    + pagination
+    
++ Usage
+
+        lisk.getPeersList ()
+            .paginate ({ limit: 10, offset: 5 })
+            .call ()
+            .then ((res) => {
+                console.log (`Get peers of Liskword\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting peers\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "peers": [
+            "list of peers as objects (see below the peer object response)"
+          ]
+        }
+        
+        
+## getPeer
+
+Gets peer by IP address and port.
+
++ Parameters
+  
+      + ip: "host IP" (string)
+      + port: "host port used for the Lisk application" (number)
+      
++ Usage
+
+        lisk.getPeer ({ip: 'IP', port: port})
+            .call ()
+            .then ((res) => {
+                console.log (`Get peer by IP\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting peer\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "peer": {
+                "ip":"requested ip. String",
+                "port":"requested port. Integer",
+                "state":"1 - disconnected. 2 - connected. 0 - banned. Integer",
+                "os":"operating system. String",
+                "version":"Lisk client version. String",
+                "broadhash":"peer broadhash. String",
+                "height":"blockchain height. Integer"
+          }
+        }
+        
+## getPeerVersion
+
+Gets a list peer versions and build times.
+
++ Usage
+
+        lisk.getPeerVersion ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get peer version\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting peer version\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "version": "version of Lisk. String",
+          "build": "time of build. String"
+        }
 
 <!--
-## Group Peers
+
 ## Group Blocks
 ## Group Signatures
 ## Group Delegates

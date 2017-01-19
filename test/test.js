@@ -291,7 +291,9 @@ describe('.getQueuedTransactions', function() {
 
 describe('.getPeersList', function() {
 	it('should return valid values', function(done) {
-		lisk.getPeersList ().call ()
+		lisk.getPeersList ()
+			.paginate ({ limit: 3 })
+			.call ()
 			.then (function(res) {
 				res.should.be.an ('object');
 				expect (res['success']).to.be.a ('boolean').to.equal (true);
