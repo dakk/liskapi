@@ -569,13 +569,20 @@ Peers API.
 
 Gets list of peers from provided filter parameters.
 
++ Parameters
+  
+      + state: "state of peer. 1 - disconnected. 2 - connected. 0 - banned." (number)
+      + os: "peer operating system" (string)
+      + version: "peer version" (string)
+
 + Options
 
-    + pagination
+    + pagination (limit and offset)
+    + sorting
     
 + Usage
 
-        lisk.getPeersList ()
+        lisk.getPeersList ( { state: 1 } )
             .paginate ({ limit: 10, offset: 5 })
             .call ()
             .then ((res) => {
@@ -625,7 +632,7 @@ Gets peer by IP address and port.
                 "state":"1 - disconnected. 2 - connected. 0 - banned. Integer",
                 "os":"operating system. String",
                 "version":"Lisk client version. String",
-                "broadhash":"peer broadhash. String",
+                "broadhash":"peer block propagation efficiency and reliability. String",
                 "height":"blockchain height. Integer"
           }
         }

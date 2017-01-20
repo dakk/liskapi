@@ -6,7 +6,7 @@ var lisk = require ('../index')(require ('./params'));
 
 describe('.getPeersList', function() {
 	it('should return valid values', function(done) {
-		lisk.getPeersList ()
+		lisk.getPeersList ( { state: 1 } )
 			.paginate ({ limit: 3 })
 			.call ()
 			.then (function(res) {
