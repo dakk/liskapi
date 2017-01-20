@@ -19,14 +19,14 @@ let multisigTx = '';
 const destination = '';
 
 const multisigAccount = {
-	secret: 'lesson shadow divorce vanish purpose burger visa leave usage weasel wrong hollow',
-	pubKey: 'e08baa4ae3c70a652903ae879606247d2ed0163cd9c16c95b537df3f7556c132'
+	secret: '',
+	pubKey: '',
 };
 
 const signers = {
-	pubKeys: ["dc63877fbdfb538ff1d0ddecb979887f826998ab6907dca0a91e05c98d1602cd", 					"532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09"];
-	pubKeysMulti: ["+dc63877fbdfb538ff1d0ddecb979887f826998ab6907dca0a91e05c98d1602cd", 					"+532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09"];
-	secrets: ["", ""];
+	pubKeys: ["", ""],
+	pubKeysMulti: ["+", "+"],
+	secrets: ["", ""]
 };
 
 let height = null;
@@ -123,7 +123,7 @@ describe('.sendTransaction .signTransaction', function() {
 	/* Sign the tx with 2 signers accounts */
 	let promises = [];
 	
-	for (let i = 0; i < signers.secrets.length; i++){
+	for (let i = 0; i < signers.secrets.length; i++) {
 		promises.push (new Promise ((resolve, reject) => {
 			lisk.signTransaction ()
 			.data ({
@@ -136,7 +136,7 @@ describe('.sendTransaction .signTransaction', function() {
 				
 				resolve (res);
 			}).catch (reject);
-		});
+		}));
 	}
 	
 	
