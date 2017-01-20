@@ -14,15 +14,21 @@ var lisk = require ('../index')(params);
 /**
  * Multisignature
  */
-const pubKeys = ["dc63877fbdfb538ff1d0ddecb979887f826998ab6907dca0a91e05c98d1602cd", 					"532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09"];
-const pubKeysMulti = ['+' + pubKeys[0], '+' + pubKeys[1]];
-let multisigTx = '4250724131101914241';
+let multisigTx = '';
+
+const destination = '';
+
 const multisigAccount = {
-	secret: '', 
-	//'lesson shadow divorce vanish purpose burger visa leave usage weasel wrong hollow',
-	pubKey: 'e08baa4ae3c70a652903ae879606247d2ed0163cd9c16c95b537df3f7556c132',
-	address: ''
+	secret: 'lesson shadow divorce vanish purpose burger visa leave usage weasel wrong hollow',
+	pubKey: 'e08baa4ae3c70a652903ae879606247d2ed0163cd9c16c95b537df3f7556c132'
 };
+
+const signers = {
+	pubKeys: ["dc63877fbdfb538ff1d0ddecb979887f826998ab6907dca0a91e05c98d1602cd", 					"532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09"];
+	pubKeysMulti: ["+dc63877fbdfb538ff1d0ddecb979887f826998ab6907dca0a91e05c98d1602cd", 					"+532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09"];
+	secrets: ["", ""];
+};
+
 let height = null;
 
 
@@ -55,7 +61,7 @@ describe('.createMultiSignatureAccount', function() {
 			secret: multisigAccount.secret,
 		    lifetime: 1,
 		    min: 2,
-		    keysgroup: pubKeysMulti
+		    keysgroup: signers.pubKeysMulti
 		})
 		.call ()
 		.then ((res) => {
@@ -97,12 +103,14 @@ describe('.getPendingMultiSignatureTransactions', function() {
 
 /* Create a tx */
 describe('.sendTransaction .signTransaction', function() {
+	this.timeout (60000);
+	
 	before(function (done) {
 		lisk.sendTransaction ()
 		.data ({
 			secret: multisigAccount.secret,
 			amount: 100000000,
-			recipientId: 'destination'
+			recipientId: destination
 		})
 		.call ()
 		.then ((res) => {
@@ -111,10 +119,53 @@ describe('.sendTransaction .signTransaction', function() {
 		});
 	});
 	
-
-	// Call /api/multisignatures/sign with every account (except the ms owner)
-
-	// Get multisigTx, should be ok
+	
+	/* Sign the tx with 2 signers accounts */
+	let promises = [];
+	
+	for (let i = 0; i < signers.secrets.length; i++){
+		promises.push (new Promise ((resolve, reject) => {
+			lisk.signTransaction ()
+			.data ({
+				secret: signers.secrets[i],
+				transactionId: multisigTx
+			})
+			.call ().then ((res) => {
+				expect (res['success']).to.be.ok;
+				expect (res['transactionId']).to.equal(multisigTx);
+				
+				resolve (res);
+			}).catch (reject);
+		});
+	}
+	
+	
+	it('should be signed correctly by two signers', function (done) {
+		Promise.all (promises)
+		.then ((ress) => {
+			waitNextBlock (done);
+		})
+		.catch ((err) => {
+			console.log (err);
+			assert.ok (false);
+			done ();	
+		});
+	});	
+	
+	
+	it('should be confirmed', function (done) {
+		lisk.getTransaction ({ id: multisigTx }).call ()
+		.then ((res) => {
+			expect (res['success']).to.be.ok;
+			expect (res.transaction['id']).to.equal(multisigTx);
+			
+			done ();		
+		})
+		.catch ((err) => {
+			assert.ok (false);
+			done ();				
+		});
+	});
 });
 
 
