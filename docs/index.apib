@@ -340,7 +340,8 @@ List of transactions matched by provided parameters.
 
 + Options
 
-    + pagination
+    + pagination (limit and offset)
+    + sorting
 
 + Usage
 
@@ -658,6 +659,92 @@ Gets a list peer versions and build times.
           "success": true,
           "version": "version of Lisk. String",
           "build": "time of build. String"
+        }
+
+## Group Blocks
+
+Blocks management API.
+
+## getBlock
+
+Gets block by provided id.
+
++ Parameters
+  
+      + id: "block id" (string)
+
++ Usage
+
+        lisk.getBlock ({id:'10278032324520856952'})
+            .call ()
+            .then ((res) => {
+                console.log (`Get block by id\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting block by id\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "block": {
+                "id": "Id of block. String",
+                "version": "Version of block. Integer",
+                "timestamp": "Timestamp of block. Integer",
+                "height": "Height of block. Integer",
+                "previousBlock": "Previous block id. String",
+                "numberOfTransactions": "Number of transactions. Integer",
+                "totalAmount": "Total amount of block. Integer",
+                "totalFee": "Total fee of block. Integer",
+                "reward": "Reward block. Integer",
+                "payloadLength": "Payload length of block. Integer",
+                "payloadHash": "Payload hash of block. Integer",
+                "generatorPublicKey": "Generator public key. Hex",
+                "generatorId": "Generator id. String.",
+                "blockSignature": "Block signature. Hex",
+                "confirmations": "Block confirmations. Integer",
+                "totalForged": "Total block forged. Integer"
+            }
+        }
+        
+## getBlocks
+
+Gets all blocks by provided filter(s).
+
++ Parameters
+  
+      + generatorPublicKey: "generator block id" (string)
+      + height: "height of block" (number)
+      + previousBlock: "previous block" (string)
+      + totalAmount: "total block amount" (number)
+      + totalFee: "total block fee" (number)
+      
++ Options
+
+    + pagination (limit and offset)
+    + sorting
+    
++ Usage
+
+        lisk.getBlocks ()
+            .paginate ({ limit: 2, offset: 0 })
+            .sort ({ height: 'asc' })
+            .call ()
+            .then ((res) => {
+                console.log (`Get blocks sorted and paginated\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting blocks sorted and paginated\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "blocks": [
+            "array of blocks (see above block object response)"
+          ]
         }
 
 <!--
