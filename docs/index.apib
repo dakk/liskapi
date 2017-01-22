@@ -934,12 +934,90 @@ Gets the milestone of the blockchain on a client.
           "milestone": Integer
         }
         
+## Group Signatures
 
+Signature management API.
+
+## getSignatureFee
+
+Gets the second signature status of an account.
+
++ Usage
+
+        lisk.getSignatureFee ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get signature fee\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting signature fee\n', err);
+            });        
+
++ Response 200 (application/json)
+
+        {
+          "success" : true,
+          "fee" : Integer
+        }
+        
+## addSecondSignature
+
+Add a second signature to an account.
+
++ Parameters
+
+    + secret: "some address" (required, string)
+
+    + secondSecret "second address secret" (string)
+
+    + publicKey "address public key" (string)
+        
++ Usage
+
+        lisk.addSecondSignature ()
+            .data ({ secret: 'novel clinic describe crane tissue glory very cage ranch nasty erosion subject',
+                secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve'
+            })
+            .call ()
+            .then ((res) => {
+                console.log (`Put for adding second signature\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error adding second signature\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {  
+                   "success":true,
+                   "transaction":{  
+                      "type": Integer,
+                      "amount": Integer,
+                      "senderPublicKey": "Sender public key. String",
+                      "requesterPublicKey": "Requester public key. String",
+                      "timestamp": Integer,
+                      "asset":{  
+                         "signature":{  
+                            "publicKey":"Public key. String"
+                         }
+                      },
+                      "recipientId":"Recipient address. String",
+                      "signature":"Signature. String",
+                      "id":"Tx ID. String",
+                      "fee":"Fee Integer",
+                      "senderId":"Sender address. String",
+                      "relays":Integer,
+                      "receivedAt":"Time. String"
+                   }
+                }
+        }
+
+## Group Delegates
+
+Delegates API.
 
 <!--
 
-## Group Blocks
-## Group Signatures
 ## Group Delegates
 ## Group Multi-Signature
 -->

@@ -291,7 +291,7 @@ console.log("New pass: " + code.toString());
     });*/
 
 /*lisk.addSecondSignature ()
-    .data ({ secret: 'novel clinic describe crane tissue glory very cage ranch nasty erosion subject',
+    .data ({ secret: 'grow arrive fiscal day visit near auto mind travel demise conduct alert',
         secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve'
     })
     .call ()
