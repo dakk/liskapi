@@ -1,0 +1,72 @@
+## getSignatureFee
+
+Gets the second signature status of an account.
+
++ Usage
+
+        lisk.getSignatureFee ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get signature fee\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting signature fee\n', err);
+            });        
+
++ Response 200 (application/json)
+
+        {
+          "success" : true,
+          "fee" : "Fee. Integer"
+        }
+        
+## addSecondSignature
+
+Add a second signature to an account.
+
++ Parameters
+
+    + secret: "some address" (required, string)
+
+    + secondSecret "second address secret" (string)
+
+    + publicKey "address public key" (string)
+        
++ Usage
+
+        lisk.addSecondSignature ()
+            .data ( { secret: 'some secret',
+                        secondSecret: 'some second secret'
+            } )
+            .call ()
+            .then ((res) => {
+                console.log (`Put for adding second signature\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error adding second signature\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {  
+           "success":true,
+           "transaction":{  
+              "type": "Type of transaction. Integer",
+              "amount": "Amount. Integer",
+              "senderPublicKey": "Sender public key. String",
+              "requesterPublicKey": "Requester public key. String",
+              "timestamp": "Timestamp. Integer",
+              "asset":{  
+                 "signature":{  
+                    "publicKey": "Public key. String"
+                 }
+              },
+              "recipientId": "Recipient address. String",
+              "signature": "Signature. String",
+              "id": "Tx ID. String",
+              "fee": "Fee Integer",
+              "senderId": "Sender address. String",
+              "relays": "Propagation. Integer",
+              "receivedAt": "Time. String"
+           }
+        }

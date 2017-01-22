@@ -1,0 +1,67 @@
+## getLoadingStatus
+
+Returns the status of the blockchain.
+
++ Usage
+
+        lisk.getLoadingStatus ().call ()
+            .then ((res) => {
+                console.log (`Get loading status\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+           "success": true,
+           "loaded": "Is blockchain loaded? Boolean: true or false",
+           "now": "Last block loaded during loading time. Integer",
+           "blocksCount": "Total blocks count in blockchain at loading time. Integer"
+        }
+
+## getSyncStatus
+
+Get the synchronization status of the client.
+
++ Usage
+
+        lisk.getSyncStatus ().call ()
+            .then ((res) => {
+                console.log (`Get sync status data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+           "success": true,
+           "syncing": "Is wallet is syncing with another peers? Boolean: true or false",
+           "blocks": "Number of blocks remaining to sync. Integer",
+           "height": "Total blocks in blockchain. Integer",
+           "broadhash": "Broadhash. String",
+           "consensus": "Consensus. Integer"
+        }
+
+## getBlockReceiptStatus
+
+Get the status of last received block. Returns true if block was received in the past 120 seconds.
+
++ Usage
+
+        lisk.getBlockReceiptStatus ().call ()
+            .then ((res) => {
+                console.log (`Get receipt status data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+           "success": true
+        }

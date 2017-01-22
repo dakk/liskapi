@@ -1,0 +1,376 @@
+## createDelegate
+
+Puts request to create a delegate.
+
++ Parameters
+
+    + secret: "some address" (required, string)
+
+    + secondSecret "second address secret" (string)
+
+    + username "delegate username" (required, string)
+    
++ Usage
+
+        lisk.createDelegate ()
+            .data ( { secret: 'some secret',
+                        username: 'someusername'
+            } )
+            .call ()
+            .then ((res) => {
+                console.log (`Put for registering a delegate\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error registering a delegate\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {  
+           "success":true,
+           "transaction":{  
+              "type": "Type of transaction. Integer",
+              "amount": "Amount. Integer",
+              "senderPublicKey": "Sender public key. String",
+              "requesterPublicKey": "Requester public key. String",
+              "timestamp": "Time. Integer",
+              "asset":{  
+                 "delegate":{  
+                    "username": "Delegate username. String",
+                    "publicKey": "Delegate public key. String"
+                 }
+              },
+              "recipientId": "Recipient address. String",
+              "signature": "Signature. String",
+              "signSignature": "Sign signature. String",
+              "id": "Tx ID. String",
+              "fee": "Fee. Integer",
+              "senderId": "Sender address. String",
+              "relays": "Propagation. Integer",
+              "receivedAt": "Time. String"
+           }
+        }
+        
+## getDelegatesList
+
+Gets list of delegates by provided filter.
+
++ Options
+
+    + pagination (limit and offset)
+    + sorting
+    
++ Usage
+
+        lisk.getDelegatesList ()
+            .paginate ( { limit: 2, offset: 0 } )
+            .sort ( { rate: 'desc' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get delegate list sorted and paginated\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting delegate list sorted and paginated\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "delegates": "Delegates objects array (see below the delegate object response)"
+        }
+        
+## getDelegateByPublicKey
+
+Gets delegate by public key.
+
++ Parameters
+
+    + publicKey "delegate public key" (required, string)
+    
++ Usage
+
+        lisk.getDelegateByPublicKey ( { publicKey: 'some delegate public key' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get delegate by publickey\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting delegate by publickey\n', err);
+            });
+        
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "delegate": {
+                "username": "Username. String",
+                "address": "Address. String",
+                "publicKey": "Public key. String",
+                "vote": "Total votes. Integer",
+                "producedblocks": "Produced blocks. Integer",
+                "missedblocks": "Missed blocks. Integer",
+                "rate": "Ranking. Integer",
+                "approval": "Approval percentage. Float",
+                "productivity": "Productivity percentage. Float"
+            }
+        }
+        
+## getDelegateByUsername
+
+Gets delegate by username.
+
++ Parameters
+
+    + username "delegate username" (required, string)
+
++ Usage
+
+        lisk.getDelegateByUsername ( { username: 'some username' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get delegate by username\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting delegate by username\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "delegate": {
+                "username": "Username. String",
+                "address": "Address. String",
+                "publicKey": "Public key. String",
+                "vote": "Total votes. Integer",
+                "producedblocks": "Produced blocks. Integer",
+                "missedblocks": "Missed blocks. Integer",
+                "rate": "Ranking. Integer",
+                "approval": "Approval percentage. Float",
+                "productivity": "Productivity percentage. Float"
+            }
+        }
+        
+## searchForDelegates
+
+Search for Delegates by "fuzzy" username.
+
++ Options
+
+    + sorting
+    
++ Usage
+
+        lisk.searchForDelegates ( { q: 'some username' } )
+            .sort ( { producedblocks: 'asc' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get delegate by username\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting delegate by username\n', err);
+            }); 
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "delegates": [
+            "array of delegates (see above the delegate object)"
+          ]
+        }
+
+## getDelegatesCount
+
+Get total count of registered delegates.
+
++ Usage
+
+        lisk.getDelegatesCount ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get delegates count\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting delegates count\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "count": "Count. Integer"
+        }
+        
+## getVotesOfAccount
+
+Get votes by account wallet address.
+
++ Parameters
+
+    + address "delegate address" (required, string)
+
++ Usage
+
+        lisk.getVotesOfAccount ( { address: 'some delegate address' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get votes of account\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting votes of account\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "delegates": [
+            "array of of delegates object (see above delegate object response)"
+          ]
+        }
+            
+## getVoters
+
+Get voters of delegate.
+
++ Parameters
+
+    + publicKey "delegate publicKey" (required, string)
+    
++ Usage
+
+        lisk.getVoters ( { publicKey: 'some public key' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get voters of account\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting voters of account\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "accounts": [
+            {
+              username: "Voter username. String",
+              address: "Voter address. String",
+              publicKey: "Voter public key. String",
+              balance: "Voter balance. String"
+            }
+          ]
+        }
+        
+## enableForging
+
+Enables forging for a delegate on the client node.
+
++ Parameters
+
+    + secret: "some secret sentence" (required, string)
+    
++ Usage
+
+        lisk.enableForging ()
+            .data ( { secret: 'some secret' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Post for enable forging\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error disable forging\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "address": "Address. String"
+        }
+        
+## disableForging
+
+Disables forging for a delegate on the client node.
+
++ Parameters
+
+    + secret: "some secret sentence" (required, string)
+    
++ Usage
+
+        lisk.disableForging ()
+            .data ( { secret: 'some secret' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Post for disable forging\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error disable forging\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "address": "address"
+        }
+        
+## getForgedByAccount
+
+Get amount of Lisk forged by an account.
+
++ Parameters
+
+    + generatorPublicKey: "delegate generator public key" (required, string)
+    
++ Usage
+
+        lisk.getForgedByAccount ({ generatorPublicKey: 'delegate generator public key' })
+            .call ()
+            .then ((res) => {
+                console.log (`Get forged by account\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting forged by account\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "sum": "Forged amount. Integer"
+        }
+        
+## getNextForger
+
+Get next delegate lining up to forge.
+
++ Options
+
+    + pagination (limit)
+    
++ Usage
+
+        lisk.getNextForger ()
+            .paginate ({ limit: 2})
+            .call ()
+            .then ((res) => {
+                console.log (`Get next forger\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting next\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "currentBlock": "Current block based on height. Integer",
+          "currentSlot": "Current slot based on time. Integer",
+          "delegates": [
+            "array of publicKeys. Strings"
+          ]
+        }

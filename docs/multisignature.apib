@@ -1,0 +1,33 @@
+## createMultiSignatureAccount
+
+Create a multi-signature account.
+
++ Parameters
+
+    + secret: "some address" (required, string)
+
+    + lifetime "tx time to live" (required, string)
+
+    + min "min signatures needed for valid tx" (string)
+    
+    + keysgroup "members public keys" (array of strings - "+key")
+        
++ Usage
+
+        lisk.createMultiSignatureAccount ()
+            .data ({ secret: 'account secret',
+                lifetime: 24,
+                min: 2,
+                keysgroup: ["+key", "+key"]
+            })
+            .call ()
+            .then ((res) => {
+                console.log (`Put for creating a multi-sig account\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error creating a multi-sig account\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        

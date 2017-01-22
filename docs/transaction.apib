@@ -1,0 +1,235 @@
+## getTransactions
+
+List of transactions matched by provided parameters.
+
++ Parameters
+
+    + blockId: "some block id" (string)
+    + senderId: "sender address" (string)
+    + recipientId: "recipient of transaction" (string)
+    + limit: "limit of transaction to send in response" (default 20, number)
+    + offset: "offset to load" (number)
+
++ Options
+
+    + pagination (limit and offset)
+    + sorting
+
++ Usage
+
+        lisk.getTransactions ( { blockId: 'some block id' } )
+           .paginate ( { limit: 100, offset: 0 } )
+           .call ()
+           .then ((res) => {
+               console.log (`Get TXs data with pagination options\n ${JSON.stringify (res)`);
+           })
+           .catch ((err) => {
+               console.log ('Got an error getting TXs', err);
+           });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "transactions": [
+            "list of transactions objects (see below the transaction object response)"
+          ]
+        }
+
+## sendTransaction
+
+Send transaction to broadcast network.
+
++ Parameters
+
+    + secret: "some secret sentence" (required, string)
+    + amount: "amount of tx" (required, number)
+    + recipientId: "recipient of transaction" (required, string)
+    + publicKey: "public key of sender account" (required, string)
+    + secondSecret: "required if user uses second signature" (string)
+
++ Usage
+
+        lisk.sendTransaction ()
+            .data ( { secret: 'some secret',
+                        amount: 20,
+                        recipientId: 'some address',
+                        publicKey: 'some publicKey'
+            } )
+            .call ()
+            .then ((res) => {
+                console.log (`Put for sending LSK\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error sending LSK\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "transactionId": "id of added transaction"
+        }
+
+## getTransaction
+
+Get transaction that matches the provided id.
+
++ Parameters
+
+    + id: "tx id" (string)
+
++ Usage
+
+        lisk.getTransaction ( { id: 'some tx id' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get tx data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting tx data\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "transaction": {
+            "id": "Id of transaction. String",
+            "height": "Tx blockchain height. Integer",
+            "blockId" "Tx blockId. String",
+            "type": "Type of transaction. Integer",
+            "timestamp": "Timestamp of transaction. Integer",
+            "senderPublicKey": "Sender public key of transaction. Hex",
+            "senderId": "Address of transaction sender. String",
+            "recipientId": "Recipient id of transaction. String",
+            "amount": "Amount. Integer",
+            "fee": "Fee. Integer",
+            "signature": "Signature. Hex",
+            "signatures": "Signatures. Array",
+            "confirmations": "Number of confirmations. Integer",
+            "asset": "Resources. Object"
+          }
+        }
+
+## getUnconfirmedTransaction
+
+Get unconfirmed transaction that matches the provided id.
+
++ Parameters
+
+      + id: "unConfirmedTx id" (string)
+
++ Usage
+
+        lisk.getUnconfirmedTransaction ( { id: 'some unConfirmedTx' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get unConfirmedTx data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting unConfirmedTx data\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "transaction": {
+            "type": "Type of transaction. Integer",
+            "amount": "Amount. Integer",
+            "senderPublicKey": "Sender public key of transaction. Hex",
+            "timestamp": "Timestamp of transaction. Integer",
+            "asset": "Resources. Object"
+            "recipientId": "Recipient id of transaction. String",
+            "signature": "Signature. Hex",
+            "id": "Id of transaction. String",
+            "fee": "Fee. Integer",
+            "senderId": "Address of transaction sender. String",
+            "relays": "Propagation. Integer",
+            "receivedAt": "Timestamp. String"
+          }
+        }
+
+## getUnconfirmedTransactions
+
+Gets a list of unconfirmed transactions.
+
++ Usage
+
+        lisk.getUnconfirmedTransactions ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get unConfirmedTxS data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting unConfirmedTxS data\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "transactions": [list of transaction objects]
+        }
+
+## getQueuedTransactions
+
+Gets a list of queued transactions.
+
++ Usage
+
+        lisk.getQueuedTransactions ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get queuedTxS data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting queuedTxS data\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "transactions": [list of transaction objects]
+        }
+
+## getQueuedTransaction
+
+Get queued transaction that matches the provided id.
+
++ Parameters
+
+      + id: "queuedTx id" (string)
+
++ Usage
+
+        lisk.getQueuedTransaction ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get queuedTx data\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting queuedTx data\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "transaction": {
+            "id": "Id of transaction. String",
+            "type": "Type of transaction. Integer",
+            "subtype": "Subtype of transaction. Integer",
+            "timestamp": "Timestamp of transaction. Integer",
+            "senderPublicKey": "Sender public key of transaction. Hex",
+            "senderId": "Address of transaction sender. String",
+            "recipientId": "Recipient id of transaction. String",
+            "amount": "Amount. Integer",
+            "fee": "Fee. Integer",
+            "signature": "Signature. Hex",
+            "signSignature": "Second signature. Hex",
+            "confirmations": "Number of confirmations. Integer"
+          }
+        }
