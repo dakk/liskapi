@@ -182,8 +182,8 @@ Returns account information of an address.
             "publicKey": "Public key of account. Hex",
             "unconfirmedSignature": "If account enabled second signature, but it's still not confirmed. Boolean: true or false",
             "secondSignature": "If account enabled second signature. Boolean: true or false",
-            "multisignatures": "Array"
-            "u_multisignatures": "Array"
+            "multisignatures": "Multisignatures. Array"
+            "u_multisignatures": "uMultisignatures. Array"
           }
         }
 
@@ -244,9 +244,29 @@ Add or remove votes to a delegate by address.
 
 + Response 200 (application/json)
 
-        {
-            "success": true,
-            "transaction": {object}
+        {  
+           "success": true,
+           "transaction": {  
+              "type": "Type. Integer",
+              "amount": "Amount. Integer",
+              "senderPublicKey": "Sender public key. String",
+              "requesterPublicKey": "Requester public key. String",
+              "timestamp": "Timestamp. Integer",
+              "asset":{  
+                 "votes":[  
+                    "+VotedPublickKey",
+                    "-RemovedVotePublicKey"
+                 ]
+              },
+              "recipientId": "Recipient address. String",
+              "signature": "Signature. String",
+              "signSignature": "Sign signature. String",
+              "id": "Tx ID. String",
+              "fee": "Fee. Integer",
+              "senderId": "Sender address. String",
+              "relays": "Relays. Integer",
+              "receivedAt": "Time. String"
+           }
         }
 
 
@@ -360,7 +380,7 @@ List of transactions matched by provided parameters.
         {
           "success": true,
           "transactions": [
-            "list of transactions objects"
+            "list of transactions objects (see below the transaction object response)"
           ]
         }
 
@@ -497,8 +517,8 @@ Gets a list of unconfirmed transactions.
 + Response 200 (application/json)
 
         {
-            "success" : true,
-            "transactions" : [list of transaction objects]
+            "success": true,
+            "transactions": [list of transaction objects]
         }
 
 ## getQueuedTransactions
@@ -519,8 +539,8 @@ Gets a list of queued transactions.
 + Response 200 (application/json)
 
         {
-            "success" : true,
-            "transactions" : [list of transaction objects]
+            "success": true,
+            "transactions": [list of transaction objects]
         }
 
 ## getQueuedTransaction
@@ -628,13 +648,13 @@ Gets peer by IP address and port.
         {
           "success": true,
           "peer": {
-                "ip":"requested ip. String",
-                "port":"requested port. Integer",
-                "state":"1 - disconnected. 2 - connected. 0 - banned. Integer",
-                "os":"operating system. String",
-                "version":"Lisk client version. String",
-                "broadhash":"peer block propagation efficiency and reliability. String",
-                "height":"blockchain height. Integer"
+                "ip": "Requested ip. String",
+                "port": "Requested port. Integer",
+                "state": "1 - disconnected. 2 - connected. 0 - banned. Integer",
+                "os": "Operating system. String",
+                "version": "Lisk client version. String",
+                "broadhash": "Peer block propagation efficiency and reliability. String",
+                "height": "Blockchain height. Integer"
           }
         }
 
@@ -657,8 +677,8 @@ Gets a list peer versions and build times.
 
         {
           "success": true,
-          "version": "version of Lisk. String",
-          "build": "time of build. String"
+          "version": "Version of Lisk. String",
+          "build": "Time of build. String"
         }
 
 ## Group Blocks
@@ -766,7 +786,7 @@ Get transaction fee for sending "normal" transactions.
 
         {
           "success": true,
-          "fee": Integer
+          "fee": "Fee. Integer"
         }
 
 ## getFees
@@ -788,13 +808,13 @@ Get transaction fee for all types of transactions.
 
         {
           "success": true,
-          "fees":{
-            "send": Integer,
-            "vote": Integer,
-            "secondsignature": Integer,
-            "delegate": Integer,
-            "multisignature": Integer,
-            "dapp": Integer
+          "fees": {
+            "send": "Send. Integer",
+            "vote": "Vote. Integer",
+            "secondsignature": "Second signature. Integer",
+            "delegate": "Delegate. Integer",
+            "multisignature": "Multisignature. Integer",
+            "dapp": "dApp. Integer"
           }
         }
         
@@ -817,7 +837,7 @@ Gets the forging reward for blocks.
 
         {
           "success": true,
-          "reward": Integer
+          "reward": "Reward. Integer"
         }
         
 ## getSupply
@@ -839,7 +859,7 @@ Gets the total amount of Lisk in circulation.
             
             {
               "success": true,
-              "supply": Integer
+              "supply": "Supply. Integer"
             }
             
 ## getHeight
@@ -883,11 +903,11 @@ Gets status of height, fee, milestone, blockreward and supply.
 
         {
           "success": true,
-          "height": Integer
-          "fee": Integer
-          "milestone": Integer
-          "reward": Integer
-          "supply": Integer
+          "height": "Height. Integer",
+          "fee": "Fee. Integer",
+          "milestone": "Milestone. Integer",
+          "reward": "Reward. Integer",
+          "supply": "Supply. Integer"
         }
         
 ## getNethash
@@ -931,7 +951,7 @@ Gets the milestone of the blockchain on a client.
 
         {
           "success": true,
-          "milestone": Integer
+          "milestone": "Milestone. Integer"
         }
         
 ## Group Signatures
@@ -957,7 +977,7 @@ Gets the second signature status of an account.
 
         {
           "success" : true,
-          "fee" : Integer
+          "fee" : "Fee. Integer"
         }
         
 ## addSecondSignature
@@ -989,27 +1009,26 @@ Add a second signature to an account.
 + Response 200 (application/json)
 
         {  
-                   "success":true,
-                   "transaction":{  
-                      "type": Integer,
-                      "amount": Integer,
-                      "senderPublicKey": "Sender public key. String",
-                      "requesterPublicKey": "Requester public key. String",
-                      "timestamp": Integer,
-                      "asset":{  
-                         "signature":{  
-                            "publicKey":"Public key. String"
-                         }
-                      },
-                      "recipientId":"Recipient address. String",
-                      "signature":"Signature. String",
-                      "id":"Tx ID. String",
-                      "fee":"Fee Integer",
-                      "senderId":"Sender address. String",
-                      "relays":Integer,
-                      "receivedAt":"Time. String"
-                   }
-                }
+           "success":true,
+           "transaction":{  
+              "type": "Type. Integer",
+              "amount": "Amount. Integer",
+              "senderPublicKey": "Sender public key. String",
+              "requesterPublicKey": "Requester public key. String",
+              "timestamp": "Timestamp. Integer",
+              "asset":{  
+                 "signature":{  
+                    "publicKey": "Public key. String"
+                 }
+              },
+              "recipientId": "Recipient address. String",
+              "signature": "Signature. String",
+              "id": "Tx ID. String",
+              "fee": "Fee Integer",
+              "senderId": "Sender address. String",
+              "relays": Integer,
+              "receivedAt": "Time. String"
+           }
         }
 
 ## Group Delegates
@@ -1017,7 +1036,5 @@ Add a second signature to an account.
 Delegates API.
 
 <!--
-
-## Group Delegates
 ## Group Multi-Signature
 -->
