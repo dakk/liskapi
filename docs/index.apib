@@ -47,7 +47,7 @@ Create a Lisk account.
 + Usage
 
         lisk.openAccount ()
-            .data ({ secret: 'some secret sentence' })
+            .data ( { secret: 'some secret' } )
             .call ()
             .then ((res) => {
                 console.log (`Post for opening an account\n ${JSON.stringify (res)}`);
@@ -82,7 +82,7 @@ Request the balance of an account by address.
 
 + Usage
 
-        lisk.getBalance ({ address: 'address' })
+        lisk.getBalance ( { address: 'address' } )
             .call ()
             .then ((res) => {
                 console.log (`Get balance\n ${JSON.stringify (res)}`);
@@ -109,7 +109,7 @@ Get the public key of an account.
 
 + Usage
 
-        lisk.getPublicKey ({ address: 'address' })
+        lisk.getPublicKey ( { address: 'address' } )
             .call ()
             .then ((res) => {
                 console.log (`Get public key\n ${JSON.stringify (res)}`);
@@ -136,7 +136,7 @@ Returns the public key of the provided secret key.
 + Usage
 
         lisk.generatePublicKey ()
-            .data ({ secret: 'some secret sentence' })
+            .data ( { secret: 'some secret' } )
             .call ()
             .then ((res) => {
                 console.log (`Post for generating a publicKey\n ${JSON.stringify (res)}`);
@@ -162,7 +162,7 @@ Returns account information of an address.
 
 + Usage
 
-        lisk.getAccount ({ address: 'address' })
+        lisk.getAccount ( { address: 'some address' } )
             .call ()
             .then ((res) => {
                 console.log (`Getting an account\n ${JSON.stringify (res)}`);
@@ -197,7 +197,7 @@ Returns delegate accounts by address.
 
 + Usage
 
-        lisk.getDelegatesByAddress ({ address: 'address' })
+        lisk.getDelegatesByAddress ( { address: 'some address' } )
             .call ()
             .then ((res) => {
                 console.log (`Get delegates by address\n ${JSON.stringify (res)}`);
@@ -230,10 +230,10 @@ Add or remove votes to a delegate by address.
 + Usage
 
         lisk.voteDelegates ()
-            .data ({ secret: 'some secret',
-                    publicKey: 'public key',
-                    delegates:["+AddVoteToSomePublicKey", "-AddVoteToSomePublicKey"]
-            })
+            .data ( { secret: 'some secret',
+                        publicKey: 'some public key',
+                        delegates: ["+AddVoteToSomePublicKey", "-AddVoteToSomePublicKey"]
+            } )
             .call ()
             .then ((res) => {
                 console.log (`Put for voting delegates\n ${JSON.stringify (res)}`);
@@ -247,7 +247,7 @@ Add or remove votes to a delegate by address.
         {  
            "success": true,
            "transaction": {  
-              "type": "Type. Integer",
+              "type": "Type of transaction. Integer",
               "amount": "Amount. Integer",
               "senderPublicKey": "Sender public key. String",
               "requesterPublicKey": "Requester public key. String",
@@ -264,7 +264,7 @@ Add or remove votes to a delegate by address.
               "id": "Tx ID. String",
               "fee": "Fee. Integer",
               "senderId": "Sender address. String",
-              "relays": "Relays. Integer",
+              "relays": "Propagation. Integer",
               "receivedAt": "Time. String"
            }
         }
@@ -365,8 +365,8 @@ List of transactions matched by provided parameters.
 
 + Usage
 
-        lisk.getTransactions ()
-           .paginate ({ blockId: 'some id', limit: 100, offset: 0 })
+        lisk.getTransactions ( { blockId: 'some block id' } )
+           .paginate ( { limit: 100, offset: 0 } )
            .call ()
            .then ((res) => {
                console.log (`Get TXs data with pagination options\n ${JSON.stringify (res)`);
@@ -399,11 +399,11 @@ Send transaction to broadcast network.
 + Usage
 
         lisk.sendTransaction ()
-            .data ({ secret: 'some secret',
-                amount: 20,
-                recipientId: 'address',
-                publicKey: 'publicKey'
-            })
+            .data ( { secret: 'some secret',
+                        amount: 20,
+                        recipientId: 'some address',
+                        publicKey: 'some publicKey'
+            } )
             .call ()
             .then ((res) => {
                 console.log (`Put for sending LSK\n ${JSON.stringify (res)}`);
@@ -429,7 +429,7 @@ Get transaction that matches the provided id.
 
 + Usage
 
-        lisk.getTransaction ({id: 'tx id'})
+        lisk.getTransaction ( { id: 'some tx id' } )
             .call ()
             .then ((res) => {
                 console.log (`Get tx data\n ${JSON.stringify (res)}`);
@@ -470,7 +470,7 @@ Get unconfirmed transaction that matches the provided id.
 
 + Usage
 
-        lisk.getUnconfirmedTransaction ({id: 'unConfirmedTx'})
+        lisk.getUnconfirmedTransaction ( { id: 'some unConfirmedTx' } )
             .call ()
             .then ((res) => {
                 console.log (`Get unConfirmedTx data\n ${JSON.stringify (res)}`);
@@ -604,7 +604,7 @@ Gets list of peers from provided filter parameters.
 + Usage
 
         lisk.getPeersList ( { state: 1 } )
-            .paginate ({ limit: 10, offset: 5 })
+            .paginate ( { limit: 10, offset: 5 } )
             .call ()
             .then ((res) => {
                 console.log (`Get peers of Liskword\n ${JSON.stringify (res)}`);
@@ -634,7 +634,7 @@ Gets peer by IP address and port.
 
 + Usage
 
-        lisk.getPeer ({ip: 'IP', port: port})
+        lisk.getPeer ( { ip: 'IP', port: port } )
             .call ()
             .then ((res) => {
                 console.log (`Get peer by IP\n ${JSON.stringify (res)}`);
@@ -695,7 +695,7 @@ Gets block by provided id.
 
 + Usage
 
-        lisk.getBlock ({id:'10278032324520856952'})
+        lisk.getBlock ( { id: 'some block id' } )
             .call ()
             .then ((res) => {
                 console.log (`Get block by id\n ${JSON.stringify (res)}`);
@@ -748,8 +748,8 @@ Gets all blocks by provided filter(s).
 + Usage
 
         lisk.getBlocks ()
-            .paginate ({ limit: 2, offset: 0 })
-            .sort ({ height: 'asc' })
+            .paginate ( { limit: 2, offset: 0 } )
+            .sort ( { height: 'asc' } )
             .call ()
             .then ((res) => {
                 console.log (`Get blocks sorted and paginated\n ${JSON.stringify (res)}`);
@@ -995,9 +995,9 @@ Add a second signature to an account.
 + Usage
 
         lisk.addSecondSignature ()
-            .data ({ secret: 'novel clinic describe crane tissue glory very cage ranch nasty erosion subject',
-                secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve'
-            })
+            .data ( { secret: 'some secret',
+                        secondSecret: 'some second secret'
+            } )
             .call ()
             .then ((res) => {
                 console.log (`Put for adding second signature\n ${JSON.stringify (res)}`);
@@ -1011,7 +1011,7 @@ Add a second signature to an account.
         {  
            "success":true,
            "transaction":{  
-              "type": "Type. Integer",
+              "type": "Type of transaction. Integer",
               "amount": "Amount. Integer",
               "senderPublicKey": "Sender public key. String",
               "requesterPublicKey": "Requester public key. String",
@@ -1026,7 +1026,7 @@ Add a second signature to an account.
               "id": "Tx ID. String",
               "fee": "Fee Integer",
               "senderId": "Sender address. String",
-              "relays": Integer,
+              "relays": "Propagation. Integer",
               "receivedAt": "Time. String"
            }
         }
@@ -1034,6 +1034,124 @@ Add a second signature to an account.
 ## Group Delegates
 
 Delegates API.
+
+## createDelegate
+
+Puts request to create a delegate.
+
++ Parameters
+
+    + secret: "some address" (required, string)
+
+    + secondSecret "second address secret" (string)
+
+    + username "delegate username" (required, string)
+    
++ Usage
+
+        lisk.createDelegate ()
+            .data ( { secret: 'some secret',
+                        username: 'someusername'
+            } )
+            .call ()
+            .then ((res) => {
+                console.log (`Put for registering a delegate\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error registering a delegate\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {  
+           "success":true,
+           "transaction":{  
+              "type": "Type of transaction. Integer",
+              "amount": "Amount. Integer",
+              "senderPublicKey": "Sender public key. String",
+              "requesterPublicKey": "Requester public key. String",
+              "timestamp": "Time. Integer",
+              "asset":{  
+                 "delegate":{  
+                    "username": "Delegate username. String",
+                    "publicKey": "Delegate public key. String"
+                 }
+              },
+              "recipientId": "Recipient address. String",
+              "signature": "Signature. String",
+              "signSignature": "Sign signature. String",
+              "id": "Tx ID. String",
+              "fee": "Fee. Integer",
+              "senderId": "Sender address. String",
+              "relays": "Propagation. Integer",
+              "receivedAt": "Time. String"
+           }
+        }
+        
+## getDelegatesList
+
+Gets list of delegates by provided filter.
+
++ Options
+
+    + pagination (limit and offset)
+    + sorting
+    
++ Usage
+
+        lisk.getDelegatesList ()
+            .paginate ( { limit: 2, offset: 0 } )
+            .sort ( { rate: 'desc' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get delegate list sorted and paginated\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting delegate list sorted and paginated\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "delegates": "Delegates objects array (see below the delegate object response)"
+        }
+        
+## getDelegateByPublicKey
+
+Gets delegate by public key.
+
++ Parameters
+
+    + publicKey "delegate public key" (required, string)
+    
++ Usage
+
+        lisk.getDelegateByPublicKey ( { publicKey: 'some delegate public key' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get delegate by publickey\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting delegate by publickey\n', err);
+            });
+        
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "delegate": {
+                "username": "Username. String",
+                "address": "Address. String",
+                "publicKey": "Public key. String",
+                "vote": "Total votes. Integer",
+                "producedblocks": "Produced blocks. Integer",
+                "missedblocks": "Missed blocks. Integer",
+                "rate": "Ranking. Integer",
+                "approval": "Approval percentage. Float",
+                "productivity": "Productivity percentage. Float"
+            }
+        }
 
 <!--
 ## Group Multi-Signature

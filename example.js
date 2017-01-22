@@ -266,7 +266,7 @@ console.log("New pass: " + code.toString());
         console.log ('Got an error generating a publicKey\n', err);
     });*/
 
-lisk.voteDelegates ()
+/*lisk.voteDelegates ()
     .data ({ secret: 'grow arrive fiscal day visit near auto mind travel demise conduct alert',
                 publicKey: "0ac42c4080e5b7c7caf09d5bc77eab7ddebc81adf9eb7d615b85fde945ca2607",
                 secondSecret: "correct crisp theory price notable skin quote inspire lock dice divide curve",
@@ -277,7 +277,7 @@ lisk.voteDelegates ()
     })
     .catch ((err) => {
         console.log ('Got an error voting delegates\n', err);
-    });
+    });*/
 
 /*lisk.sendTransaction ()
     .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty',
@@ -306,8 +306,9 @@ lisk.voteDelegates ()
     });*/
 
 /*lisk.createDelegate ()
-    .data ({ secret: 'lesson shadow divorce vanish purpose burger visa leave usage weasel wrong hollow',
-        username: 'liskapitester'
+    .data ({ secret: 'grow arrive fiscal day visit near auto mind travel demise conduct alert',
+        secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve',
+        username: 'zohan'
     })
     .call ()
     .then ((res) => {
