@@ -207,7 +207,7 @@ console.log("New pass: " + code.toString());
         console.log ('Got an error in getting delegates count\n', err);
     });*/
 
-/*lisk.getVotesOfAccount ({ address: '10310263204519541551L' })
+/*lisk.getVotesOfAccount ( {address:'14621643025887137539L'} )
     .call ()
     .then ((res) => {
         console.log (`Get votes of account\n ${JSON.stringify (res)}`);

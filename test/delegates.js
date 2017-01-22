@@ -147,7 +147,6 @@ describe('.getForgedByAccount', function() {
 				done ();
 			})
 			.catch (function(err) {
-				console.log(err)
 				assert.ok (false);
 				done ();
 			});
