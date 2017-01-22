@@ -6,22 +6,22 @@ This library aims to make **[LISK APIs](https://lisk.io/documentation?i=lisk-doc
 
 Note: **[Lisk](https://lisk.io/)** is a blockchain application platform and crypto-currency, which offers an all round solution for Node.js and JavaScript developers to deploy their own blockchain applications.
 
-The library smart handle all the **Lisk APIs call** with options like sorting and pagination. The dApps ones are not included at the moment. 
+The library smart handle all the **Lisk APIs call** with options like sorting and pagination. The dApps ones are not included at the moment.
 
 # Installation
-The library is available through the 
+The library is available through the
 
 + npm package manager
-    
+
         $ npm install liskapi
-    
+
 # Configuration
 To performs the requests the library can use a local or remote Lisk node:
 
 + Require the lib using a local node
 
         const lisk = require ('liskapi')();
-        
+
 + Require the lib using a remote node
 
         const params = {
@@ -29,7 +29,7 @@ To performs the requests the library can use a local or remote Lisk node:
             port: 8000,
             ssl: true
         };
-            
+
         const lisk = require ('liskapi')(params);
 
 ## Group Accounts
@@ -37,13 +37,13 @@ To performs the requests the library can use a local or remote Lisk node:
 API calls related to Account functionality.
 
 ## openAccount
- 
+
 Create a Lisk account.
- 
+
 + Parameters
 
     + secret: "some secret sentence" (required, string)
-    
+
 + Usage
 
         lisk.openAccount ()
@@ -55,7 +55,7 @@ Create a Lisk account.
             .catch ((err) => {
                 console.log ('Got an error opening an account\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -79,7 +79,7 @@ Request the balance of an account by address.
 + Parameters
 
     + address: "some address" (string)
-    
+
 + Usage
 
         lisk.getBalance ({ address: 'address' })
@@ -90,7 +90,7 @@ Request the balance of an account by address.
             .catch ((err) => {
                 console.log ('Got an error in getting balance\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -106,7 +106,7 @@ Get the public key of an account.
 + Parameters
 
     + address: "some address" (string)
-    
+
 + Usage
 
         lisk.getPublicKey ({ address: 'address' })
@@ -117,14 +117,14 @@ Get the public key of an account.
             .catch ((err) => {
                 console.log ('Got an error in getting public key\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
           "success": true,
           "publicKey": "Public key of account. Hex"
         }
-        
+
 ## generatePublicKey
 
 Returns the public key of the provided secret key.
@@ -132,7 +132,7 @@ Returns the public key of the provided secret key.
 + Parameters
 
     + secret: "some secret sentence" (required, string)
-    
+
 + Usage
 
         lisk.generatePublicKey ()
@@ -144,14 +144,14 @@ Returns the public key of the provided secret key.
             .catch ((err) => {
                 console.log ('Got an error generating a publicKey\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
           "success": true,
           "publicKey": "Public key of account. Hex"
         }
-        
+
 ## getAccount
 
 Returns account information of an address.
@@ -159,7 +159,7 @@ Returns account information of an address.
 + Parameters
 
     + address: "some address" (string)
-    
+
 + Usage
 
         lisk.getAccount ({ address: 'address' })
@@ -170,7 +170,7 @@ Returns account information of an address.
             .catch ((err) => {
                 console.log ('Got an error getting an account\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -186,7 +186,7 @@ Returns account information of an address.
             "u_multisignatures": "Array"
           }
         }
-        
+
 ## getDelegatesByAddress
 
 Returns delegate accounts by address.
@@ -194,7 +194,7 @@ Returns delegate accounts by address.
 + Parameters
 
     + address: "some address" (string)
-    
+
 + Usage
 
         lisk.getDelegatesByAddress ({ address: 'address' })
@@ -205,14 +205,14 @@ Returns delegate accounts by address.
             .catch ((err) => {
                 console.log ('Got an error in getting delegates by address\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
             "success": true,
             "delegates": [array]
         }
-        
+
 ## voteDelegates
 
 Add or remove votes to a delegate by address.
@@ -220,17 +220,17 @@ Add or remove votes to a delegate by address.
 + Parameters
 
     + secret: "some address" (required, string)
-    
+
     + publicKey "address public key" (required, string)
-    
+
     + secondSecret "second address secret" (string)
-    
+
     + "delegates" : "Array of string in the following format: ["+DelegatePublicKey"] OR ["-DelegatePublicKey"]. Use + to UPvote, - to DOWNvote" (required, array)
-   
+
 + Usage
 
         lisk.voteDelegates ()
-            .data ({ secret: 'some secret', 
+            .data ({ secret: 'some secret',
                     publicKey: 'public key',
                     delegates:["+AddVoteToSomePublicKey", "-AddVoteToSomePublicKey"]
             })
@@ -241,7 +241,7 @@ Add or remove votes to a delegate by address.
             .catch ((err) => {
                 console.log ('Got an error voting delegates\n', err);
             });
-   
+
 + Response 200 (application/json)
 
         {
@@ -267,7 +267,7 @@ Returns the status of the blockchain.
             .catch ((err) => {
                 console.log ('Got an error', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -290,7 +290,7 @@ Get the synchronization status of the client.
             .catch ((err) => {
                 console.log ('Got an error', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -315,7 +315,7 @@ Get the status of last received block. Returns true if block was received in the
             .catch ((err) => {
                 console.log ('Got an error', err);
             });
-                    
+
 + Response 200 (application/json)
 
         {
@@ -354,7 +354,7 @@ List of transactions matched by provided parameters.
            .catch ((err) => {
                console.log ('Got an error getting TXs', err);
            });
-           
+
 + Response 200 (application/json)
 
         {
@@ -363,7 +363,7 @@ List of transactions matched by provided parameters.
             "list of transactions objects"
           ]
         }
-        
+
 ## sendTransaction
 
 Send transaction to broadcast network.
@@ -391,7 +391,7 @@ Send transaction to broadcast network.
             .catch ((err) => {
                 console.log ('Got an error sending LSK\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -406,7 +406,7 @@ Get transaction that matches the provided id.
 + Parameters
 
     + id: "tx id" (string)
-    
+
 + Usage
 
         lisk.getTransaction ({id: 'tx id'})
@@ -417,7 +417,7 @@ Get transaction that matches the provided id.
             .catch ((err) => {
                 console.log ('Got an error in getting tx data\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -439,15 +439,15 @@ Get transaction that matches the provided id.
             "asset": "Resources. Object"
           }
         }
-        
+
 ## getUnconfirmedTransaction
 
 Get unconfirmed transaction that matches the provided id.
 
 + Parameters
-  
+
       + id: "unConfirmedTx id" (string)
-      
+
 + Usage
 
         lisk.getUnconfirmedTransaction ({id: 'unConfirmedTx'})
@@ -458,7 +458,7 @@ Get unconfirmed transaction that matches the provided id.
             .catch ((err) => {
                 console.log ('Got an error in getting unConfirmedTx data\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -478,7 +478,7 @@ Get unconfirmed transaction that matches the provided id.
             "receivedAt": "Timestamp. String"
           }
         }
-        
+
 ## getUnconfirmedTransactions
 
 Gets a list of unconfirmed transactions.
@@ -500,7 +500,7 @@ Gets a list of unconfirmed transactions.
             "success" : true,
             "transactions" : [list of transaction objects]
         }
-        
+
 ## getQueuedTransactions
 
 Gets a list of queued transactions.
@@ -515,20 +515,20 @@ Gets a list of queued transactions.
             .catch ((err) => {
                 console.log ('Got an error in getting queuedTxS data\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
             "success" : true,
             "transactions" : [list of transaction objects]
         }
-        
+
 ## getQueuedTransaction
 
 Get queued transaction that matches the provided id.
 
 + Parameters
-  
+
       + id: "queuedTx id" (string)
 
 + Usage
@@ -541,7 +541,7 @@ Get queued transaction that matches the provided id.
             .catch ((err) => {
                 console.log ('Got an error in getting queuedTx data\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -561,7 +561,7 @@ Get queued transaction that matches the provided id.
             "confirmations": "Number of confirmations. Integer"
           }
         }
-        
+
 ## Group Peers
 
 Peers API.
@@ -571,7 +571,7 @@ Peers API.
 Gets list of peers from provided filter parameters.
 
 + Parameters
-  
+
       + state: "state of peer. 1 - disconnected. 2 - connected. 0 - banned." (number)
       + os: "peer operating system" (string)
       + version: "peer version" (string)
@@ -580,7 +580,7 @@ Gets list of peers from provided filter parameters.
 
     + pagination (limit and offset)
     + sorting
-    
+
 + Usage
 
         lisk.getPeersList ( { state: 1 } )
@@ -592,7 +592,7 @@ Gets list of peers from provided filter parameters.
             .catch ((err) => {
                 console.log ('Got an error in getting peers\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -601,17 +601,17 @@ Gets list of peers from provided filter parameters.
             "list of peers as objects (see below the peer object response)"
           ]
         }
-        
-        
+
+
 ## getPeer
 
 Gets peer by IP address and port.
 
 + Parameters
-  
+
       + ip: "host IP" (string)
       + port: "host port used for the Lisk application" (number)
-      
+
 + Usage
 
         lisk.getPeer ({ip: 'IP', port: port})
@@ -622,7 +622,7 @@ Gets peer by IP address and port.
             .catch ((err) => {
                 console.log ('Got an error in getting peer\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -637,7 +637,7 @@ Gets peer by IP address and port.
                 "height":"blockchain height. Integer"
           }
         }
-        
+
 ## getPeerVersion
 
 Gets a list peer versions and build times.
@@ -652,7 +652,7 @@ Gets a list peer versions and build times.
             .catch ((err) => {
                 console.log ('Got an error in getting peer version\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -670,7 +670,7 @@ Blocks management API.
 Gets block by provided id.
 
 + Parameters
-  
+
       + id: "block id" (string)
 
 + Usage
@@ -707,24 +707,24 @@ Gets block by provided id.
                 "totalForged": "Total block forged. Integer"
             }
         }
-        
+
 ## getBlocks
 
 Gets all blocks by provided filter(s).
 
 + Parameters
-  
+
       + generatorPublicKey: "generator block id" (string)
       + height: "height of block" (number)
       + previousBlock: "previous block" (string)
       + totalAmount: "total block amount" (number)
       + totalFee: "total block fee" (number)
-      
+
 + Options
 
     + pagination (limit and offset)
     + sorting
-    
+
 + Usage
 
         lisk.getBlocks ()
@@ -737,7 +737,7 @@ Gets all blocks by provided filter(s).
             .catch ((err) => {
                 console.log ('Got an error in getting blocks sorted and paginated\n', err);
             });
-            
+
 + Response 200 (application/json)
 
         {
@@ -746,6 +746,195 @@ Gets all blocks by provided filter(s).
             "array of blocks (see above block object response)"
           ]
         }
+
+## getFee
+
+Get transaction fee for sending "normal" transactions.
+
++ Usage
+
+        lisk.getFee ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get blockchain fee\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting blockchain fee\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "fee": Integer
+        }
+
+## getFees
+
+Get transaction fee for all types of transactions.
+
++ Usage
+
+        lisk.getFees ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get blockchain fees schedule\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting blockchain fees schedule\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "fees":{
+            "send": Integer,
+            "vote": Integer,
+            "secondsignature": Integer,
+            "delegate": Integer,
+            "multisignature": Integer,
+            "dapp": Integer
+          }
+        }
+        
+## getReward
+
+Gets the forging reward for blocks.
+
++ Usage
+
+        lisk.getReward ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get blockchain reward schedule\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting blockchain reward schedule\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "reward": Integer
+        }
+        
+## getSupply
+
+Gets the total amount of Lisk in circulation.
+
++ Usage
+
+        lisk.getSupply ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get supply\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting supply\n', err);
+            });
+            
++ Response 200 (application/json)
+            
+            {
+              "success": true,
+              "supply": Integer
+            }
+            
+## getHeight
+
+Gets the blockchain height of the client.
+
++ Usage
+ 
+        lisk.getHeight ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get height\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting height\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "height": "Height of blockchain. Integer"
+        }
+
+## getStatus
+
+Gets status of height, fee, milestone, blockreward and supply.
+
++ Usage
+
+        lisk.getStatus ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get status\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting status\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "height": Integer
+          "fee": Integer
+          "milestone": Integer
+          "reward": Integer
+          "supply": Integer
+        }
+        
+## getNethash
+
+Gets the nethash of the blockchain on a client.
+
++ Usage 
+
+        lisk.getNethash ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get nethash\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting nethash\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "nethash": "Nethash of the Blockchain. String"
+        }
+        
+## getMilestone
+
+Gets the milestone of the blockchain on a client.
+
++ Usage
+
+        lisk.getMilestone ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get milestone\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting milestone\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "milestone": Integer
+        }
+        
+
 
 <!--
 

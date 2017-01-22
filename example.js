@@ -132,7 +132,7 @@ console.log("New pass: " + code.toString());
         console.log ('Got an error in getting height\n', err);
     });*/
 
-/*lisk.getHeight ()
+/*lisk.getStatus ()
     .call ()
     .then ((res) => {
         console.log (`Get status\n ${JSON.stringify (res)}`);
