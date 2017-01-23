@@ -132,7 +132,7 @@ console.log("New pass: " + code.toString());
         console.log ('Got an error in getting height\n', err);
     });*/
 
-/*lisk.getHeight ()
+/*lisk.getStatus ()
     .call ()
     .then ((res) => {
         console.log (`Get status\n ${JSON.stringify (res)}`);
@@ -207,7 +207,7 @@ console.log("New pass: " + code.toString());
         console.log ('Got an error in getting delegates count\n', err);
     });*/
 
-/*lisk.getVotesOfAccount ({ address: '10310263204519541551L' })
+/*lisk.getVotesOfAccount ( {address:'14621643025887137539L'} )
     .call ()
     .then ((res) => {
         console.log (`Get votes of account\n ${JSON.stringify (res)}`);
@@ -267,7 +267,10 @@ console.log("New pass: " + code.toString());
     });*/
 
 /*lisk.voteDelegates ()
-    .data ({ secret: 'quit copper tomato shoe another cheese one viable copper boy tree penalty', publicKey: '532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09', delegates: delegates })
+    .data ({ secret: 'grow arrive fiscal day visit near auto mind travel demise conduct alert',
+                publicKey: "0ac42c4080e5b7c7caf09d5bc77eab7ddebc81adf9eb7d615b85fde945ca2607",
+                secondSecret: "correct crisp theory price notable skin quote inspire lock dice divide curve",
+                delegates: delegates })
     .call ()
     .then ((res) => {
         console.log (`Put for voting delegates\n ${JSON.stringify (res)}`);
@@ -291,7 +294,7 @@ console.log("New pass: " + code.toString());
     });*/
 
 /*lisk.addSecondSignature ()
-    .data ({ secret: 'novel clinic describe crane tissue glory very cage ranch nasty erosion subject',
+    .data ({ secret: 'grow arrive fiscal day visit near auto mind travel demise conduct alert',
         secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve'
     })
     .call ()
@@ -303,8 +306,9 @@ console.log("New pass: " + code.toString());
     });*/
 
 /*lisk.createDelegate ()
-    .data ({ secret: 'lesson shadow divorce vanish purpose burger visa leave usage weasel wrong hollow',
-        username: 'liskapitester'
+    .data ({ secret: 'grow arrive fiscal day visit near auto mind travel demise conduct alert',
+        secondSecret: 'correct crisp theory price notable skin quote inspire lock dice divide curve',
+        username: 'zohan'
     })
     .call ()
     .then ((res) => {

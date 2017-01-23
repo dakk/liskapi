@@ -146,7 +146,11 @@ module.exports = {
 	getPeersList: {
 		method: 'GET',
 		path: '/api/peers',
-		params: {},
+		params: {
+			state: { type: 'number' },
+			os: { type: 'string' },
+			version: { type: 'string' },
+		},
 		paginated: true
 	},
 	getPeer: {

@@ -1,0 +1,268 @@
+## getBlock
+
+Gets block by provided id.
+
++ Parameters
+
+      + id: "block id" (string)
+
++ Usage
+
+        lisk.getBlock ( { id: 'some block id' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get block by id\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting block by id\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "block": {
+                "id": "Id of block. String",
+                "version": "Version of block. Integer",
+                "timestamp": "Timestamp of block. Integer",
+                "height": "Height of block. Integer",
+                "previousBlock": "Previous block id. String",
+                "numberOfTransactions": "Number of transactions. Integer",
+                "totalAmount": "Total amount of block. Integer",
+                "totalFee": "Total fee of block. Integer",
+                "reward": "Reward block. Integer",
+                "payloadLength": "Payload length of block. Integer",
+                "payloadHash": "Payload hash of block. Integer",
+                "generatorPublicKey": "Generator public key. Hex",
+                "generatorId": "Generator id. String.",
+                "blockSignature": "Block signature. Hex",
+                "confirmations": "Block confirmations. Integer",
+                "totalForged": "Total block forged. Integer"
+            }
+        }
+
+## getBlocks
+
+Gets all blocks by provided filter(s).
+
++ Parameters
+
+      + generatorPublicKey: "generator block id" (string)
+      + height: "height of block" (number)
+      + previousBlock: "previous block" (string)
+      + totalAmount: "total block amount" (number)
+      + totalFee: "total block fee" (number)
+
++ Options
+
+    + pagination (limit and offset)
+    + sorting
+
++ Usage
+
+        lisk.getBlocks ()
+            .paginate ( { limit: 2, offset: 0 } )
+            .sort ( { height: 'asc' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get blocks sorted and paginated\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting blocks sorted and paginated\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "blocks": [
+            "array of blocks (see above the block object response)"
+          ]
+        }
+
+## getFee
+
+Get transaction fee for sending "normal" transactions.
+
++ Usage
+
+        lisk.getFee ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get blockchain fee\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting blockchain fee\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "fee": "Fee. Integer"
+        }
+
+## getFees
+
+Get transaction fee for all types of transactions.
+
++ Usage
+
+        lisk.getFees ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get blockchain fees schedule\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting blockchain fees schedule\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "fees": {
+            "send": "Send. Integer",
+            "vote": "Vote. Integer",
+            "secondsignature": "Second signature. Integer",
+            "delegate": "Delegate. Integer",
+            "multisignature": "Multisignature. Integer",
+            "dapp": "dApp. Integer"
+          }
+        }
+        
+## getReward
+
+Gets the forging reward for blocks.
+
++ Usage
+
+        lisk.getReward ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get blockchain reward schedule\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting blockchain reward schedule\n', err);
+            });
+
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "reward": "Reward. Integer"
+        }
+        
+## getSupply
+
+Gets the total amount of Lisk in circulation.
+
++ Usage
+
+        lisk.getSupply ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get supply\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting supply\n', err);
+            });
+            
++ Response 200 (application/json)
+            
+            {
+              "success": true,
+              "supply": "Supply. Integer"
+            }
+            
+## getHeight
+
+Gets the blockchain height of the client.
+
++ Usage
+ 
+        lisk.getHeight ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get height\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting height\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "height": "Height of blockchain. Integer"
+        }
+
+## getStatus
+
+Gets status of height, fee, milestone, blockreward and supply.
+
++ Usage
+
+        lisk.getStatus ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get status\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting status\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "height": "Height. Integer",
+          "fee": "Fee. Integer",
+          "milestone": "Milestone. Integer",
+          "reward": "Reward. Integer",
+          "supply": "Supply. Integer"
+        }
+        
+## getNethash
+
+Gets the nethash of the blockchain on a client.
+
++ Usage 
+
+        lisk.getNethash ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get nethash\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting nethash\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "nethash": "Nethash of the Blockchain. String"
+        }
+        
+## getMilestone
+
+Gets the milestone of the blockchain on a client.
+
++ Usage
+
+        lisk.getMilestone ()
+            .call ()
+            .then ((res) => {
+                console.log (`Get milestone\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error in getting milestone\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "milestone": "Milestone. Integer"
+        }
