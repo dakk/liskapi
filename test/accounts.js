@@ -33,6 +33,7 @@ describe('.openAccount', function() {
 							.then ((res) => {
 								res.should.be.an ( 'object' );
 								expect (res['success']).to.be.a ('boolean').to.equal (true);
+								expect (res['publicKey']).to.be.a ('string');
 								done ();
 							})
 							.catch ( function(err) {
