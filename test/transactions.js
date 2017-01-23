@@ -1,6 +1,7 @@
 var assert = require ('assert');
 var should = require('chai').should ()
 var expect = require('chai').expect
+// var forger = require('./testnet');
 var lisk = require ('../index')(require ('./params'));
 
 
@@ -19,6 +20,29 @@ describe('.getTransactions', function() {
 			});
 	});
 });
+
+/*describe('.sendTransaction', function() {
+	it('should return valid values', (done) => {
+		lisk.sendTransaction ()
+			.data ( {
+				secret: forger.secret,
+				amount: 1,
+				recipientId: forger.recipientId,
+				publicKey: forger.publicKey
+			} )
+			.call ()
+			.then ((res) => {
+				res.should.be.an ( 'object' );
+				expect (res['success']).to.be.a ('boolean').to.equal (true);
+				expect (res['transactionId']).to.be.a ('string');
+				done ();
+			})
+			.catch ( function(err) {
+				assert.ok (false);
+				done ();
+			});
+	});
+});*/
 
 describe('.getTransaction', function() {
 	it('should return valid values', function(done) {
