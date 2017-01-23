@@ -1,23 +1,47 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>Lisk APIs Wrapper</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#introduction">Introduction</a></div><div class="collapse-content"><ul><li><a href="#header-installation">Installation</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#accounts">Accounts</a></div><div class="collapse-content"><ul><li><a href="#header-.openaccount">.openAccount</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">Lisk APIs Wrapper</h1></header><section id="introduction" class="resource-group"><h2 class="group-heading">Introduction <a href="#introduction" class="permalink">&para;</a></h2><p>This library aims to make <strong><a href="https://lisk.io/documentation?i=lisk-docs/APIReference">LISK APIs</a></strong> easy/smart to use.</p>
-<p>Note: <strong><a href="%22https://lisk.io/%22">Lisk</a></strong> is a blockchain application platform and crypto-currency, which offers an all round solution for Node.js and JavaScript developers to deploy their own blockchain applications.</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Lisk APIs Wrapper</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#introduction">Introduction</a></div><div class="collapse-content"><ul><li><a href="#header-installation">Installation</a></li><li><a href="#header-configuration">Configuration</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#accounts">Accounts</a></div><div class="collapse-content"><ul><li><a href="#header-openaccount">openAccount</a></li><li><a href="#header-getbalance">getBalance</a></li><li><a href="#header-getpublickey">getPublicKey</a></li><li><a href="#header-generatepublickey">generatePublicKey</a></li><li><a href="#header-getaccount">getAccount</a></li><li><a href="#header-getdelegatesbyaddress">getDelegatesByAddress</a></li><li><a href="#header-votedelegates">voteDelegates</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#loader">Loader</a></div><div class="collapse-content"><ul><li><a href="#header-getloadingstatus">getLoadingStatus</a></li><li><a href="#header-getsyncstatus">getSyncStatus</a></li><li><a href="#header-getblockreceiptstatus">getBlockReceiptStatus</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#transactions">Transactions</a></div><div class="collapse-content"><ul><li><a href="#header-gettransactions">getTransactions</a></li><li><a href="#header-sendtransaction">sendTransaction</a></li><li><a href="#header-gettransaction">getTransaction</a></li><li><a href="#header-getunconfirmedtransaction">getUnconfirmedTransaction</a></li><li><a href="#header-getunconfirmedtransactions">getUnconfirmedTransactions</a></li><li><a href="#header-getqueuedtransactions">getQueuedTransactions</a></li><li><a href="#header-getqueuedtransaction">getQueuedTransaction</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#peers">Peers</a></div><div class="collapse-content"><ul><li><a href="#header-getpeerslist">getPeersList</a></li><li><a href="#header-getpeer">getPeer</a></li><li><a href="#header-getpeerversion">getPeerVersion</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#blocks">Blocks</a></div><div class="collapse-content"><ul><li><a href="#header-getblock">getBlock</a></li><li><a href="#header-getblocks">getBlocks</a></li><li><a href="#header-getfee">getFee</a></li><li><a href="#header-getfees">getFees</a></li><li><a href="#header-getreward">getReward</a></li><li><a href="#header-getsupply">getSupply</a></li><li><a href="#header-getheight">getHeight</a></li><li><a href="#header-getstatus">getStatus</a></li><li><a href="#header-getnethash">getNethash</a></li><li><a href="#header-getmilestone">getMilestone</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#signatures">Signatures</a></div><div class="collapse-content"><ul><li><a href="#header-getsignaturefee">getSignatureFee</a></li><li><a href="#header-addsecondsignature">addSecondSignature</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#delegates">Delegates</a></div><div class="collapse-content"><ul><li><a href="#header-createdelegate">createDelegate</a></li><li><a href="#header-getdelegateslist">getDelegatesList</a></li><li><a href="#header-getdelegatebypublickey">getDelegateByPublicKey</a></li><li><a href="#header-getdelegatebyusername">getDelegateByUsername</a></li><li><a href="#header-searchfordelegates">searchForDelegates</a></li><li><a href="#header-getdelegatescount">getDelegatesCount</a></li><li><a href="#header-getvotesofaccount">getVotesOfAccount</a></li><li><a href="#header-getvoters">getVoters</a></li><li><a href="#header-enableforging">enableForging</a></li><li><a href="#header-disableforging">disableForging</a></li><li><a href="#header-getforgedbyaccount">getForgedByAccount</a></li><li><a href="#header-getnextforger">getNextForger</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#multi-signature">Multi-Signature</a></div><div class="collapse-content"><ul><li><a href="#header-createmultisignatureaccount">createMultiSignatureAccount</a></li><li><a href="#header-getmultisignatureaccounts">getMultiSignatureAccounts</a></li><li><a href="#header-signtransaction">signTransaction</a></li><li><a href="#header-getpendingmultisignaturetransactions">getPendingMultiSignatureTransactions</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">Lisk APIs Wrapper</h1></header><section id="introduction" class="resource-group"><h2 class="group-heading">Introduction <a href="#introduction" class="permalink">&para;</a></h2><p>This library aims to make <strong><a href="https://lisk.io/documentation?i=lisk-docs/APIReference">LISK APIs</a></strong> easy/smart to use.</p>
+<p>Note: <strong><a href="https://lisk.io/">Lisk</a></strong> is a blockchain application platform and crypto-currency, which offers an all round solution for Node.js and JavaScript developers to deploy their own blockchain applications.</p>
+<p>The library smart handle all the <strong>Lisk APIs call</strong> with options like sorting and pagination.</p>
+<p>The dApps calls are not included at the moment since they are under strong development.</p>
 <h1 id="header-installation">Installation <a class="permalink" href="#header-installation" aria-hidden="true">¶</a></h1>
-<p>The library is available through the <strong>npm package manager</strong></p>
+<p>The library is available through the</p>
 <ul>
-<li>npm install liskapi</li>
+<li>
+<p>npm package manager</p>
+<pre><code>$ npm <span class="hljs-keyword">install</span> liskapi</code></pre>
+</li>
+</ul>
+<h1 id="header-configuration">Configuration <a class="permalink" href="#header-configuration" aria-hidden="true">¶</a></h1>
+<p>To performs the requests the library can use a local or remote Lisk node:</p>
+<ul>
+<li>
+<p>Require the lib using a local node</p>
+<pre><code><span class="hljs-keyword">const</span> lisk = <span class="hljs-built_in">require</span> (<span class="hljs-string">'liskapi'</span>)();</code></pre>
+</li>
+<li>
+<p>Require the lib using a remote node</p>
+<pre><code><span class="hljs-keyword">const</span> <span class="hljs-keyword">params</span> = {
+      host: <span class="hljs-string">'othernode.com'</span>,
+      port: <span class="hljs-number">8000</span>,
+      ssl: <span class="hljs-keyword">true</span>
+  };
+
+  <span class="hljs-keyword">const</span> lisk = require (<span class="hljs-string">'liskapi'</span>)(<span class="hljs-keyword">params</span>);</code></pre>
+</li>
 </ul>
 </section><section id="accounts" class="resource-group"><h2 class="group-heading">Accounts <a href="#accounts" class="permalink">&para;</a></h2><p>API calls related to Account functionality.</p>
-<h2 id="header-.openaccount">.openAccount <a class="permalink" href="#header-.openaccount" aria-hidden="true">¶</a></h2>
+<h2 id="header-openaccount">openAccount <a class="permalink" href="#header-openaccount" aria-hidden="true">¶</a></h2>
+<p>Create a Lisk account.</p>
 <ul>
 <li>
 <p>Parameters</p>
 <ul>
-<li>secret: 1 (required, string) - Password of the account you want to create</li>
+<li>secret: “some secret sentence” (required, string)</li>
 </ul>
 </li>
 <li>
 <p>Usage</p>
 <pre><code>lisk.openAccount ()
-      .data ({ <span class="hljs-attribute">secret</span>: code.toString() })
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'some secret'</span> } )
       .call ()
       .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
           <span class="hljs-built_in">console</span>.log (`<span class="javascript">Post <span class="hljs-keyword">for</span> opening an account\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
@@ -26,26 +50,1603 @@
           <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error opening an account\n'</span>, err);
       });</code></pre>
 </li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">account</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"Address of account. String"</span></span>,
+      "<span class="hljs-attribute">unconfirmedBalance</span>": <span class="hljs-value"><span class="hljs-string">"Unconfirmed balance of account. Integer"</span></span>,
+      "<span class="hljs-attribute">balance</span>": <span class="hljs-value"><span class="hljs-string">"Balance of account. Integer"</span></span>,
+      "<span class="hljs-attribute">publicKey</span>": <span class="hljs-value"><span class="hljs-string">"Public key of account. Hex"</span></span>,
+      "<span class="hljs-attribute">unconfirmedSignature</span>": <span class="hljs-value"><span class="hljs-string">"If account enabled second signature, but it's still not confirmed. Boolean: true or false"</span></span>,
+      "<span class="hljs-attribute">secondSignature</span>": <span class="hljs-value"><span class="hljs-string">"If account enabled second signature. Boolean: true or false"</span></span>,
+      "<span class="hljs-attribute">secondPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Second signature public key. Hex"</span></span>,
+      "<span class="hljs-attribute">username</span>": <span class="hljs-value"><span class="hljs-string">"Username of account."</span>
+    </span>}
+  </span>}</code></pre>
+</li>
 </ul>
-<!--## .getBalance
-
-## .getPublicKey
-
-## .generatePublicKey
-
-## .getAccount
-
-## .getDelegatesByAddress
-
-## .voteDelegates-->
-<!--
-## Group Loader
-## Group Transactions
-## Group Peers
-## Group Blocks
-## Group Signatures
-## Group Delegates
-## Group Multi-Signature--></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 17 Jan 2017</p><script>/* eslint-env browser */
+<h2 id="header-getbalance">getBalance <a class="permalink" href="#header-getbalance" aria-hidden="true">¶</a></h2>
+<p>Request the balance of an account by address.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>address: “some address” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getBalance ( { <span class="hljs-attribute">address</span>: <span class="hljs-string">'address'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get balance\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting balance\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">balance</span>": <span class="hljs-value"><span class="hljs-string">"Balance of account"</span></span>,
+    "<span class="hljs-attribute">unconfirmedBalance</span>": <span class="hljs-value"><span class="hljs-string">"Unconfirmed balance of account"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getpublickey">getPublicKey <a class="permalink" href="#header-getpublickey" aria-hidden="true">¶</a></h2>
+<p>Get the public key of an account.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>address: “some address” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getPublicKey ( { <span class="hljs-attribute">address</span>: <span class="hljs-string">'address'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get public key\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting public key\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">publicKey</span>": <span class="hljs-value"><span class="hljs-string">"Public key of account. Hex"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-generatepublickey">generatePublicKey <a class="permalink" href="#header-generatepublickey" aria-hidden="true">¶</a></h2>
+<p>Returns the public key of the provided secret key.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>secret: “some secret sentence” (required, string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.generatePublicKey ()
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'some secret'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Post <span class="hljs-keyword">for</span> generating a publicKey\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error generating a publicKey\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">publicKey</span>": <span class="hljs-value"><span class="hljs-string">"Public key of account. Hex"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getaccount">getAccount <a class="permalink" href="#header-getaccount" aria-hidden="true">¶</a></h2>
+<p>Returns account information of an address.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>address: “some address” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getAccount ( { <span class="hljs-attribute">address</span>: <span class="hljs-string">'some address'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Getting an account\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error getting an account\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">account</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"Address of account. String"</span></span>,
+      "<span class="hljs-attribute">unconfirmedBalance</span>": <span class="hljs-value"><span class="hljs-string">"Unconfirmed balance of account. Integer"</span></span>,
+      "<span class="hljs-attribute">balance</span>": <span class="hljs-value"><span class="hljs-string">"Balance of account. Integer"</span></span>,
+      "<span class="hljs-attribute">publicKey</span>": <span class="hljs-value"><span class="hljs-string">"Public key of account. Hex"</span></span>,
+      "<span class="hljs-attribute">unconfirmedSignature</span>": <span class="hljs-value"><span class="hljs-string">"If account enabled second signature, but it's still not confirmed. Boolean: true or false"</span></span>,
+      "<span class="hljs-attribute">secondSignature</span>": <span class="hljs-value"><span class="hljs-string">"If account enabled second signature. Boolean: true or false"</span></span>,
+      "<span class="hljs-attribute">multisignatures</span>": <span class="hljs-value"><span class="hljs-string">"Multisignatures. Array"</span>
+      <span class="hljs-string">"u_multisignatures"</span>: <span class="hljs-string">"uMultisignatures. Array"</span>
+    </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getdelegatesbyaddress">getDelegatesByAddress <a class="permalink" href="#header-getdelegatesbyaddress" aria-hidden="true">¶</a></h2>
+<p>Returns delegate accounts by address.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>address: “some address” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getDelegatesByAddress ( { <span class="hljs-attribute">address</span>: <span class="hljs-string">'some address'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get delegates by address\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting delegates by address\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+      "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">delegates</span>": <span class="hljs-value">[
+        <span class="hljs-string">"array of delegates object. (see below the delegate object response)"</span>
+      ]
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-votedelegates">voteDelegates <a class="permalink" href="#header-votedelegates" aria-hidden="true">¶</a></h2>
+<p>Add or remove votes to a delegate by address.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>
+<p>secret: “some secret” (required, string)</p>
+</li>
+<li>
+<p>publicKey “address public key” (required, string)</p>
+</li>
+<li>
+<p>secondSecret “second address secret” (string)</p>
+</li>
+<li>
+<p>“delegates” : “Array of string in the following format: [”+DelegatePublicKey&quot;] OR [&quot;-DelegatePublicKey&quot;]. Use + to UPvote, - to DOWNvote&quot; (required, array)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.voteDelegates ()
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'some secret'</span>,
+                  <span class="hljs-attribute">publicKey</span>: <span class="hljs-string">'some public key'</span>,
+                  <span class="hljs-attribute">delegates</span>: [<span class="hljs-string">"+AddVoteToSomePublicKey"</span>, <span class="hljs-string">"-AddVoteToSomePublicKey"</span>]
+      } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Put <span class="hljs-keyword">for</span> voting delegates\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error voting delegates\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{  
+     "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+     "<span class="hljs-attribute">transaction</span>": <span class="hljs-value">{  
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Type of transaction. Integer"</span></span>,
+        "<span class="hljs-attribute">amount</span>": <span class="hljs-value"><span class="hljs-string">"Amount. Integer"</span></span>,
+        "<span class="hljs-attribute">senderPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Sender public key. String"</span></span>,
+        "<span class="hljs-attribute">requesterPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Requester public key. String"</span></span>,
+        "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-string">"Timestamp. Integer"</span></span>,
+        "<span class="hljs-attribute">asset</span>":<span class="hljs-value">{  
+           "<span class="hljs-attribute">votes</span>":<span class="hljs-value">[  
+              <span class="hljs-string">"+VotedPublickKey"</span>,
+              <span class="hljs-string">"-RemovedVotePublicKey"</span>
+           ]
+        </span>}</span>,
+        "<span class="hljs-attribute">recipientId</span>": <span class="hljs-value"><span class="hljs-string">"Recipient address. String"</span></span>,
+        "<span class="hljs-attribute">signature</span>": <span class="hljs-value"><span class="hljs-string">"Signature. String"</span></span>,
+        "<span class="hljs-attribute">signSignature</span>": <span class="hljs-value"><span class="hljs-string">"Sign signature. String"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Tx ID. String"</span></span>,
+        "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-string">"Fee. Integer"</span></span>,
+        "<span class="hljs-attribute">senderId</span>": <span class="hljs-value"><span class="hljs-string">"Sender address. String"</span></span>,
+        "<span class="hljs-attribute">relays</span>": <span class="hljs-value"><span class="hljs-string">"Propagation. Integer"</span></span>,
+        "<span class="hljs-attribute">receivedAt</span>": <span class="hljs-value"><span class="hljs-string">"Time. String"</span>
+     </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+</section><section id="loader" class="resource-group"><h2 class="group-heading">Loader <a href="#loader" class="permalink">&para;</a></h2><p>Provides the synchronization and loading information of a client. These API calls will only work if the client is syncing or loading.</p>
+<h2 id="header-getloadingstatus">getLoadingStatus <a class="permalink" href="#header-getloadingstatus" aria-hidden="true">¶</a></h2>
+<p>Returns the status of the blockchain.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getLoadingStatus ().call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get loading status\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+     "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+     "<span class="hljs-attribute">loaded</span>": <span class="hljs-value"><span class="hljs-string">"Is blockchain loaded? Boolean: true or false"</span></span>,
+     "<span class="hljs-attribute">now</span>": <span class="hljs-value"><span class="hljs-string">"Last block loaded during loading time. Integer"</span></span>,
+     "<span class="hljs-attribute">blocksCount</span>": <span class="hljs-value"><span class="hljs-string">"Total blocks count in blockchain at loading time. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getsyncstatus">getSyncStatus <a class="permalink" href="#header-getsyncstatus" aria-hidden="true">¶</a></h2>
+<p>Get the synchronization status of the client.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getSyncStatus ().call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get sync status data\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+     "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+     "<span class="hljs-attribute">syncing</span>": <span class="hljs-value"><span class="hljs-string">"Is wallet is syncing with another peers? Boolean: true or false"</span></span>,
+     "<span class="hljs-attribute">blocks</span>": <span class="hljs-value"><span class="hljs-string">"Number of blocks remaining to sync. Integer"</span></span>,
+     "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-string">"Total blocks in blockchain. Integer"</span></span>,
+     "<span class="hljs-attribute">broadhash</span>": <span class="hljs-value"><span class="hljs-string">"Broadhash. String"</span></span>,
+     "<span class="hljs-attribute">consensus</span>": <span class="hljs-value"><span class="hljs-string">"Consensus. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getblockreceiptstatus">getBlockReceiptStatus <a class="permalink" href="#header-getblockreceiptstatus" aria-hidden="true">¶</a></h2>
+<p>Get the status of last received block. Returns true if block was received in the past 120 seconds.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getBlockReceiptStatus ().call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get receipt status data\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+     "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}</code></pre>
+</li>
+</ul>
+</section><section id="transactions" class="resource-group"><h2 class="group-heading">Transactions <a href="#transactions" class="permalink">&para;</a></h2><p>API calls related to transactions.</p>
+<h2 id="header-gettransactions">getTransactions <a class="permalink" href="#header-gettransactions" aria-hidden="true">¶</a></h2>
+<p>List of transactions matched by provided parameters.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>blockId: “some block id” (string)</li>
+<li>senderId: “sender address” (string)</li>
+<li>recipientId: “recipient of transaction” (string)</li>
+<li>limit: “limit of transaction to send in response” (default 20, number)</li>
+<li>offset: “offset to load” (number)</li>
+</ul>
+</li>
+<li>
+<p>Options</p>
+<ul>
+<li>pagination (limit and offset)</li>
+<li>sorting</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getTransactions ( { <span class="hljs-attribute">blockId</span>: <span class="hljs-string">'some block id'</span> } )
+     .paginate ( { <span class="hljs-attribute">limit</span>: <span class="hljs-number">100</span>, <span class="hljs-attribute">offset</span>: <span class="hljs-number">0</span> } )
+     .call ()
+     .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+         <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get TXs data <span class="hljs-keyword">with</span> pagination options\n ${<span class="hljs-built_in">JSON</span>.stringify (res)</span>`);
+     })
+     .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+         <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error getting TXs'</span>, err);
+     });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">transactions</span>": <span class="hljs-value">[
+      <span class="hljs-string">"list of transactions objects (see below the transaction object response)"</span>
+    ]
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-sendtransaction">sendTransaction <a class="permalink" href="#header-sendtransaction" aria-hidden="true">¶</a></h2>
+<p>Send transaction to broadcast network.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>secret: “some secret sentence” (required, string)</li>
+<li>amount: “amount of tx” (required, number)</li>
+<li>recipientId: “recipient of transaction” (required, string)</li>
+<li>publicKey: “public key of sender account” (required, string)</li>
+<li>secondSecret: “required if user uses second signature” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.sendTransaction ()
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'some secret'</span>,
+                  <span class="hljs-attribute">amount</span>: <span class="hljs-number">20</span>,
+                  <span class="hljs-attribute">recipientId</span>: <span class="hljs-string">'some address'</span>,
+                  <span class="hljs-attribute">publicKey</span>: <span class="hljs-string">'some publicKey'</span>
+      } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Put <span class="hljs-keyword">for</span> sending LSK\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error sending LSK\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">transactionId</span>": <span class="hljs-value"><span class="hljs-string">"id of added transaction"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-gettransaction">getTransaction <a class="permalink" href="#header-gettransaction" aria-hidden="true">¶</a></h2>
+<p>Get transaction that matches the provided id.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>id: “tx id” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getTransaction ( { <span class="hljs-attribute">id</span>: <span class="hljs-string">'some tx id'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get tx data\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting tx data\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code><span class="hljs-collection">{
+    <span class="hljs-string">"success"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"transaction"</span>: <span class="hljs-collection">{
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"Id of transaction. String"</span>,
+      <span class="hljs-string">"height"</span>: <span class="hljs-string">"Tx blockchain height. Integer"</span>,
+      <span class="hljs-string">"blockId"</span> <span class="hljs-string">"Tx blockId. String"</span>,
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"Type of transaction. Integer"</span>,
+      <span class="hljs-string">"timestamp"</span>: <span class="hljs-string">"Timestamp of transaction. Integer"</span>,
+      <span class="hljs-string">"senderPublicKey"</span>: <span class="hljs-string">"Sender public key of transaction. Hex"</span>,
+      <span class="hljs-string">"senderId"</span>: <span class="hljs-string">"Address of transaction sender. String"</span>,
+      <span class="hljs-string">"recipientId"</span>: <span class="hljs-string">"Recipient id of transaction. String"</span>,
+      <span class="hljs-string">"amount"</span>: <span class="hljs-string">"Amount. Integer"</span>,
+      <span class="hljs-string">"fee"</span>: <span class="hljs-string">"Fee. Integer"</span>,
+      <span class="hljs-string">"signature"</span>: <span class="hljs-string">"Signature. Hex"</span>,
+      <span class="hljs-string">"signatures"</span>: <span class="hljs-string">"Signatures. Array"</span>,
+      <span class="hljs-string">"confirmations"</span>: <span class="hljs-string">"Number of confirmations. Integer"</span>,
+      <span class="hljs-string">"asset"</span>: <span class="hljs-string">"Resources. Object"</span>
+    }</span>
+  }</span></code></pre>
+</li>
+</ul>
+<h2 id="header-getunconfirmedtransaction">getUnconfirmedTransaction <a class="permalink" href="#header-getunconfirmedtransaction" aria-hidden="true">¶</a></h2>
+<p>Get unconfirmed transaction that matches the provided id.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<pre><code>+ <span class="hljs-property">id</span>: <span class="hljs-string">"unConfirmedTx id"</span> (<span class="hljs-type">string</span>)</code></pre>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getUnconfirmedTransaction ( { <span class="hljs-attribute">id</span>: <span class="hljs-string">'some unConfirmedTx'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get unConfirmedTx data\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting unConfirmedTx data\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">transaction</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Type of transaction. Integer"</span></span>,
+      "<span class="hljs-attribute">amount</span>": <span class="hljs-value"><span class="hljs-string">"Amount. Integer"</span></span>,
+      "<span class="hljs-attribute">senderPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Sender public key of transaction. Hex"</span></span>,
+      "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-string">"Timestamp of transaction. Integer"</span></span>,
+      "<span class="hljs-attribute">asset</span>": <span class="hljs-value"><span class="hljs-string">"Resources. Object"</span>
+      <span class="hljs-string">"recipientId"</span>: <span class="hljs-string">"Recipient id of transaction. String"</span></span>,
+      "<span class="hljs-attribute">signature</span>": <span class="hljs-value"><span class="hljs-string">"Signature. Hex"</span></span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Id of transaction. String"</span></span>,
+      "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-string">"Fee. Integer"</span></span>,
+      "<span class="hljs-attribute">senderId</span>": <span class="hljs-value"><span class="hljs-string">"Address of transaction sender. String"</span></span>,
+      "<span class="hljs-attribute">relays</span>": <span class="hljs-value"><span class="hljs-string">"Propagation. Integer"</span></span>,
+      "<span class="hljs-attribute">receivedAt</span>": <span class="hljs-value"><span class="hljs-string">"Timestamp. String"</span>
+    </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getunconfirmedtransactions">getUnconfirmedTransactions <a class="permalink" href="#header-getunconfirmedtransactions" aria-hidden="true">¶</a></h2>
+<p>Gets a list of unconfirmed transactions.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getUnconfirmedTransactions ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get unConfirmedTxS data\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting unConfirmedTxS data\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+      "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">transactions</span>": <span class="hljs-value">[list of transaction objects]
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getqueuedtransactions">getQueuedTransactions <a class="permalink" href="#header-getqueuedtransactions" aria-hidden="true">¶</a></h2>
+<p>Gets a list of queued transactions.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getQueuedTransactions ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get queuedTxS data\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting queuedTxS data\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+      "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">transactions</span>": <span class="hljs-value">[list of transaction objects]
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getqueuedtransaction">getQueuedTransaction <a class="permalink" href="#header-getqueuedtransaction" aria-hidden="true">¶</a></h2>
+<p>Get queued transaction that matches the provided id.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<pre><code>+ <span class="hljs-property">id</span>: <span class="hljs-string">"queuedTx id"</span> (<span class="hljs-type">string</span>)</code></pre>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getQueuedTransaction ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get queuedTx data\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting queuedTx data\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">transaction</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Id of transaction. String"</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Type of transaction. Integer"</span></span>,
+      "<span class="hljs-attribute">subtype</span>": <span class="hljs-value"><span class="hljs-string">"Subtype of transaction. Integer"</span></span>,
+      "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-string">"Timestamp of transaction. Integer"</span></span>,
+      "<span class="hljs-attribute">senderPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Sender public key of transaction. Hex"</span></span>,
+      "<span class="hljs-attribute">senderId</span>": <span class="hljs-value"><span class="hljs-string">"Address of transaction sender. String"</span></span>,
+      "<span class="hljs-attribute">recipientId</span>": <span class="hljs-value"><span class="hljs-string">"Recipient id of transaction. String"</span></span>,
+      "<span class="hljs-attribute">amount</span>": <span class="hljs-value"><span class="hljs-string">"Amount. Integer"</span></span>,
+      "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-string">"Fee. Integer"</span></span>,
+      "<span class="hljs-attribute">signature</span>": <span class="hljs-value"><span class="hljs-string">"Signature. Hex"</span></span>,
+      "<span class="hljs-attribute">signSignature</span>": <span class="hljs-value"><span class="hljs-string">"Second signature. Hex"</span></span>,
+      "<span class="hljs-attribute">confirmations</span>": <span class="hljs-value"><span class="hljs-string">"Number of confirmations. Integer"</span>
+    </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+</section><section id="peers" class="resource-group"><h2 class="group-heading">Peers <a href="#peers" class="permalink">&para;</a></h2><p>Peers API.</p>
+<h2 id="header-getpeerslist">getPeersList <a class="permalink" href="#header-getpeerslist" aria-hidden="true">¶</a></h2>
+<p>Gets list of peers from provided filter parameters.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<pre><code>+ <span class="hljs-keyword">state</span>: <span class="hljs-string">"state of peer. 1 - disconnected. 2 - connected. 0 - banned."</span> (number)
++ <span class="hljs-keyword">os</span>: <span class="hljs-string">"peer operating system"</span> (string)
++ version: <span class="hljs-string">"peer version"</span> (string)</code></pre>
+</li>
+<li>
+<p>Options</p>
+<ul>
+<li>pagination (limit and offset)</li>
+<li>sorting</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getPeersList ( { <span class="hljs-attribute">state</span>: <span class="hljs-number">1</span> } )
+      .paginate ( { <span class="hljs-attribute">limit</span>: <span class="hljs-number">10</span>, <span class="hljs-attribute">offset</span>: <span class="hljs-number">5</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get peers <span class="hljs-keyword">of</span> Liskword\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting peers\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">peers</span>": <span class="hljs-value">[
+      <span class="hljs-string">"list of peers as objects (see below the peer object response)"</span>
+    ]
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getpeer">getPeer <a class="permalink" href="#header-getpeer" aria-hidden="true">¶</a></h2>
+<p>Gets peer by IP address and port.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<pre><code>+ ip: <span class="hljs-string">"host IP"</span> (<span class="hljs-type">string</span>)
++ port: <span class="hljs-string">"host port used for the Lisk application"</span> (<span class="hljs-type">number</span>)</code></pre>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getPeer ( { <span class="hljs-attribute">ip</span>: <span class="hljs-string">'IP'</span>, <span class="hljs-attribute">port</span>: port } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get peer by IP\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting peer\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">peer</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">ip</span>": <span class="hljs-value"><span class="hljs-string">"Requested ip. String"</span></span>,
+          "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-string">"Requested port. Integer"</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"1 - disconnected. 2 - connected. 0 - banned. Integer"</span></span>,
+          "<span class="hljs-attribute">os</span>": <span class="hljs-value"><span class="hljs-string">"Operating system. String"</span></span>,
+          "<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"Lisk client version. String"</span></span>,
+          "<span class="hljs-attribute">broadhash</span>": <span class="hljs-value"><span class="hljs-string">"Peer block propagation efficiency and reliability. String"</span></span>,
+          "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-string">"Blockchain height. Integer"</span>
+    </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getpeerversion">getPeerVersion <a class="permalink" href="#header-getpeerversion" aria-hidden="true">¶</a></h2>
+<p>Gets a list peer versions and build times.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getPeerVersion ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get peer version\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting peer version\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"Version of Lisk. String"</span></span>,
+    "<span class="hljs-attribute">build</span>": <span class="hljs-value"><span class="hljs-string">"Time of build. String"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+</section><section id="blocks" class="resource-group"><h2 class="group-heading">Blocks <a href="#blocks" class="permalink">&para;</a></h2><p>Blocks management API.</p>
+<h2 id="header-getblock">getBlock <a class="permalink" href="#header-getblock" aria-hidden="true">¶</a></h2>
+<p>Gets block by provided id.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<pre><code>+ <span class="hljs-property">id</span>: <span class="hljs-string">"block id"</span> (<span class="hljs-type">string</span>)</code></pre>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getBlock ( { <span class="hljs-attribute">id</span>: <span class="hljs-string">'some block id'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get block by id\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting block by id\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+      "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">block</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Id of block. String"</span></span>,
+          "<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"Version of block. Integer"</span></span>,
+          "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-string">"Timestamp of block. Integer"</span></span>,
+          "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-string">"Height of block. Integer"</span></span>,
+          "<span class="hljs-attribute">previousBlock</span>": <span class="hljs-value"><span class="hljs-string">"Previous block id. String"</span></span>,
+          "<span class="hljs-attribute">numberOfTransactions</span>": <span class="hljs-value"><span class="hljs-string">"Number of transactions. Integer"</span></span>,
+          "<span class="hljs-attribute">totalAmount</span>": <span class="hljs-value"><span class="hljs-string">"Total amount of block. Integer"</span></span>,
+          "<span class="hljs-attribute">totalFee</span>": <span class="hljs-value"><span class="hljs-string">"Total fee of block. Integer"</span></span>,
+          "<span class="hljs-attribute">reward</span>": <span class="hljs-value"><span class="hljs-string">"Reward block. Integer"</span></span>,
+          "<span class="hljs-attribute">payloadLength</span>": <span class="hljs-value"><span class="hljs-string">"Payload length of block. Integer"</span></span>,
+          "<span class="hljs-attribute">payloadHash</span>": <span class="hljs-value"><span class="hljs-string">"Payload hash of block. Integer"</span></span>,
+          "<span class="hljs-attribute">generatorPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Generator public key. Hex"</span></span>,
+          "<span class="hljs-attribute">generatorId</span>": <span class="hljs-value"><span class="hljs-string">"Generator id. String."</span></span>,
+          "<span class="hljs-attribute">blockSignature</span>": <span class="hljs-value"><span class="hljs-string">"Block signature. Hex"</span></span>,
+          "<span class="hljs-attribute">confirmations</span>": <span class="hljs-value"><span class="hljs-string">"Block confirmations. Integer"</span></span>,
+          "<span class="hljs-attribute">totalForged</span>": <span class="hljs-value"><span class="hljs-string">"Total block forged. Integer"</span>
+      </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getblocks">getBlocks <a class="permalink" href="#header-getblocks" aria-hidden="true">¶</a></h2>
+<p>Gets all blocks by provided filter(s).</p>
+<ul>
+<li>
+<p>Parameters</p>
+<pre><code>+ generatorPublicKey: <span class="hljs-string">"generator block id"</span> (<span class="hljs-type">string</span>)
++ height: <span class="hljs-string">"height of block"</span> (<span class="hljs-type">number</span>)
++ previousBlock: <span class="hljs-string">"previous block"</span> (<span class="hljs-type">string</span>)
++ totalAmount: <span class="hljs-string">"total block amount"</span> (<span class="hljs-type">number</span>)
++ totalFee: <span class="hljs-string">"total block fee"</span> (<span class="hljs-type">number</span>)</code></pre>
+</li>
+<li>
+<p>Options</p>
+<ul>
+<li>pagination (limit and offset)</li>
+<li>sorting</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getBlocks ()
+      .paginate ( { <span class="hljs-attribute">limit</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">offset</span>: <span class="hljs-number">0</span> } )
+      .sort ( { <span class="hljs-attribute">height</span>: <span class="hljs-string">'asc'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get blocks sorted and paginated\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting blocks sorted and paginated\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">blocks</span>": <span class="hljs-value">[
+      <span class="hljs-string">"array of blocks (see above the block object response)"</span>
+    ]
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getfee">getFee <a class="permalink" href="#header-getfee" aria-hidden="true">¶</a></h2>
+<p>Get transaction fee for sending “normal” transactions.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getFee ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get blockchain fee\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting blockchain fee\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-string">"Fee. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getfees">getFees <a class="permalink" href="#header-getfees" aria-hidden="true">¶</a></h2>
+<p>Get transaction fee for all types of transactions.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getFees ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get blockchain fees schedule\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting blockchain fees schedule\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">fees</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">send</span>": <span class="hljs-value"><span class="hljs-string">"Send. Integer"</span></span>,
+      "<span class="hljs-attribute">vote</span>": <span class="hljs-value"><span class="hljs-string">"Vote. Integer"</span></span>,
+      "<span class="hljs-attribute">secondsignature</span>": <span class="hljs-value"><span class="hljs-string">"Second signature. Integer"</span></span>,
+      "<span class="hljs-attribute">delegate</span>": <span class="hljs-value"><span class="hljs-string">"Delegate. Integer"</span></span>,
+      "<span class="hljs-attribute">multisignature</span>": <span class="hljs-value"><span class="hljs-string">"Multisignature. Integer"</span></span>,
+      "<span class="hljs-attribute">dapp</span>": <span class="hljs-value"><span class="hljs-string">"dApp. Integer"</span>
+    </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getreward">getReward <a class="permalink" href="#header-getreward" aria-hidden="true">¶</a></h2>
+<p>Gets the forging reward for blocks.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getReward ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get blockchain reward schedule\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting blockchain reward schedule\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">reward</span>": <span class="hljs-value"><span class="hljs-string">"Reward. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getsupply">getSupply <a class="permalink" href="#header-getsupply" aria-hidden="true">¶</a></h2>
+<p>Gets the total amount of Lisk in circulation.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getSupply ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get supply\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting supply\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+        "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">supply</span>": <span class="hljs-value"><span class="hljs-string">"Supply. Integer"</span>
+      </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getheight">getHeight <a class="permalink" href="#header-getheight" aria-hidden="true">¶</a></h2>
+<p>Gets the blockchain height of the client.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getHeight ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get height\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting height\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-string">"Height of blockchain. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getstatus">getStatus <a class="permalink" href="#header-getstatus" aria-hidden="true">¶</a></h2>
+<p>Gets status of height, fee, milestone, blockreward and supply.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getStatus ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get status\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting status\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-string">"Height. Integer"</span></span>,
+    "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-string">"Fee. Integer"</span></span>,
+    "<span class="hljs-attribute">milestone</span>": <span class="hljs-value"><span class="hljs-string">"Milestone. Integer"</span></span>,
+    "<span class="hljs-attribute">reward</span>": <span class="hljs-value"><span class="hljs-string">"Reward. Integer"</span></span>,
+    "<span class="hljs-attribute">supply</span>": <span class="hljs-value"><span class="hljs-string">"Supply. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getnethash">getNethash <a class="permalink" href="#header-getnethash" aria-hidden="true">¶</a></h2>
+<p>Gets the nethash of the blockchain on a client.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getNethash ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get nethash\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting nethash\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">nethash</span>": <span class="hljs-value"><span class="hljs-string">"Nethash of the Blockchain. String"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getmilestone">getMilestone <a class="permalink" href="#header-getmilestone" aria-hidden="true">¶</a></h2>
+<p>Gets the milestone of the blockchain on a client.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getMilestone ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get milestone\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting milestone\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">milestone</span>": <span class="hljs-value"><span class="hljs-string">"Milestone. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+</section><section id="signatures" class="resource-group"><h2 class="group-heading">Signatures <a href="#signatures" class="permalink">&para;</a></h2><p>Signature management API.</p>
+<h2 id="header-getsignaturefee">getSignatureFee <a class="permalink" href="#header-getsignaturefee" aria-hidden="true">¶</a></h2>
+<p>Gets the second signature status of an account.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getSignatureFee ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get signature fee\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting signature fee\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>" : <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">fee</span>" : <span class="hljs-value"><span class="hljs-string">"Fee. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-addsecondsignature">addSecondSignature <a class="permalink" href="#header-addsecondsignature" aria-hidden="true">¶</a></h2>
+<p>Add a second signature to an account.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>
+<p>secret: “some address” (required, string)</p>
+</li>
+<li>
+<p>secondSecret “second address secret” (string)</p>
+</li>
+<li>
+<p>publicKey “address public key” (string)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.addSecondSignature ()
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'some secret'</span>,
+                  <span class="hljs-attribute">secondSecret</span>: <span class="hljs-string">'some second secret'</span>
+      } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Put <span class="hljs-keyword">for</span> adding second signature\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error adding second signature\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{  
+     "<span class="hljs-attribute">success</span>":<span class="hljs-value"><span class="hljs-literal">true</span></span>,
+     "<span class="hljs-attribute">transaction</span>":<span class="hljs-value">{  
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Type of transaction. Integer"</span></span>,
+        "<span class="hljs-attribute">amount</span>": <span class="hljs-value"><span class="hljs-string">"Amount. Integer"</span></span>,
+        "<span class="hljs-attribute">senderPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Sender public key. String"</span></span>,
+        "<span class="hljs-attribute">requesterPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Requester public key. String"</span></span>,
+        "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-string">"Timestamp. Integer"</span></span>,
+        "<span class="hljs-attribute">asset</span>":<span class="hljs-value">{  
+           "<span class="hljs-attribute">signature</span>":<span class="hljs-value">{  
+              "<span class="hljs-attribute">publicKey</span>": <span class="hljs-value"><span class="hljs-string">"Public key. String"</span>
+           </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">recipientId</span>": <span class="hljs-value"><span class="hljs-string">"Recipient address. String"</span></span>,
+        "<span class="hljs-attribute">signature</span>": <span class="hljs-value"><span class="hljs-string">"Signature. String"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Tx ID. String"</span></span>,
+        "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-string">"Fee Integer"</span></span>,
+        "<span class="hljs-attribute">senderId</span>": <span class="hljs-value"><span class="hljs-string">"Sender address. String"</span></span>,
+        "<span class="hljs-attribute">relays</span>": <span class="hljs-value"><span class="hljs-string">"Propagation. Integer"</span></span>,
+        "<span class="hljs-attribute">receivedAt</span>": <span class="hljs-value"><span class="hljs-string">"Time. String"</span>
+     </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+</section><section id="delegates" class="resource-group"><h2 class="group-heading">Delegates <a href="#delegates" class="permalink">&para;</a></h2><p>Delegates API.</p>
+<h2 id="header-createdelegate">createDelegate <a class="permalink" href="#header-createdelegate" aria-hidden="true">¶</a></h2>
+<p>Puts request to create a delegate.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>
+<p>secret: “some address” (required, string)</p>
+</li>
+<li>
+<p>secondSecret “second address secret” (string)</p>
+</li>
+<li>
+<p>username “delegate username” (required, string)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.createDelegate ()
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'some secret'</span>,
+                  <span class="hljs-attribute">username</span>: <span class="hljs-string">'someusername'</span>
+      } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Put <span class="hljs-keyword">for</span> registering a delegate\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error registering a delegate\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{  
+     "<span class="hljs-attribute">success</span>":<span class="hljs-value"><span class="hljs-literal">true</span></span>,
+     "<span class="hljs-attribute">transaction</span>":<span class="hljs-value">{  
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Type of transaction. Integer"</span></span>,
+        "<span class="hljs-attribute">amount</span>": <span class="hljs-value"><span class="hljs-string">"Amount. Integer"</span></span>,
+        "<span class="hljs-attribute">senderPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Sender public key. String"</span></span>,
+        "<span class="hljs-attribute">requesterPublicKey</span>": <span class="hljs-value"><span class="hljs-string">"Requester public key. String"</span></span>,
+        "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-string">"Time. Integer"</span></span>,
+        "<span class="hljs-attribute">asset</span>":<span class="hljs-value">{  
+           "<span class="hljs-attribute">delegate</span>":<span class="hljs-value">{  
+              "<span class="hljs-attribute">username</span>": <span class="hljs-value"><span class="hljs-string">"Delegate username. String"</span></span>,
+              "<span class="hljs-attribute">publicKey</span>": <span class="hljs-value"><span class="hljs-string">"Delegate public key. String"</span>
+           </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">recipientId</span>": <span class="hljs-value"><span class="hljs-string">"Recipient address. String"</span></span>,
+        "<span class="hljs-attribute">signature</span>": <span class="hljs-value"><span class="hljs-string">"Signature. String"</span></span>,
+        "<span class="hljs-attribute">signSignature</span>": <span class="hljs-value"><span class="hljs-string">"Sign signature. String"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"Tx ID. String"</span></span>,
+        "<span class="hljs-attribute">fee</span>": <span class="hljs-value"><span class="hljs-string">"Fee. Integer"</span></span>,
+        "<span class="hljs-attribute">senderId</span>": <span class="hljs-value"><span class="hljs-string">"Sender address. String"</span></span>,
+        "<span class="hljs-attribute">relays</span>": <span class="hljs-value"><span class="hljs-string">"Propagation. Integer"</span></span>,
+        "<span class="hljs-attribute">receivedAt</span>": <span class="hljs-value"><span class="hljs-string">"Time. String"</span>
+     </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getdelegateslist">getDelegatesList <a class="permalink" href="#header-getdelegateslist" aria-hidden="true">¶</a></h2>
+<p>Gets list of delegates by provided filter.</p>
+<ul>
+<li>
+<p>Options</p>
+<ul>
+<li>pagination (limit and offset)</li>
+<li>sorting</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getDelegatesList ()
+      .paginate ( { <span class="hljs-attribute">limit</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">offset</span>: <span class="hljs-number">0</span> } )
+      .sort ( { <span class="hljs-attribute">rate</span>: <span class="hljs-string">'desc'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get delegate list sorted and paginated\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting delegate list sorted and paginated\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">delegates</span>": <span class="hljs-value"><span class="hljs-string">"Delegates objects array (see below the delegate object response)"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getdelegatebypublickey">getDelegateByPublicKey <a class="permalink" href="#header-getdelegatebypublickey" aria-hidden="true">¶</a></h2>
+<p>Gets delegate by public key.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>publicKey “delegate public key” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getDelegateByPublicKey ( { <span class="hljs-attribute">publicKey</span>: <span class="hljs-string">'some delegate public key'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get delegate by publickey\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting delegate by publickey\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+      "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">delegate</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">username</span>": <span class="hljs-value"><span class="hljs-string">"Username. String"</span></span>,
+          "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"Address. String"</span></span>,
+          "<span class="hljs-attribute">publicKey</span>": <span class="hljs-value"><span class="hljs-string">"Public key. String"</span></span>,
+          "<span class="hljs-attribute">vote</span>": <span class="hljs-value"><span class="hljs-string">"Total votes. Integer"</span></span>,
+          "<span class="hljs-attribute">producedblocks</span>": <span class="hljs-value"><span class="hljs-string">"Produced blocks. Integer"</span></span>,
+          "<span class="hljs-attribute">missedblocks</span>": <span class="hljs-value"><span class="hljs-string">"Missed blocks. Integer"</span></span>,
+          "<span class="hljs-attribute">rate</span>": <span class="hljs-value"><span class="hljs-string">"Ranking. Integer"</span></span>,
+          "<span class="hljs-attribute">approval</span>": <span class="hljs-value"><span class="hljs-string">"Approval percentage. Float"</span></span>,
+          "<span class="hljs-attribute">productivity</span>": <span class="hljs-value"><span class="hljs-string">"Productivity percentage. Float"</span>
+      </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getdelegatebyusername">getDelegateByUsername <a class="permalink" href="#header-getdelegatebyusername" aria-hidden="true">¶</a></h2>
+<p>Gets delegate by username.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>username “delegate username” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getDelegateByUsername ( { <span class="hljs-attribute">username</span>: <span class="hljs-string">'some username'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get delegate by username\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting delegate by username\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+      "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">delegate</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">username</span>": <span class="hljs-value"><span class="hljs-string">"Username. String"</span></span>,
+          "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"Address. String"</span></span>,
+          "<span class="hljs-attribute">publicKey</span>": <span class="hljs-value"><span class="hljs-string">"Public key. String"</span></span>,
+          "<span class="hljs-attribute">vote</span>": <span class="hljs-value"><span class="hljs-string">"Total votes. Integer"</span></span>,
+          "<span class="hljs-attribute">producedblocks</span>": <span class="hljs-value"><span class="hljs-string">"Produced blocks. Integer"</span></span>,
+          "<span class="hljs-attribute">missedblocks</span>": <span class="hljs-value"><span class="hljs-string">"Missed blocks. Integer"</span></span>,
+          "<span class="hljs-attribute">rate</span>": <span class="hljs-value"><span class="hljs-string">"Ranking. Integer"</span></span>,
+          "<span class="hljs-attribute">approval</span>": <span class="hljs-value"><span class="hljs-string">"Approval percentage. Float"</span></span>,
+          "<span class="hljs-attribute">productivity</span>": <span class="hljs-value"><span class="hljs-string">"Productivity percentage. Float"</span>
+      </span>}
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-searchfordelegates">searchForDelegates <a class="permalink" href="#header-searchfordelegates" aria-hidden="true">¶</a></h2>
+<p>Search for Delegates by “fuzzy” username.</p>
+<ul>
+<li>
+<p>Options</p>
+<ul>
+<li>sorting</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.searchForDelegates ( { <span class="hljs-attribute">q</span>: <span class="hljs-string">'some username'</span> } )
+      .sort ( { <span class="hljs-attribute">producedblocks</span>: <span class="hljs-string">'asc'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get delegate by username\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting delegate by username\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">delegates</span>": <span class="hljs-value">[
+      <span class="hljs-string">"array of delegates (see above the delegate object)"</span>
+    ]
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getdelegatescount">getDelegatesCount <a class="permalink" href="#header-getdelegatescount" aria-hidden="true">¶</a></h2>
+<p>Get total count of registered delegates.</p>
+<ul>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getDelegatesCount ()
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get delegates count\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting delegates count\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-string">"Count. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getvotesofaccount">getVotesOfAccount <a class="permalink" href="#header-getvotesofaccount" aria-hidden="true">¶</a></h2>
+<p>Get votes by account wallet address.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>address “delegate address” (required, string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getVotesOfAccount ( { <span class="hljs-attribute">address</span>: <span class="hljs-string">'some delegate address'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get votes <span class="hljs-keyword">of</span> account\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting votes of account\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">delegates</span>": <span class="hljs-value">[
+      <span class="hljs-string">"array of of delegates object (see above delegate object response)"</span>
+    ]
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getvoters">getVoters <a class="permalink" href="#header-getvoters" aria-hidden="true">¶</a></h2>
+<p>Get voters of delegate.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>publicKey “delegate publicKey” (required, string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getVoters ( { <span class="hljs-attribute">publicKey</span>: <span class="hljs-string">'some public key'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get voters <span class="hljs-keyword">of</span> account\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting voters of account\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code><span class="hljs-collection">{
+    <span class="hljs-string">"success"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"accounts"</span>: <span class="hljs-collection">[
+      <span class="hljs-collection">{
+        username: <span class="hljs-string">"Voter username. String"</span>,
+        address: <span class="hljs-string">"Voter address. String"</span>,
+        publicKey: <span class="hljs-string">"Voter public key. String"</span>,
+        balance: <span class="hljs-string">"Voter balance. String"</span>
+      }</span>
+    ]</span>
+  }</span></code></pre>
+</li>
+</ul>
+<h2 id="header-enableforging">enableForging <a class="permalink" href="#header-enableforging" aria-hidden="true">¶</a></h2>
+<p>Enables forging for a delegate on the client node.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>secret: “some secret sentence” (required, string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.enableForging ()
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'some secret'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Post <span class="hljs-keyword">for</span> enable forging\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error disable forging\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"Address. String"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-disableforging">disableForging <a class="permalink" href="#header-disableforging" aria-hidden="true">¶</a></h2>
+<p>Disables forging for a delegate on the client node.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>secret: “some secret sentence” (required, string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.disableForging ()
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'some secret'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Post <span class="hljs-keyword">for</span> disable forging\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error disable forging\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"address"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getforgedbyaccount">getForgedByAccount <a class="permalink" href="#header-getforgedbyaccount" aria-hidden="true">¶</a></h2>
+<p>Get amount of Lisk forged by an account.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>generatorPublicKey: “delegate generator public key” (required, string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getForgedByAccount ({ <span class="hljs-attribute">generatorPublicKey</span>: <span class="hljs-string">'delegate generator public key'</span> })
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get forged by account\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting forged by account\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">sum</span>": <span class="hljs-value"><span class="hljs-string">"Forged amount. Integer"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getnextforger">getNextForger <a class="permalink" href="#header-getnextforger" aria-hidden="true">¶</a></h2>
+<p>Get next delegate lining up to forge.</p>
+<ul>
+<li>
+<p>Options</p>
+<ul>
+<li>pagination (limit)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getNextForger ()
+      .paginate ({ <span class="hljs-attribute">limit</span>: <span class="hljs-number">2</span>})
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get next forger\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error in getting next\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">currentBlock</span>": <span class="hljs-value"><span class="hljs-string">"Current block based on height. Integer"</span></span>,
+    "<span class="hljs-attribute">currentSlot</span>": <span class="hljs-value"><span class="hljs-string">"Current slot based on time. Integer"</span></span>,
+    "<span class="hljs-attribute">delegates</span>": <span class="hljs-value">[
+      <span class="hljs-string">"array of publicKeys. Strings"</span>
+    ]
+  </span>}</code></pre>
+</li>
+</ul>
+</section><section id="multi-signature" class="resource-group"><h2 class="group-heading">Multi-Signature <a href="#multi-signature" class="permalink">&para;</a></h2><p>Multi-signature API.</p>
+<h2 id="header-createmultisignatureaccount">createMultiSignatureAccount <a class="permalink" href="#header-createmultisignatureaccount" aria-hidden="true">¶</a></h2>
+<p>Create a multi-signature account.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>
+<p>secret: “multisig secret” (required, string)</p>
+</li>
+<li>
+<p>secondSecret: “second secret of the account” (optional, string)</p>
+</li>
+<li>
+<p>lifetime “tx time to live” (required, string)</p>
+</li>
+<li>
+<p>min “min signatures needed for valid tx” (string)</p>
+</li>
+<li>
+<p>keysgroup “members public keys” (array of strings - “+key”)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.createMultiSignatureAccount ()
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'account secret'</span>,
+          <span class="hljs-attribute">lifetime</span>: <span class="hljs-number">24</span>,
+          <span class="hljs-attribute">min</span>: <span class="hljs-number">2</span>,
+          <span class="hljs-attribute">keysgroup</span>: [<span class="hljs-string">"+key"</span>, <span class="hljs-string">"+key"</span>]
+      } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Put <span class="hljs-keyword">for</span> creating a multi-sig account\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error creating a multi-sig account\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">transactionId</span>": <span class="hljs-value"><span class="hljs-string">"Transaction id. String"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getmultisignatureaccounts">getMultiSignatureAccounts <a class="permalink" href="#header-getmultisignatureaccounts" aria-hidden="true">¶</a></h2>
+<p>Gets a list of accounts that belong to a multi-signature account.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>publicKey: “public key of the account that have already sign a createMultiSignatureAccount tx ID response” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getMultiSignatureAccounts ( { <span class="hljs-attribute">publicKey</span>: <span class="hljs-string">'public key of the member'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get multi-sig account\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error getting a multi-sig account\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">accounts</span>": <span class="hljs-value"><span class="hljs-string">"array of accounts"</span>
+    <span class="hljs-string">"accounts"</span>: [
+      {
+        "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"Multisig account. String"</span></span>,
+        "<span class="hljs-attribute">balance</span>": <span class="hljs-value"><span class="hljs-string">"Multisig account balance. String"</span></span>,
+        "<span class="hljs-attribute">multisignatures</span>": <span class="hljs-value">[
+          <span class="hljs-string">"Multisig public key member. String"</span>
+        ]</span>,
+        "<span class="hljs-attribute">multimin</span>": <span class="hljs-value"><span class="hljs-string">"Min N of sign for a valid tx. Integer"</span></span>,
+        "<span class="hljs-attribute">multilifetime</span>": <span class="hljs-value"><span class="hljs-string">"Lifetime. Integer"</span></span>,
+        "<span class="hljs-attribute">multisigaccounts</span>": <span class="hljs-value">[
+          {
+            "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"Multisig address member. String"</span></span>,
+            "<span class="hljs-attribute">publicKey</span>": <span class="hljs-value"><span class="hljs-string">"Multisig public key member. String"</span></span>,
+            "<span class="hljs-attribute">balance</span>": <span class="hljs-value"><span class="hljs-string">"Multisig balance member. String"</span>
+          </span>}
+        ]
+      </span>}
+    ]
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-signtransaction">signTransaction <a class="permalink" href="#header-signtransaction" aria-hidden="true">¶</a></h2>
+<p>Signs a transaction that is awaiting signature.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>
+<p>secret: “member secret” (required, string)</p>
+</li>
+<li>
+<p>secondSecret: “second secret of the account” (optional, string)</p>
+</li>
+<li>
+<p>transactionId “a createMultiSignatureAccount tx ID response” (required, string)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.signTransaction ()
+      .data ( { <span class="hljs-attribute">secret</span>: <span class="hljs-string">'account secret'</span>,
+          <span class="hljs-attribute">transactionId</span>: <span class="hljs-string">'createMultiSignatureAccount tx ID response'</span>
+      } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Post <span class="hljs-keyword">for</span> signing a multi-sig creation txID\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error signing a multi-sig creation txID\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code>{
+    "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">transactionId</span>": <span class="hljs-value"><span class="hljs-string">"Transaction id. String"</span>
+  </span>}</code></pre>
+</li>
+</ul>
+<h2 id="header-getpendingmultisignaturetransactions">getPendingMultiSignatureTransactions <a class="permalink" href="#header-getpendingmultisignaturetransactions" aria-hidden="true">¶</a></h2>
+<p>Returns a list of multi-signature transactions that waiting for signature by publicKey.</p>
+<ul>
+<li>
+<p>Parameters</p>
+<ul>
+<li>publicKey: “multisig account public key” (string)</li>
+</ul>
+</li>
+<li>
+<p>Usage</p>
+<pre><code>lisk.getPendingMultiSignatureTransactions ( { <span class="hljs-attribute">publicKey</span>: <span class="hljs-string">'public key of the multisig account'</span> } )
+      .call ()
+      .<span class="hljs-keyword">then</span> (<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (`<span class="javascript">Get pending multi-sig account\n ${<span class="hljs-built_in">JSON</span>.stringify (res)}</span>`);
+      })
+      .<span class="hljs-keyword">catch</span> (<span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+          <span class="hljs-built_in">console</span>.log (<span class="hljs-string">'Got an error getting a pending multi-sig account\n'</span>, err);
+      });</code></pre>
+</li>
+<li>
+<p>Response 200 (application/json)</p>
+<pre><code><span class="hljs-collection">{
+    <span class="hljs-string">"success"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"transactions"</span>: <span class="hljs-collection">[
+      <span class="hljs-collection">{
+        <span class="hljs-string">"max"</span>: <span class="hljs-string">"Max. Integer"</span>,
+        <span class="hljs-string">"min"</span>: <span class="hljs-string">"Min. Integer"</span>,
+        <span class="hljs-string">"lifetime"</span>: <span class="hljs-string">"Lifetime. Integer"</span>,
+        <span class="hljs-string">"signed"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">"transaction"</span>: <span class="hljs-collection">{
+          <span class="hljs-string">"type"</span>: <span class="hljs-string">"Type of transaction. Integer"</span>,
+          <span class="hljs-string">"amount"</span>: <span class="hljs-string">"Amount. Integer"</span>,
+          <span class="hljs-string">"senderPublicKey"</span>: <span class="hljs-string">"Sender public key of transaction. Hex"</span>,
+          <span class="hljs-string">"requesterPublicKey"</span>: <span class="hljs-string">"Requester public key. String"</span>,
+          <span class="hljs-string">"timestamp"</span>: <span class="hljs-string">"Timestamp. Integer"</span>,
+          <span class="hljs-string">"asset"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"multisignature"</span>: <span class="hljs-collection">{
+              <span class="hljs-string">"min"</span>: <span class="hljs-string">"Min signatures needed for valid tx. Integer"</span>,
+              <span class="hljs-string">"keysgroup"</span>: <span class="hljs-collection">[
+                <span class="hljs-string">"+Multisig public key member. String"</span>
+              ]</span>,
+              <span class="hljs-string">"lifetime"</span>: <span class="hljs-string">"Lifetime. Integer"</span>,
+            }</span>
+          }</span>,
+          <span class="hljs-string">"recipientId"</span>: <span class="hljs-string">"Recipient address. String"</span>,
+          <span class="hljs-string">"signature"</span>: <span class="hljs-string">"Signature. String"</span>,
+          <span class="hljs-string">"signSignature"</span>: <span class="hljs-string">"Sign signature. String"</span>,
+          <span class="hljs-string">"id"</span>: <span class="hljs-string">"Tx ID"</span>,
+          <span class="hljs-string">"fee"</span>: <span class="hljs-string">"Fee. Integer"</span>,
+          <span class="hljs-string">"senderId"</span>: <span class="hljs-string">"Sender address. String"</span>,
+          <span class="hljs-string">"relays"</span>: <span class="hljs-string">"Propagation. Integer"</span>,
+          <span class="hljs-string">"receivedAt"</span>: Time. String<span class="hljs-string">",
+          "</span>signatures<span class="hljs-string">": [
+            "</span>array of signatures<span class="hljs-string">"
+          ],
+          "</span>ready<span class="hljs-string">": false
+        }
+      }
+    ]
+  }</span></span></span></span></span></code></pre>
+</li>
+</ul>
+</section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 23 Jan 2017</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 

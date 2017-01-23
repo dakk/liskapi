@@ -1,3 +1,4 @@
+/*
 const assert = require ('assert');
 const should = require('chai').should ();
 const expect = require('chai').expect;
@@ -11,9 +12,9 @@ var params = {
 var lisk = require ('../index')(params);
 
 
-/**
+/!**
  * Multisignature
- */
+ *!/
 let multisigTx = '';
 
 const destination = '';
@@ -51,7 +52,7 @@ let waitNextBlock = function (done) {
 };
 
 
-/* Create the accout */
+/!* Create the accout *!/
 describe('.createMultiSignatureAccount', function() {
 	this.timeout (60000);
 	
@@ -101,7 +102,7 @@ describe('.getPendingMultiSignatureTransactions', function() {
 	});
 });
 
-/* Create a tx */
+/!* Create a tx *!/
 describe('.sendTransaction .signTransaction', function() {
 	this.timeout (60000);
 	
@@ -120,7 +121,7 @@ describe('.sendTransaction .signTransaction', function() {
 	});
 	
 	
-	/* Sign the tx with 2 signers accounts */
+	/!* Sign the tx with 2 signers accounts *!/
 	let promises = [];
 	
 	for (let i = 0; i < signers.secrets.length; i++) {
@@ -169,3 +170,4 @@ describe('.sendTransaction .signTransaction', function() {
 });
 
 
+*/

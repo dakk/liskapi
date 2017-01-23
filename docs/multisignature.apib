@@ -4,7 +4,9 @@ Create a multi-signature account.
 
 + Parameters
 
-    + secret: "some address" (required, string)
+    + secret: "multisig secret" (required, string)
+    
+    + secondSecret: "second secret of the account" (optional, string)
 
     + lifetime "tx time to live" (required, string)
 
@@ -15,11 +17,11 @@ Create a multi-signature account.
 + Usage
 
         lisk.createMultiSignatureAccount ()
-            .data ({ secret: 'account secret',
+            .data ( { secret: 'account secret',
                 lifetime: 24,
                 min: 2,
                 keysgroup: ["+key", "+key"]
-            })
+            } )
             .call ()
             .then ((res) => {
                 console.log (`Put for creating a multi-sig account\n ${JSON.stringify (res)}`);
@@ -30,4 +32,146 @@ Create a multi-signature account.
             
 + Response 200 (application/json)
 
+        {
+          "success": true,
+          "transactionId": "Transaction id. String"
+        }
         
+## getMultiSignatureAccounts
+
+Gets a list of accounts that belong to a multi-signature account.
+
++ Parameters
+
+    + publicKey: "public key of the account that have already sign a createMultiSignatureAccount tx ID response" (string)
+    
++ Usage
+
+        lisk.getMultiSignatureAccounts ( { publicKey: 'public key of the member' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get multi-sig account\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error getting a multi-sig account\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "accounts": "array of accounts"
+          "accounts": [
+            {
+              "address": "Multisig account. String",
+              "balance": "Multisig account balance. String",
+              "multisignatures": [
+                "Multisig public key member. String"
+              ],
+              "multimin": "Min N of sign for a valid tx. Integer",
+              "multilifetime": "Lifetime. Integer",
+              "multisigaccounts": [
+                {
+                  "address": "Multisig address member. String",
+                  "publicKey": "Multisig public key member. String",
+                  "balance": "Multisig balance member. String"
+                }
+              ]
+            }
+          ]
+        }
+        
+## signTransaction
+
+Signs a transaction that is awaiting signature.
+
++ Parameters
+
+    + secret: "member secret" (required, string)
+    
+    + secondSecret: "second secret of the account" (optional, string)
+    
+    + transactionId "a createMultiSignatureAccount tx ID response" (required, string)
+    
++ Usage
+
+        lisk.signTransaction ()
+            .data ( { secret: 'account secret',
+                transactionId: 'createMultiSignatureAccount tx ID response'
+            } )
+            .call ()
+            .then ((res) => {
+                console.log (`Post for signing a multi-sig creation txID\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error signing a multi-sig creation txID\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "transactionId": "Transaction id. String"
+        }
+        
+        
+## getPendingMultiSignatureTransactions
+
+Returns a list of multi-signature transactions that waiting for signature by publicKey.
+
++ Parameters
+
+    + publicKey: "multisig account public key" (string)
+
++ Usage
+
+        lisk.getPendingMultiSignatureTransactions ( { publicKey: 'public key of the multisig account' } )
+            .call ()
+            .then ((res) => {
+                console.log (`Get pending multi-sig account\n ${JSON.stringify (res)}`);
+            })
+            .catch ((err) => {
+                console.log ('Got an error getting a pending multi-sig account\n', err);
+            });
+            
++ Response 200 (application/json)
+
+        {
+          "success": true,
+          "transactions": [
+            {
+              "max": "Max. Integer",
+              "min": "Min. Integer",
+              "lifetime": "Lifetime. Integer",
+              "signed": true,
+              "transaction": {
+                "type": "Type of transaction. Integer",
+                "amount": "Amount. Integer",
+                "senderPublicKey": "Sender public key of transaction. Hex",
+                "requesterPublicKey": "Requester public key. String",
+                "timestamp": "Timestamp. Integer",
+                "asset": {
+                  "multisignature": {
+                    "min": "Min signatures needed for valid tx. Integer",
+                    "keysgroup": [
+                      "+Multisig public key member. String"
+                    ],
+                    "lifetime": "Lifetime. Integer",
+                  }
+                },
+                "recipientId": "Recipient address. String",
+                "signature": "Signature. String",
+                "signSignature": "Sign signature. String",
+                "id": "Tx ID",
+                "fee": "Fee. Integer",
+                "senderId": "Sender address. String",
+                "relays": "Propagation. Integer",
+                "receivedAt": Time. String",
+                "signatures": [
+                  "array of signatures"
+                ],
+                "ready": false
+              }
+            }
+          ]
+        }
