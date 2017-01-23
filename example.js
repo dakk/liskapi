@@ -4,14 +4,13 @@ const params = {
     ssl: false
 };
 
-const lisk = require ('liskapi')(params);
+const lisk = require ('./index')(params);
 const Mnemonic = require('bitcore-mnemonic');
 const delegates = ["+473c354cdf627b82e9113e02a337486dd3afc5615eb71ffd311c5a0beda37b8c", "+eaa049295d96618c51eb30deffe7fc2cc8bfc13190cb97f3b513dd060b000a46", "+848b16a387bc6e20fea768d3c3c0cda643f4b113a6d2bf70a53e19120c93fa64"];
 const multiDelegates = ["+dc63877fbdfb538ff1d0ddecb979887f826998ab6907dca0a91e05c98d1602cd", "+532b150e1994c4486b664092769bda0ee2129fa9ad0fe94e59d06cab92f36c09"];
 
 let code = new Mnemonic(Mnemonic.Words.ENGLISH);
 console.log("New pass: " + code.toString());
-
 
 /*lisk.getSyncStatus ().call ()
     .then ((res) => {
