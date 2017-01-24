@@ -1,13 +1,14 @@
 # Lisk API Wrapper
-> with love by dakk (2324852447570841050L) and liskit (10310263204519541551L) delegates
-A smart wrapper for Lisk node APIs.
+> With love by dakk (2324852447570841050L) and liskit (10310263204519541551L) delegates
+
+A smart wrapper for Lisk node APIs.[![NPM version](https://img.shields.io/npm/v/pug.svg?style=flat)](https://www.npmjs.com/package/liskapi)
 
 ## Docs
-You can find a fully documentation [HERE](https://andreafspeziale.github.io/liskapi/).
+Full documentation is [here](https://andreafspeziale.github.io/liskapi/).
 
 Source
 
-    - /docs
+    /docs
 
 ## Installation
 
