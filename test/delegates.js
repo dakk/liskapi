@@ -2,7 +2,7 @@ var assert = require ('assert');
 var should = require('chai').should ()
 var expect = require('chai').expect
 var lisk = require ('../index')(require ('./params'));
-var forger = require('./testnet');
+// var forger = require('./testnet');
 var Mnemonic = require('bitcore-mnemonic');
 
 var code = new Mnemonic(Mnemonic.Words.ENGLISH);
@@ -10,12 +10,10 @@ var code = new Mnemonic(Mnemonic.Words.ENGLISH);
 /*describe('.createDelegate', function() {
 	it('should return valid values', function(done) {
 		this.timeout (60000);
-		// create account
 		lisk.openAccount()
 			.data({secret: code.toString()})
 			.call()
 			.then((res) => {
-				// sending 20LSK to the created account
 				var account = res.account.address;
 				lisk.sendTransaction()
 					.data({
@@ -26,7 +24,6 @@ var code = new Mnemonic(Mnemonic.Words.ENGLISH);
 					})
 					.call()
 					.then((res) => {
-						// waiting for confirmation
 						setTimeout(function () {
 							lisk.createDelegate()
 								.data({
@@ -190,12 +187,10 @@ describe('.getVoters', function() {
 /*describe('.enableForging and disableForging', function() {
 	it('should return valid values', function(done) {
 		this.timeout (120000);
-		// create account
 		lisk.openAccount()
 			.data({secret: code.toString()})
 			.call()
 			.then((res) => {
-				// sending 20LSK to the created account
 				var account = res.account.address;
 				lisk.sendTransaction()
 					.data({
@@ -206,7 +201,6 @@ describe('.getVoters', function() {
 					})
 					.call()
 					.then((res) => {
-						// waiting for confirmation
 						setTimeout(function () {
 							lisk.createDelegate()
 								.data({

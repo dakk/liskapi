@@ -2,9 +2,11 @@ var assert = require ('assert');
 var should = require('chai').should ()
 var expect = require('chai').expect
 var Mnemonic = require('bitcore-mnemonic');
+// var forger = require('./testnet.json');
 var lisk = require ('../index')(require ('./params'));
 
 var code = new Mnemonic(Mnemonic.Words.ENGLISH);
+const delegates = ["+473c354cdf627b82e9113e02a337486dd3afc5615eb71ffd311c5a0beda37b8c", "+eaa049295d96618c51eb30deffe7fc2cc8bfc13190cb97f3b513dd060b000a46", "+848b16a387bc6e20fea768d3c3c0cda643f4b113a6d2bf70a53e19120c93fa64"];
 
 describe('.openAccount', function() {
 	it('should return valid values', (done) => {
@@ -124,3 +126,54 @@ describe('.getDelegatesByAddress', function() {
 			});
 	})
 });
+
+/*
+describe('.voteDelegates', function() {
+	it('should return valid values', function(done) {
+		this.timeout (60000);
+		// create a new account
+		lisk.openAccount()
+			.data({secret: code.toString()})
+			.call()
+			.then((res) => {
+				// sending 20LSK to the created account
+				var senderPublicKey = res.account.publicKey;
+				var account = res.account.address;
+				lisk.sendTransaction()
+					.data({
+						secret: forger.secret,
+						amount: 5000000000,
+						recipientId: account,
+						publicKey: forger.publicKey
+					})
+					.call()
+					.then((res) => {
+						// waiting for confirmation tx and voting delegates
+						setTimeout(function () {
+							lisk.voteDelegates()
+								.data({
+									secret: code.toString(),
+									publicKey: senderPublicKey,
+									delegates: delegates
+								})
+								.call()
+								.then((res) => {
+									expect(res['success']).to.be.a('boolean').to.equal(true);
+									expect (res['transaction']).to.be.a ('object');
+									done();
+								})
+								.catch(function (err) {
+									assert.ok(false);
+									done();
+								});
+						}, 20000);
+					})
+					.catch((err) => {
+						console.log('Got an error sending LSK\n', err);
+					});
+			})
+			.catch((err) => {
+				console.log('Got an error opening an account\n', err);
+			});
+	});
+});*/
