@@ -2,7 +2,56 @@ var assert = require ('assert');
 var should = require('chai').should ()
 var expect = require('chai').expect
 var lisk = require ('../index')(require ('./params'));
+// var forger = require('./testnet');
+var Mnemonic = require('bitcore-mnemonic');
 
+var code = new Mnemonic(Mnemonic.Words.ENGLISH);
+
+/*describe('.createDelegate', function() {
+	it('should return valid values', function(done) {
+		this.timeout (60000);
+		lisk.openAccount()
+			.data({secret: code.toString()})
+			.call()
+			.then((res) => {
+				var account = res.account.address;
+				lisk.sendTransaction()
+					.data({
+						secret: forger.secret,
+						amount: 5000000000,
+						recipientId: account,
+						publicKey: forger.publicKey
+					})
+					.call()
+					.then((res) => {
+						setTimeout(function () {
+							lisk.createDelegate()
+								.data({
+									secret: code.toString(),
+									username: Math.random().toString(36).substring(7)
+								})
+								.call()
+								.then((res) => {
+									res.should.be.an('object');
+									expect(res['success']).to.be.a('boolean').to.equal(true);
+									expect (res['transaction']).to.be.a ('object');
+									done();
+								})
+								.catch(function (err) {
+									assert.ok(false);
+									done();
+								});
+						}, 30000);
+					})
+					.catch((err) => {
+						console.log('Got an error sending LSK\n', err);
+					});
+			})
+			.catch((err) => {
+				console.log('Got an error opening an account\n', err);
+			});
+	});
+});*/
 
 describe('.getDelegatesList', function() {
 	it('should return valid values', function(done) {
@@ -134,6 +183,80 @@ describe('.getVoters', function() {
 			});
 	});
 });
+
+/*describe('.enableForging and disableForging', function() {
+	it('should return valid values', function(done) {
+		this.timeout (120000);
+		lisk.openAccount()
+			.data({secret: code.toString()})
+			.call()
+			.then((res) => {
+				var account = res.account.address;
+				lisk.sendTransaction()
+					.data({
+						secret: forger.secret,
+						amount: 5000000000,
+						recipientId: account,
+						publicKey: forger.publicKey
+					})
+					.call()
+					.then((res) => {
+						setTimeout(function () {
+							lisk.createDelegate()
+								.data({
+									secret: code.toString(),
+									username: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
+								})
+								.call()
+								.then((res) => {
+									setTimeout(function () {
+										lisk.enableForging()
+											.data({
+												secret: code.toString(),
+											})
+											.call()
+											.then((res) => {
+												res.should.be.an('object');
+												expect(res['success']).to.be.a('boolean').to.equal(true);
+												expect (res['address']).to.be.a('string');
+												setTimeout(function () {
+													lisk.disableForging()
+														.data({
+															secret: code.toString(),
+														})
+														.call()
+														.then((res) => {
+															res.should.be.an('object');
+															expect(res['success']).to.be.a('boolean').to.equal(true);
+															expect (res['address']).to.be.a('string');
+															done();
+														})
+														.catch(function (err) {
+															assert.ok(false);
+															done();
+														});
+												}, 10000);
+											})
+											.catch(function (err) {
+												assert.ok(false);
+												done();
+											});
+									}, 30000);
+								})
+								.catch(function (err) {
+									console.log('Got an error creating delegate\n', err);
+								});
+						}, 30000);
+					})
+					.catch((err) => {
+						console.log('Got an error sending LSK\n', err);
+					});
+			})
+			.catch((err) => {
+				console.log('Got an error opening an account\n', err);
+			});
+	});
+});*/
 
 describe('.getForgedByAccount', function() {
 	it('should return valid values', function(done) {

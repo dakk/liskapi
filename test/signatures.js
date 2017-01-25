@@ -2,7 +2,7 @@ var assert = require ('assert');
 var should = require('chai').should ()
 var expect = require('chai').expect
 var lisk = require ('../index')(require ('./params'));
-var forger = require('./testnet');
+// var forger = require('./testnet');
 var Mnemonic = require('bitcore-mnemonic');
 
 var code = new Mnemonic(Mnemonic.Words.ENGLISH);

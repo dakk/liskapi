@@ -23,23 +23,32 @@ describe('.getTransactions', function() {
 
 /*describe('.sendTransaction', function() {
 	it('should return valid values', (done) => {
-		lisk.sendTransaction ()
-			.data ( {
-				secret: forger.secret,
-				amount: 1,
-				recipientId: forger.recipientId,
-				publicKey: forger.publicKey
-			} )
+		lisk.openAccount ()
+			.data ({ secret: code.toString() })
 			.call ()
 			.then ((res) => {
-				res.should.be.an ( 'object' );
-				expect (res['success']).to.be.a ('boolean').to.equal (true);
-				expect (res['transactionId']).to.be.a ('string');
-				done ();
+ 				var account = res.account.address;
+				lisk.sendTransaction ()
+					.data ( {
+						secret: forger.secret,
+						amount: 1,
+						recipientId: account,
+						publicKey: forger.publicKey
+				} )
+				.call ()
+				.then ((res) => {
+					res.should.be.an ( 'object' );
+					expect (res['success']).to.be.a ('boolean').to.equal (true);
+					expect (res['transactionId']).to.be.a ('string');
+					done ();
+				})
+				.catch ( function(err) {
+					assert.ok (false);
+					done ();
+				});
 			})
-			.catch ( function(err) {
-				assert.ok (false);
-				done ();
+			.catch ((err) => {
+				console.log ('Got an error opening an account\n', err);
 			});
 	});
 });*/
